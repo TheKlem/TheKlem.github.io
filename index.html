@@ -121,6 +121,9 @@
         <option value="54750">Consommation d'eau potable par personne et par an</option>
         <option value="700000000000">Eau potable perdue à cause de fuites par an</option>
         <option value="100">hectolitre</option>
+
+
+
         <option value="159">barils de pétrole</option>
         <option value="1000">Mètres cube</option>
         <option value="600000">Piscine municpale (25x2m)</option>
@@ -136,6 +139,16 @@
         <option value="120">Trou Mélanchonien dans les Alpes</option>
         <option value="500000">Débit/sec de la Seine (Paris)</option>
         <option value="1690000">Débit/sec du Rhône(Beaucaire)</option>
+<optgroup label="Bouteilles">
+                <option value="3">Jéroboam </option>
+        <option value="4.5">Réhoboam </option>
+        <option value="6">Mathusalem </option>
+        <option value="9">Salmanazar </option>
+        <option value="12">Balthazar </option>
+                <option value="15">Nabuchodonosor  </option>
+        <option value="18">Melchior  </option>
+        </optgroup>
+
       `;
     } if (conversionType === 'weight') {
       startUnit.innerHTML = `
@@ -559,10 +572,10 @@ if (Number.isInteger(parseFloat(conversionResult))) {
 let displayInvertedResult;
 if (Number.isInteger(parseFloat(invertConversionResult))) {
   displayInvertedResult = parseFloat(invertConversionResult).toFixed(0);
-} else if (parseFloat(invertConversionResult).toFixed(2).substr(0, 2) === "0.0") {
-  displayInvertedResult = parseFloat(invertConversionResult).toFixed(10);
-} else {
+} else if (parseFloat(invertConversionResult).toFixed(2).substr(0, 3) === "0.0") {
   displayInvertedResult = parseFloat(invertConversionResult).toFixed(15);
+} else {
+  displayInvertedResult = parseFloat(invertConversionResult).toFixed(2);
 }
 resultContainer.innerHTML = `${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
 Autrement dit il faut ${displayInvertedResult} fois ${initialValue} ${startUnitLabel} pour faire un(e) ${destinationUnitLabel}`;
