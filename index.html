@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dumb Converter for smart journalists, by TheKlem</title>
+  <link href="style.css" rel="stylesheet" media="all" type="text/css"> 
+</head>
+
+<body>
+
+<h1 align="center">Convertisseur stupide</h1>
+<div id="message">Bienvenue. Grâce à ce site tu peux enfin convertir n'importe-quoi en vrai #nimportequoi.<p>Bien entendu, ce site s'adresse prioritairement aux journalistes en mal d'inspiration.</div>
+
+  <div id="form-container">
+    <form id="conversion-form">
+      <label for="conversion-type">Convertir :</label>
+      <select id="conversion-type" name="conversionType" size="1">
+        <option value="">quoi</option>
+        <option value="volume">Contenances et volumes (pratique pour les déchêts, les produits liquides, les bassines)</option>
+        <option value="weight">Poids</option>
+        <option value="distance">Longeurs et distances (pratique pour les manifestations, les bouchons)</option>
+                <option value="surfaces">Surfaces (pratique pour l'agriculture, l'architecture, les meetnings</ption>
+        <option value="money">L'argent (le pèse, le flouze, les brouzufs, le pognon)</option>
+      </select>
+   <div id="conversion-details" style="display:none;">
+</br>
+      CONVERTIR <input type="text" id="initial-value" name="initialValue" size="10"/>
+
+      <select id="start-unit" name="startUnit" size="1">
+        <option value="">Sélectionnez une unité</option>
+      </select> EN 
+
+
+      <select id="destination-unit" name="destinationUnit">
+        <option value="">Sélectionnez une unité</option>
+      </select><br><br>
+
+      <button type="submit">Convertir</button></div>
+    </form>
+  </div>
+
+  <div id="result-container" ></div>
+
+<script type="text/javascript">
+   const conversionTypeElement = document.getElementById("conversion-type");
+    const conversionFormElement = document.getElementById("conversion-details");
+
+    conversionTypeElement.addEventListener("change", function() {
+      if (conversionTypeElement.value === "volume" || conversionTypeElement.value === "weight"  || conversionTypeElement.value === "surfaces"   || conversionTypeElement.value === "money" || conversionTypeElement.value === "distance") {
+        conversionFormElement.style.display = "block";
+      } else {
+        conversionFormElement.style.display = "none";
+      }
+    });
+</script>
+<script type="text/javascript">
+
+  const form = document.getElementById('conversion-form');
+  const resultContainer = document.getElementById('result-container');
+  const conversionTypeSelect = document.getElementById('conversion-type');
+
+  // Événement pour mettre à jour les options de conversion en fonction de la sélection de l'utilisateur
+  conversionTypeSelect.addEventListener('change', function(event) {
+    const conversionType = event.target.value;
+    const startUnit = document.getElementById('start-unit');
+    const destinationUnit = document.getElementById('destination-unit');
+
+    if (conversionType === 'volume') {
+      startUnit.innerHTML = `
+        <option value="0.001">cm cube</option>
+        <option value="0.005">Cuillère à café</option>
+        <option value="0.004">dé à coudre</option>
+        <option value="1">dm cube</option>
+        <option value="0.473176">Pinte (US Pint)</option>
+        <option value="1" selected>litre</option>
+        <option value="1.5">bouteilles d'Evian</option>
+        <option value="3.78541">Gallon (US Gallon)</option>
+        <option value="54750">Consommation d'eau potable par personne et par an</option>
+        <option value="100">hectolitre</option>
+        <option value="159">barils de pétrole</option>
+        <option value="1000">Mètres cube</option>
+        <option value="600000">Piscine municpale (25x2m)</option>
+        <option value="3750000">Piscine Olympique (50x3m)</option>
+        <option value="120">Trou Mélanchonien dans les Alpes</option>
+        <option value="500000">Débit/sec de la Seine (Paris)</option>
+        <option value="1690000">Débit/sec du Rhône(Beaucaire)</option>
+        <option value="26000000000000">Eau utilisée pour refroidir les centrales nucléaires (an)</option>
+        <option value="700000000000000">Eau potable perdue à cause de fuites par an</option>
+      `;
+      destinationUnit.innerHTML = `
+        <option value="">Sélectionnez une unité</option>
+        <option value="0.001">cm cube</option>
+        <option value="0.005">Cuillère à café</option>
+        <option value="0.004">dé à coudre</option>
+        <option value="1">dm cube</option>
+        <option value="0.473176">Pinte (US Pint)</option>
+        <option value="1">litre</option>
+        <option value="1.5">bouteilles d'Evian</option>
+        <option value="3.78541">Gallon (US Gallon)</option>
+        <option value="54750">Consommation d'eau potable par personne et par an</option>
+        <option value="700000000000">Eau potable perdue à cause de fuites par an</option>
+        <option value="100">hectolitre</option>
+        <option value="159">barils de pétrole</option>
+        <option value="1000">Mètres cube</option>
+        <option value="600000">Piscine municpale (25x2m)</option>
+        <option value="3750000">Piscine Olympique (50x3m)</option>
+        <option value="120">Trou Mélanchonien dans les Alpes</option>
+        <option value="500000">Débit/sec de la Seine (Paris)</option>
+        <option value="1690000">Débit/sec du Rhône(Beaucaire)</option>
+      `;
+    } if (conversionType === 'weight') {
+      startUnit.innerHTML = `
+        <option value="1">grammes</option>
+        <option value="0.2">Carats</option>
+        <option value="28">once (oz)</option>
+        <option value="453.5">Livre (lb)</option>
+        <option value="1000" selected>kilogrammes</option>
+        <option value="105000">Mike Tyson</option>
+        <option value="107000">Mohamed Ali</option>
+        <option value="1000000">Tonnes</option>
+        <option value="26000000">Camion poubelle</option>
+        <option value="183500000">Boeing 747</option>
+        <option value="227000000">Airbus A330</option>
+        <option value="365000000000">Empire State Building</option>
+        <option value="10100000000">Tour Eiffel</option>
+        <option value="5750000000000">Pyramide de Gizeh</option>
+      `;
+      destinationUnit.innerHTML = `
+        <option value="">Sélectionnez une unité</option>
+        <option value="1">grammes</option>
+        <option value="0.2">Carats</option>
+        <option value="28">once (oz)</option>
+        <option value="453.5">Livre (lb)</option>
+        <option value="1000">kilogrammes</option>
+        <option value="105000">Mike Tyson</option>
+        <option value="107000">Mohamed Ali</option>
+        <option value="1000000">Tonnes</option>
+        <option value="26000000">Camion poubelle</option>
+        <option value="183500000">Boeing 747</option>
+        <option value="227000000">Airbus A330</option>
+        <option value="365000000000">Empire State Building</option>
+        <option value="10100000000">Tour Eiffel</option>
+        <option value="5750000000000">Pyramide de Gizeh</option>
+      `;
+    } if (conversionType === 'distance') {
+      startUnit.innerHTML = `
+        <option value="1" selected>Metre(s)</option>
+        <option value="1000">Kilometre(s)</option>
+        <option value="1.609">Miles(s) </option>
+        <option value="1.852">Mile(s) nautique(s)</option>
+      `;
+      destinationUnit.innerHTML = `
+        <option value="">Sélectionnez une unité</option>
+        <option value="0.01">centimètres</option>
+        <option value="0.24">Rocco Sifredi ****</option>
+        <option value="1">mètres</option>
+        <option value="1.32">Mimie Mathy</option>
+        <option value="1.66">Nicolas Sarkozy</option>
+        <option value="1.88">Tony Parker</option>
+        <option value="2.15">Rudy Gobert</option>
+        <option value="1000">kilomètres</option>
+        <option value="105">Stade de foot</option>
+        <option value="105">Arc de Triomphe</option>
+        <option value="300">Tour Eiffel</option>
+        <option value="381">Empire State Building</option>
+        <option value="828">Burj Khalifa(Dubaï)</option>
+        <option value="2141">Pont de Normandie (long)</option>
+        <option value="5440">Nation-Opera</option>
+        <option value="2180">Bastille Nation</option>
+        <option value="1910">Champs Elysées</option>
+        <option value="900680">Brest-Strasbourg</option>
+        <option value="5836000">Paris-NewYork</option>
+        <option value="384400000">Terre-Lune</option>
+      `;
+
+      } if (conversionType === 'surfaces') {
+      startUnit.innerHTML = `
+        <option value="1" selected>m2</option>
+        <option value="1000">km2</option>
+        <option value="10000">hectare</option>
+
+      `;
+      destinationUnit.innerHTML = `
+        <option value="">Sélectionnez une unité</option>
+        <option value="1">m2</option>
+        <option value="0.0929">Square feet (sd ft)</option>
+        <option value="100">ares</option>
+        <option value="10000">hectare</option>
+        <option value="1000000">km2</option>
+        <option value="4046.85">acres</option>
+        <option value="4.183">table de ping-pong</option>
+        <option value="60">terrain de pétanque</option>
+        <option value="195.629">terrain de tennis</option>
+        <option value="420">terrain de basket</option>
+        <option value="7266">terrain de foot</option>
+        <option value="55000">Place du Trocadéro</option>
+        <option value="245000">Champs de mars</option>
+        <option value="550000000">France</option>
+      `;
+
+    } if (conversionType === 'money') {
+      startUnit.innerHTML = `
+        <option value="1">euro</option>
+        <option value="0.879">Livre Sterling</option>
+        <option value="1.088">dollar</option>
+      `;
+      destinationUnit.innerHTML = `
+        <option value="">Sélectionnez une unité</option>
+        <option value="1353.07">SMIC mensuel net</option>
+        <option value="1709.28">SMIC mensuel brut</option>
+        <option value="10000000">CA de Qwant</option>
+        <option value="42000000">Pertes de Qwant</option>
+        <option value="198000000000">CA de Microsoft</option>
+        <option value="257640000000">CA de Google</option>
+        <option value="386000000000">CA d'Amazon</option>
+        <option value="123300000000">Jeff Bezos</option>
+        <option value="213000000000">Bernard Arnaud</option>
+        <option value="2300000000000">dette française</option>
+        <option value="2958000000000">PIB français</option>
+        <option value="4260000000000">PIB allemand</option>
+      `;
+    }
+  });
+
+  // Événement pour effectuer la conversion et afficher le résultat
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const initialValue = parseFloat(form.elements['initialValue'].value);
+    const startUnitValue = parseFloat(form.elements['startUnit'].value);
+    const destinationUnitValue = parseFloat(form.elements['destinationUnit'].value);
+    const conversionResult = ((initialValue * startUnitValue) / destinationUnitValue);
+        const invertConversionResult = (destinationUnitValue / (initialValue * startUnitValue));
+    const startUnitLabel = form.elements['startUnit'].options[form.elements['startUnit'].selectedIndex].text;
+    const destinationUnitLabel = form.elements['destinationUnit'].options[form.elements['destinationUnit'].selectedIndex].text;
+let displayResult;
+if (Number.isInteger(parseFloat(conversionResult))) {
+  displayResult = parseFloat(conversionResult).toFixed(0);
+} else if (parseFloat(conversionResult).toFixed(3).substr(0, 3) === "0.0") {
+  displayResult = parseFloat(conversionResult).toFixed(10);
+} else {
+  displayResult = parseFloat(conversionResult).toFixed(3);
+}
+let displayInvertedResult;
+if (Number.isInteger(parseFloat(invertConversionResult))) {
+  displayInvertedResult = parseFloat(invertConversionResult).toFixed(0);
+} else if (parseFloat(invertConversionResult).toFixed(2).substr(0, 2) === "0.0") {
+  displayInvertedResult = parseFloat(invertConversionResult).toFixed(10);
+} else {
+  displayInvertedResult = parseFloat(invertConversionResult).toFixed(2);
+}
+resultContainer.innerHTML = `${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
+Autrement dit il faut ${displayInvertedResult} fois ${initialValue} ${startUnitLabel} pour faire un(e) ${destinationUnitLabel}`;
+  });
+</script>
+
+
+ 
