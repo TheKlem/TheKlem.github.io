@@ -583,7 +583,7 @@ let displayResult;
 if (Number.isInteger(parseFloat(conversionResult))) {
   displayResult = parseFloat(conversionResult).toFixed(0);
 } else if (parseFloat(conversionResult).toFixed(3).substr(0, 3) === "0.0") {
-  displayResult = parseFloat(conversionResult).toFixed(10);
+  displayResult = parseFloat(conversionResult).toFixed(5);
 } else {
   displayResult = parseFloat(conversionResult).toFixed(3);
 }
