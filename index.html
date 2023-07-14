@@ -99,8 +99,8 @@
         <option value="100">hectolitre</option>
         <option value="159">barils de pétrole</option>
         <option value="1000">Mètres cube</option>
-        <option value="600000">Piscine municpale (25x2m)</option>
-        <option value="3750000">Piscine Olympique (50x3m)</option>
+        <option value="600000">Piscine municpale (25x12,5x2m)</option>
+        <option value="3750000">Piscine Olympique (50x25x3m)</option>
         <option value="650000000">Mega Bassine de Sainte-Soline</option>
         <option value="120">Trou Mélanchonien dans les Alpes</option>
         <option value="500000">Débit/sec de la Seine (Paris)</option>
@@ -126,8 +126,8 @@
 
         <option value="159">barils de pétrole</option>
         <option value="1000">Mètres cube</option>
-        <option value="600000">Piscine municpale (25x2m)</option>
-        <option value="3750000">Piscine Olympique (50x3m)</option>
+        <option value="600000">Piscine municpale (25x12,5x2m)</option>
+        <option value="3750000">Piscine Olympique (50x25x3m)</option>
         <option value="650000000">Mega Bassine de Sainte-Soline</option>
         <option value="3620300000000">Lac du Bourget</option>
         <option value="1124000000000">Lac d'Annecy</option>
@@ -583,7 +583,7 @@ let displayResult;
 if (Number.isInteger(parseFloat(conversionResult))) {
   displayResult = parseFloat(conversionResult).toFixed(0);
 } else if (parseFloat(conversionResult).toFixed(3).substr(0, 3) === "0.0") {
-  displayResult = parseFloat(conversionResult).toFixed(5);
+  displayResult = parseFloat(conversionResult).toFixed(8);
 } else {
   displayResult = parseFloat(conversionResult).toFixed(3);
 }
@@ -591,7 +591,7 @@ let displayInvertedResult;
 if (Number.isInteger(parseFloat(invertConversionResult))) {
   displayInvertedResult = parseFloat(invertConversionResult).toFixed(0);
 } else if (parseFloat(invertConversionResult).toFixed(2).substr(0, 3) === "0.0") {
-  displayInvertedResult = parseFloat(invertConversionResult).toFixed(15);
+  displayInvertedResult = parseFloat(invertConversionResult).toFixed(12);
 } else {
   displayInvertedResult = parseFloat(invertConversionResult).toFixed(2);
 }
