@@ -84,3 +84,13 @@
       width: 50%;
       margin-top: 50px;
     }
+#credits
+  {
+
+      padding: 20px;
+      margin: 0 auto;
+      width: 60%;
+      margin-top: 20px;
+    font-size: 13px;
+     color: #303030;
+    }
