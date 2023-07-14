@@ -4,6 +4,7 @@
       font-family: 'Lato', sans-serif;
       margin: 0;
       padding: 0;
+      font-size: 14px;
     }
     
     header {
@@ -29,10 +30,11 @@
       border: 2px solid #999;
       flex-direction: column;
       align-items: left;
-      padding: 20px;
+      padding: 15px;
       margin: 0 auto;
-      width: 60%;
+      width: 75%;
       margin-top: 0px;
+      border-radius: 20px;
     }
     
     form input[type=text], form select {
@@ -72,7 +74,6 @@
       font-size: 16px;
       text-align: center;
     }
-
     #result-container {
       background-color: #f2f2f2;
       border: 2px solid #999;
@@ -80,8 +81,9 @@
       align-items: left; 
       padding: 20px;
       margin: 0 auto;
-      width: 60%;
+      width: 75%;
       margin-top: 20px;
+      border-radius: 30px;
     }
     #message  {
       background-color: #ffffff;
@@ -90,14 +92,14 @@
       align-items: left; 
       padding: 20px;
       margin: 0 auto;
-      width: 50%;
+      width: 75%;
       margin-top: 20px;
     }
     #news
   {
       padding: 0px;
       margin: 0 auto;
-      width: 60%;
+      width: 75%;
       margin-top: 20px;
       font-size: 15px;
      color: #000; 
@@ -106,24 +108,24 @@
   {
       padding: 0px;
       margin: 0 auto;
-      width: 60%;
+      width: 75%;
       margin-top: 20px;
-    font-size: 15px;
-     color: #707070;
+      font-size: 15px;
+      color: #707070;
     }
     .containerCredits {
-            display: flex;
-            justify-content: center;
-        }
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
         
-        .columnCredits {
-            flex: 1;
-            text-align: center;
-             justify-content: center;
-        }
-        
-        .logo {
-            max-width: 100%;
-            height: auto;
-            margin: 0 auto;
-        }
+    .columnCredits {
+      flex: 1;
+      text-align: center;
+      justify-content: center;
+    }
+    .logo {
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
