@@ -23,6 +23,7 @@
 </head>
 
 <body>
+
 <h1 align="center">Convertisseur stupide</h1>
 <div id="message" align="center">Grâce à ce site tu peux enfin convertir n'importe-quoi en véritable #nimportequoi.<p>Bien entendu, ce site s'adresse avant tout aux journalistes en mal d'inspiration.</div>
 
@@ -34,7 +35,7 @@
         <option value="volume">Contenances et volumes: pratique pour déchets, soirées arrosées, bassines</option>
         <option value="weight">Masse (alias le poids pour les moldus): pratique pour, ben comparer des masses quoi !</option>
         <option value="distance">Longeurs et distances: pratique pour manifestations, bouchons, voyages</option>
-        <option value="surfaces">Surfaces: pratique pour l'agriculture, l'architecture, les meetings</ption>
+        <option value="surfaces">Surfaces: pratique pour l'agriculture, l'architecture, les meetings</option>
         <option value="money">Argent: pèze, flouze, brouzoufs, pognon. Toujours pratique, d'en avoir.</option>
         <option value="population">Population: masses, foules, peons. Pratique pour les manifs, les pétitions, les concerts</option>
       </select>
@@ -58,7 +59,8 @@
   <div id="result-container" ></div>
 
 <div id="news">À venir: à la demande quasi-générale le jour du lancement, j'ajouterai bientôt l'énergie et la radiologie.</div>
-<div id="credits" class="credits">Warning et autopromo. J'ai réalisé ce site pour le fun, en quelques heures grapillées ici et là. Je n'avais plus codé quoi que ce soit depuis 15 ans, alors soyez indulgents ! Tous les chiffres sont très sérieux par contre, j'ai essayé d'être le plus rigoureux possible, même si une erreur est toujours possible. Si vous repérez une erreur quelque part ou que vous voulez me proposer de nouvelles conversions marrantes, vous pouvez me contacter sur Twitter: <a href="https://twitter.com/DrScratch">DrScratch</a></p>
+
+  <div id="credits" class="credits">Warning et autopromo. J'ai réalisé ce site pour le fun, en quelques heures grapillées ici et là. Je n'avais plus codé quoi que ce soit depuis 15 ans, alors soyez indulgents ! Tous les chiffres sont très sérieux par contre, j'ai essayé d'être le plus rigoureux possible, même si une erreur est toujours possible. Si vous repérez une erreur quelque part ou que vous voulez me proposer de nouvelles conversions marrantes, vous pouvez me contacter sur Twitter: <a href="https://twitter.com/DrScratch">DrScratch</a></p>
   <p>Si vous voulez voir un vrai service joli (pas comme ici), bien fait et utile, faites un tour sur <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> le seul service de transfert de fichiers 100% souverain, qui n'utilise ni AWS, ni Google ou autre. Ziplo est aussi un service de création de preuves de dépôt (preuve d'antériorité) pour défendre vos droits d'auteur notamment. Je suis l'un des 4 fondateurs, mais pas de ceux qui codent, heureusement pour nos utilisateurs ;-). Je suis aussi le fondateur de <a href="https://mesvolontes.net" target="_new">Mes Volontés</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.</p>
 
     <div class="containerCredits">
@@ -75,7 +77,7 @@
  <!-- selecteurs dynamiques --> 
 <script type="text/javascript">
    const conversionTypeElement = document.getElementById("conversion-type");
-    const conversionFormElement = document.getElementById("conversion-details");
+    const conversionFormElement = document.getElementById("csssonversion-details");
 
     conversionTypeElement.addEventListener("change", function() {
       if (conversionTypeElement.value === "volume" || conversionTypeElement.value === "weight"  || conversionTypeElement.value === "population" || conversionTypeElement.value === "surfaces"   || conversionTypeElement.value === "money" || conversionTypeElement.value === "distance")   {
@@ -136,7 +138,7 @@
 
 <optgroup label="Tout le reste">
         <option value="0.004">Dé à coudre</option>
-        <option vaue="0.003">Éjaculat humain standard</option>
+        <option value="0.003">Éjaculat humain standard</option>
         <option value="3.78541">Gallon (US Gallon)</option>
         <option value="159">Baril de pétrole</option>
         <option value="70">Douche</option>
@@ -203,7 +205,7 @@
 </optgroup>
 <optgroup label="Tout le reste">
         <option value="0.004">Dé à coudre</option>
-        <option vaue="0.003">Éjaculat humain stadard</option>
+        <option value="0.003">Éjaculat humain stadard</option>
         <option value="3.78541">Gallon (US Gallon)</option>
         <option value="159">Baril de pétrole</option>
                 <option value="70">Douche</option>
@@ -514,6 +516,29 @@
         <option value="3675000">Salaire mensuel brut de Neymar</option>
         <option value="3375000">Salaire mensuel brut de Messi</option>
         <option value="300000000">Mbappé. Prime cash pour rester au PSG</option>
+<<<<<<< HEAD
+        <option value="123300000000">Jeff Bezos (fortune de)</option>
+        <option value="213000000000">Bernard Arnault (fortune de)</option>
+ </optgroup>
+
+ <optgroup label="Divers">   
+         <option value="5000000000">Une Kerviel</option>    
+        <option value="690000">Bus electrique Irizar (dédicace Courier Picard)</option>
+        <option value="713000">Bus Irizar + bus diesel d'occassion en secours</option>
+        <option value="16404">WC parisien (1.5m2) en juillet 2023</option>
+        <option value="8620">WC marseillais (1.5m2) en juillet 2023</option>
+        <option value="502000000">Stade de France</option>
+        <option value="405000000">Groupama Stadium (Lyon)</option>
+        <option value="250000000">Emeutes de 2005</option>
+        <option value="700000000">Emeutes de 2023</option>
+        <option value="16257000000">Plan Borloo (2005-2009)</option>
+        <option valeur="2325">Prix de revient moyen du m2 hlm (2020)</option>
+        <option value="16500000000">Plan Marshal (valeur de l'époque)</option>
+        <option value="130000000000">Plan Marshal (valeur actualisée)</option>
+</optgroup>
+<optgroup label="Luxe">
+=======
+>>>>>>> parent of 3871793 (Update index.html)
         <option value="950">Cognac Hennessy XXO hors d'âge</option>
         <option value="250">Cognac Hennessy XO Extra Old</option>
         <option value="47">Cognac Hennessy VS </option>
@@ -753,9 +778,9 @@
  
       `;
     }
-    
   });
- const integerFormatter = new Intl.NumberFormat('fr-FR', {
+  
+  const integerFormatter = new Intl.NumberFormat('fr-FR', {
       maximumFractionDigits: 0
   });
   const smallNumberFormatter = new Intl.NumberFormat('fr-FR', {
@@ -805,3 +830,6 @@ resultContainer.innerHTML = `${initialValue} ${startUnitLabel} est égal à ${di
 Autrement dit il faut ${displayInvertedResult} fois ${initialValue} ${startUnitLabel} pour faire un(e) ${destinationUnitLabel}`;
   });
 </script>
+
+
+ 
