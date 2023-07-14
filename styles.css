@@ -111,3 +111,19 @@
     font-size: 15px;
      color: #707070;
     }
+    .containerCredits {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .columnCredits {
+            flex: 1;
+            text-align: center;
+             justify-content: center;
+        }
+        
+        .logo {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
