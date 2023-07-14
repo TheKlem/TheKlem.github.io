@@ -32,12 +32,12 @@
       <label for="conversion-type">Convertir :</label>
       <select id="conversion-type" name="conversionType" size="1">
         <option value="">quoi</option>
-        <option value="volume">Contenances et volumes (pratique pour les déchêts, les produits liquides, les bassines)</option>
-        <option value="weight">Poids (pratique pour, ben mesurer des poids quoi)</option>
-        <option value="distance">Longeurs et distances (pratique pour les manifestations, les bouchons)</option>
-        <option value="surfaces">Surfaces (pratique pour l'agriculture, l'architecture, les meetings)</ption>
-        <option value="money">Argent (le pèse, le flouze, les brouzufs, le pognon)</option>
-        <option value="population">Population (les masses, les foules, pratique pour les manifs, les pétitions, les concerts)</option>
+        <option value="volume">Contenances et volumes : pratique pour les déchêts, les soirées arrosées, les bassines</option>
+        <option value="weight">Masse (alias les poids pour les moldus) : pratique pour, ben comparer des masses quoi !</option>
+        <option value="distance">Longeurs et distances : pratique pour les manifestations, les bouchons, les voyages</option>
+        <option value="surfaces">Surfaces : pratique pour l'agriculture, l'architecture, les meetings</ption>
+        <option value="money">Argent : le pèse, le flouze, les brouzufs, le pognon. Toujours pratique, d'en avoir.</option>
+        <option value="population">Population : les masses, les foules, les peons, pratique pour les manifs, les pétitions, les concerts</option>
       </select>
    <div id="conversion-details" style="display:none;">
 </br>
@@ -60,7 +60,7 @@
 
   <div id="credits" class="credits">Warning et autopromo. J'ai réalisé ce site pour le fun, en quelques heures grapillées ici et là. Je n'avais plus codé quoi que ce soit depuis 15 ans, alors soyez indulgents.
     <p>Tous les chiffres sont  très sérieux par contre, j'ai essayé d'être le plus rigoureux possible.</p>
-    <p>Si vous voulez voir un vrai service joli (pas comme ici), bien fait et utile, faites un tour sur <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> le seul service de transfert de fichiers 100% souverrain, qui n'utilise ni AWS, ni Google ou autre. Ziplo est aussi un service de création de preuves de dépôt (preuve d'antériorité) pour défendre vos droits d'auteur nottament. Je suis un des 4 fondateurs, mais pas un de ceux qui codent, heureusement pour nos utilisateurs ;-). Je suis aussi le fondateur de <a href="https://mesvolontes.net" target="_new">Mes Volontés</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.</p>
+    <p>Si vous voulez voir un vrai service joli (pas comme ici), bien fait et utile, faites un tour sur <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> le seul service de transfert de fichiers 100% souverrain, qui n'utilise ni AWS, ni Google ou autre. Ziplo est aussi un service de création de preuves de dépôt (preuve d'antériorité) pour défendre vos droits d'auteur notamment. Je suis un des 4 fondateurs, mais pas un de ceux qui codent, heureusement pour nos utilisateurs ;-). Je suis aussi le fondateur de <a href="https://mesvolontes.net" target="_new">Mes Volontés</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.</p>
     <p>Si vous repérez une erreur quelque part ou que vous voulez me proposer de nouvelles conversions marrantes, vous pouvez me contacter sur Twitter : <a href="https://twitter.com/DrScratch">DrScratch</a></p></div>
 
  <!-- selecteurs dynamiques --> 
@@ -127,8 +127,11 @@
 
 <optgroup label="Tout le reste">
         <option value="0.004">Dé à coudre</option>
+        <option vaue="0.003">Ejaculat humain standard</option>
         <option value="3.78541">Gallon (US Gallon)</option>
         <option value="159">Baril de pétrole</option>
+        <option value="70">Douche</option>
+        <option value="126">Bain</option>
         <option value="600000">Piscine municpale (25x12,5x2m)</option>
         <option value="3750000">Piscine Olympique (50x25x3m)</option>
         <option value="650000000">Mega Bassine de Sainte-Soline</option>
@@ -191,8 +194,12 @@
 </optgroup>
 <optgroup label="Tout le reste">
         <option value="0.004">Dé à coudre</option>
+        <option vaue="0.003">Ejaculat humain stadard</option>
         <option value="3.78541">Gallon (US Gallon)</option>
         <option value="159">Baril de pétrole</option>
+                <option value="70">Douche</option>
+        <option value="126">Bain</option>
+
         <option value="600000">Piscine municpale (25x12,5x2m)</option>
         <option value="3750000">Piscine Olympique (50x25x3m)</option>
         <option value="650000000">Mega Bassine de Sainte-Soline</option>
@@ -235,13 +242,13 @@
         <option value="9000">Raton laveur</option>
         <option value="32000">Basset Hound mâle</option>
         <option value="80000">Dogue du Tbet</option>
-                <option value="62000">Charlie Chaplin</option>
+        <option value="62000">Charlie Chaplin</option>
         <option value="105000">Mike Tyson</option>
         <option value="107000">Mohamed Ali</option>
         <option value="890000">Grand Requin Blanc</option>
         <option value="1000000">Tonne</option>
         <option value="1800000">Tesla Modèle 3</option>
-        <option value="2100000">Tesla Modèle 3</option>
+        <option value="2100000">Tesla Modèle S</option>
         <option value="2400000">Tesla Modèle X</option>
         <option value="2363000">Ford F-Series</option>
         <option value="2177000">Ram Pickup</option>
@@ -274,8 +281,9 @@
         <option value="107000">Mohamed Ali</option>
         <option value="890000">Grand Requin Blanc</option>
         <option value="1000000">Tonne</option>
+        <option value="1475000">Kangoo 3</option>
         <option value="1800000">Tesla Modèle 3</option>
-        <option value="2100000">Tesla Modèle 3</option>
+        <option value="2100000">Tesla Modèle S</option>
         <option value="2400000">Tesla Modèle X</option>
         <option value="6000000">Elephant d'Afrique mâle</option>
         <option value="4000000">Elephant d'Asie mâle</option>
@@ -445,6 +453,8 @@
         <option value="2.95">Oeufs plein air Matines (12)</option>
         <option value="690000">Bus electrique Irizar</option>
         <option value="713000">Bus Irizar + bus diesel d'occassion en secours</option>
+        <option value="16404">WC parisien (1.5m2) en juillet 2023</option>
+                <option value="8620">WC marseillais (1.5m2) en juillet 2023</option>
         <option value="10000000">CA de Qwant</option>
         <option value="42000000">Pertes de Qwant</option>
         <option value="502000000">Stade de France</option>
@@ -502,6 +512,8 @@
         <option value="1.69">Coca-Cola 1l</option>
         <option value="2.69">Jambon 4 tranches Fleury Michon</option>
         <option value="2.95">Oeufs plein air Matines (12)</option>
+        <option value="16404">WC parisien (1.5m2) en juillet 2023</option>
+                <option value="8620">WC marseillais (1.5m2) en juillet 2023</option>
         <option value="690000">Bus electrique Irizar</option>
         <option value="713000">Bus Irizar + bus diesel d'occassion en secours</option>
         <option value="10000000">CA de Qwant</option>
