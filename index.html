@@ -92,19 +92,48 @@
 
     if (conversionType === 'volume') {
       startUnit.innerHTML = `
-        <option value="0.001">cm cube</option>
-        <option value="0.005">Cuillère à café</option>
-        <option value="0.015">Cuillère à soupe</option>
-        <option value="0.004">dé à coudre</option>
+<optgroup label="Unités standard">
         <option value="1">dm cube</option>
-        <option value="1" selected>litre</option>
-        <option value="3.78541">Gallon (US Gallon)</option>
-        <option value="100">hectolitre</option>
-        <option value="159">Baril de pétrole</option>
+        <option value="0.001">cm cube</option>
         <option value="1000">Mètre cube</option>
+        <option value="1000000000000">km3</option>
+      </optgroup>
+<optgroup label="Les trucs de cuisine">
+        <option value="0.001">mililitre</option>
+        <option value="0.01">centiltre</option>
+        <option value="0.1">décilitre</option>
+        <option value="1" selected>litre</option>
+        <option value="100">hectolitre</option>
+        <option value="0.005">Cuillère à café</option>
+        <option value="0.014">Cuillère à soupe</option>
+        <option value="0.237">Tasse (fr) ou Chopine (ca)</option>
+</optgroup>
+<optgroup label="Verres et Bouteilles">
+        <option value="0.125">Un galopin</option>
+        <option value="0.25">Un demi</option>       
+        <option value="0.473176">Pinte (US Pint)</option>
+        <option value="0.568">Pinte (UK Pint)</option>
+        <option value="0.75">bouteilles de vin standard</option>
+        <option value="1.5">bouteilles d'Evian</option>
+        <option value="3">Jéroboam </option>
+        <option value="4.5">Réhoboam </option>
+        <option value="6">Mathusalem </option>
+        <option value="9">Salmanazar </option>
+        <option value="12">Balthazar </option>
+        <option value="15">Nabuchodonosor  </option>
+        <option value="18">Melchior  </option>
+</optgroup>
+
+
+<optgroup label="Tout le reste">
+        <option value="0.004">Dé à coudre</option>
+        <option value="3.78541">Gallon (US Gallon)</option>
+        <option value="159">Baril de pétrole</option>
         <option value="600000">Piscine municpale (25x12,5x2m)</option>
         <option value="3750000">Piscine Olympique (50x25x3m)</option>
         <option value="650000000">Mega Bassine de Sainte-Soline</option>
+        <option value="127218000">Bassin de La Vilette</option>
+        <option value="56940000">Canal de l'Ourq</option>
         <option value="3620300000000">Lac du Bourget</option>
         <option value="1124000000000">Lac d'Annecy</option>
         <option value="89000000000000">Lac Leman</option>      
@@ -122,37 +151,51 @@
         <option value="503000000000000">Eau apportée par la pluie et la neige en France / an</option>
         <option value="314000000000000">Eau évaporée en France/ an</option>
         <option value="200000000000000">Eau renouvelable en France / an</option>
-      <optgroup label="Verres et Bouteilles">
-        <option value="0.125">Un galopin</option>
-        <option value="0.25">Un demi</option>       
-        <option value="0.473176">Pinte (US Pint)</option>
-        <option value="0.568">Pinte (UK Pint)</option>
-        <option value="0.75">bouteilles de vin standard</option>
-        <option value="1.5">bouteilles d'Evian</option>
-        <option value="3">Jéroboam </option>
-        <option value="4.5">Réhoboam </option>
-        <option value="6">Mathusalem </option>
-        <option value="9">Salmanazar </option>
-        <option value="12">Balthazar </option>
-        <option value="15">Nabuchodonosor  </option>
-        <option value="18">Melchior  </option>
       </optgroup>
+
       `;
       destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
-        <option value="0.001">cm cube</option>
-        <option value="0.005">Cuillère à café</option>
-        <option value="0.015">Cuillère à soupe</option>
-        <option value="0.004">dé à coudre</option>
+<optgroup label="Unités standard">
         <option value="1">dm cube</option>
-        <option value="1">litre</option>
-        <option value="3.78541">Gallon (US Gallon)</option>
-        <option value="100">hectolitre</option>
-        <option value="159">Baril de pétrole</option>
+        <option value="0.001">cm cube</option>
         <option value="1000">Mètre cube</option>
+        <option value="1000000000000">km3</option>
+      </optgroup>
+<optgroup label="Les trucs de cuisine">
+        <option value="0.001">mililitre</option>
+        <option value="0.01">centiltre</option>
+        <option value="0.1">décilitre</option>
+        <option value="1">litre</option>
+        <option value="100">hectolitre</option>
+        <option value="0.005">Cuillère à café</option>
+        <option value="0.014">Cuillère à soupe</option>
+        <option value="0.237">Tasse (fr) ou Chopine (ca)</option>
+</optgroup>
+<optgroup label="Verres et Bouteilles">
+        <option value="0.125">Un galopin</option>
+        <option value="0.25">Un demi</option>       
+        <option value="0.473176">Pinte (US Pint)</option>
+        <option value="0.568">Pinte (UK Pint)</option>
+        <option value="0.75">bouteilles de vin standard</option>
+        <option value="1.5">bouteilles d'Evian</option>
+        <option value="3">Jéroboam </option>
+        <option value="4.5">Réhoboam </option>
+        <option value="6">Mathusalem </option>
+        <option value="9">Salmanazar </option>
+        <option value="12">Balthazar </option>
+        <option value="15">Nabuchodonosor  </option>
+        <option value="18">Melchior  </option>
+</optgroup>
+<optgroup label="Tout le reste">
+        <option value="0.004">Dé à coudre</option>
+        <option value="3.78541">Gallon (US Gallon)</option>
+        <option value="159">Baril de pétrole</option>
         <option value="600000">Piscine municpale (25x12,5x2m)</option>
         <option value="3750000">Piscine Olympique (50x25x3m)</option>
         <option value="650000000">Mega Bassine de Sainte-Soline</option>
+        <option value="127218000">Bassin de La Vilette</option>
+        <option value="56940000">Canal de l'Ourq</option>
         <option value="3620300000000">Lac du Bourget</option>
         <option value="1124000000000">Lac d'Annecy</option>
         <option value="89000000000000">Lac Leman</option>      
@@ -170,30 +213,16 @@
         <option value="503000000000000">Eau apportée par la pluie et la neige en France / an</option>
         <option value="314000000000000">Eau évaporée en France/ an</option>
         <option value="200000000000000">Eau renouvelable en France / an</option>
-      <optgroup label="Verres et Bouteilles">
-        <option value="0.125">Un galopin</option>
-        <option value="0.25">Un demi</option>       
-        <option value="0.473176">Pinte (US Pint)</option>
-        <option value="0.568">Pinte (UK Pint)</option>
-        <option value="0.75">bouteilles de vin standard</option>
-        <option value="1.5">bouteilles d'Evian</option>
-        <option value="3">Jéroboam </option>
-        <option value="4.5">Réhoboam </option>
-        <option value="6">Mathusalem </option>
-        <option value="9">Salmanazar </option>
-        <option value="12">Balthazar </option>
-        <option value="15">Nabuchodonosor  </option>
-        <option value="18">Melchior  </option>
       </optgroup>
 
       `;
     } if (conversionType === 'weight') {
       startUnit.innerHTML = `
-        <option value="1">grammes</option>
-        <option value="0.2">Carats</option>
+        <option value="1" selected>gramme</option>
+        <option value="0.2">Carat</option>
         <option value="28">once (oz)</option>
         <option value="453.5">Livre (lb)</option>
-        <option value="1000" selected>kilogrammes</option>
+        <option value="1000" selected>kilogramme</option>
         <option value="2.7">Balle de ping-pong</option>
         <option value="21.5">Barre de Kinder Bueno</option>
         <option value="18">Nugget de poulet Macdo</option>
