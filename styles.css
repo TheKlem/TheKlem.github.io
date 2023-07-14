@@ -32,7 +32,7 @@
       padding: 20px;
       margin: 0 auto;
       width: 60%;
-      margin-top: 50px;
+      margin-top: 0px;
     }
     
     form input[type=text], form select {
@@ -54,6 +54,15 @@
       font-size: 16px;
       align-items: center;
     }
+    h1 {
+      font-size: 60px;
+      color: #000;
+      border: none;
+      align-items: center;
+       margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
     #logo {
       display: block;
       margin: 0 auto;
@@ -72,7 +81,7 @@
       padding: 20px;
       margin: 0 auto;
       width: 60%;
-      margin-top: 50px;
+      margin-top: 20px;
     }
     #message  {
       background-color: #ffffff;
@@ -82,11 +91,10 @@
       padding: 20px;
       margin: 0 auto;
       width: 50%;
-      margin-top: 50px;
+      margin-top: 20px;
     }
 #credits
   {
-
       padding: 20px;
       margin: 0 auto;
       width: 60%;
