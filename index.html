@@ -746,6 +746,26 @@
       `;
     }
   });
+  
+  const integerFormatter = new Intl.NumberFormat('fr-FR', {
+      maximumFractionDigits: 0
+  });
+  const smallNumberFormatter = new Intl.NumberFormat('fr-FR', {
+      maximumFractionDigits: 8,
+      minimumFractionDigits: 8,
+  });
+  const smallNumberInvertedFormatter = new Intl.NumberFormat('fr-FR', {
+      maximumFractionDigits: 12,
+      minimumFractionDigits: 12,
+  });
+  const numberDisplayFormatter = new Intl.NumberFormat('fr-FR', {
+      maximumFractionDigits: 3,
+      minimumFractionDigits: 3
+  });
+  const numberInvertedDisplayFormatter = new Intl.NumberFormat('fr-FR', {
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2
+  });
 
   // Événement pour effectuer la conversion et afficher le résultat
   form.addEventListener('submit', function(event) {
@@ -758,20 +778,20 @@
     const startUnitLabel = form.elements['startUnit'].options[form.elements['startUnit'].selectedIndex].text;
     const destinationUnitLabel = form.elements['destinationUnit'].options[form.elements['destinationUnit'].selectedIndex].text;
 let displayResult;
-if (Number.isInteger(parseFloat(conversionResult))) {
-  displayResult = parseFloat(conversionResult).toFixed(0);
-} else if (parseFloat(conversionResult).toFixed(3).substr(0, 3) === "0.0") {
-  displayResult = parseFloat(conversionResult).toFixed(8);
+if (Number.isInteger(conversionResult)) {
+  displayResult = integerFormatter.format(conversionResult);
+} else if (conversionResult.toFixed(1).substring(0, 3) === "0.0") {
+  displayResult = smallNumberFormatter.format(conversionResult);
 } else {
-  displayResult = parseFloat(conversionResult).toFixed(3);
+  displayResult = numberDisplayFormatter.format(conversionResult);
 }
 let displayInvertedResult;
-if (Number.isInteger(parseFloat(invertConversionResult))) {
-  displayInvertedResult = parseFloat(invertConversionResult).toFixed(0);
-} else if (parseFloat(invertConversionResult).toFixed(2).substr(0, 3) === "0.0") {
-  displayInvertedResult = parseFloat(invertConversionResult).toFixed(12);
+if (Number.isInteger(invertConversionResult)) {
+  displayInvertedResult = integerFormatter.format(invertConversionResult);
+} else if (invertConversionResult.toFixed(1).substring(0, 3) === "0.0") {
+  displayInvertedResult = smallNumberInvertedFormatter.format(invertConversionResult);
 } else {
-  displayInvertedResult = parseFloat(invertConversionResult).toFixed(2);
+  displayInvertedResult = numberInvertedDisplayFormatter.format(invertConversionResult);
 }
 resultContainer.innerHTML = `${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
 Autrement dit il faut ${displayInvertedResult} fois ${initialValue} ${startUnitLabel} pour faire un(e) ${destinationUnitLabel}`;
