@@ -58,8 +58,8 @@
   <div id="result-container" ></div>
 
 <div id="news">À venir: à la demande quasi-générale le jour du lancement, j'ajouterai bientôt l'énergie et la radiologie.</div>
-<div id="credits" class="credits">Warning et autopromo. J'ai réalisé ce site pour le fun, en quelques heures grapillées ici et là. Je n'avais plus codé quoi que ce soit depuis 15 ans, alors soyez indulgents ! Tous les chiffres sont très sérieux par contre, j'ai essayé d'être le plus rigoureux possible, même si une erreur est toujours possible. Si vous repérez une erreur quelque part ou que vous voulez me proposer de nouvelles conversions marrantes, vous pouvez me contacter sur Twitter: <a href="https://twitter.com/DrScratch">DrScratch</a></p>
-  <p>Si vous voulez voir un vrai service joli (pas comme ici), bien fait et utile, faites un tour sur <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> le seul service de transfert de fichiers 100% souverain, qui n'utilise ni AWS, ni Google ou autre. Ziplo est aussi un service de création de preuves de dépôt (preuve d'antériorité) pour défendre vos droits d'auteur notamment. Je suis l'un des 4 fondateurs, mais pas de ceux qui codent, heureusement pour nos utilisateurs ;-). Je suis aussi le fondateur de <a href="https://mesvolontes.net" target="_new">Mes Volontés</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.</p>
+<div id="credits" class="credits">Warning. J'ai réalisé ce site pour le fun, en quelques heures grapillées ici et là. Je n'avais plus codé quoi que ce soit depuis 15 ans, alors soyez indulgents ! Tous les chiffres sont très sérieux par contre, j'ai essayé d'être le plus rigoureux possible, même si une erreur est toujours possible. Si vous repérez une erreur ou que vous voulez me proposer de nouvelles conversions marrantes, vous pouvez me contacter sur Twitter: <a href="https://twitter.com/DrScratch">DrScratch</a></p>
+  <p>Autopromo. Si vous voulez voir un vrai service joli (pas comme ici), bien fait et utile, faites un tour sur <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> le seul service de transfert de fichiers 100% souverain, qui n'utilise ni AWS, ni Google ou autre. Ziplo est aussi un service de création de preuves de dépôt (preuve d'antériorité) pour défendre vos droits d'auteur notamment. Je suis un des fondateurs, mais de pas de ceux qui codent, heureusement pour nos utilisateurs ;-).</br>Je suis aussi le fondateur de <a href="https://mesvolontes.net" target="_new">Mes Volontés</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.</p>
 
     <div class="containerCredits">
         <div class="columnCredits">
@@ -250,19 +250,26 @@
         <option value="1" selected>gramme</option>
         <option value="0.2">Carat</option>
         <option value="28">once anglo-saxonne (oz)</option>
+        <option value="453.5">Livre (lb)</option>
+        <option value="1000">kilogramme</option>
+        <option value="1000000">Tonne</option>
         <option value="27.264">once romaine</option>
         <option value="30.594">once française (Ancien Régime)</option>
         <option value="31.1034768">once troy (ozt)</option>
         <option value="100">once néerlandaise (ons)</option>
-        <option value="453.5">Livre (lb)</option>
-        <option value="1000" selected>kilogramme</option>
         <option value="2.7">Balle de ping-pong</option>
-         <option value="120">Banane</option>       
+        <option value="0.8">Cigarette</option>
+        <option value="0.28">Grain de riz</option>
+        <option value="0.07">Coquillette</option>
+        <option value="0.57012">Spaghetti Barilla n°3</option>
+        <option value="1">Cacahuète</option>    
+        <option value="3.5">Carambar</option>   
         <option value="21.5">Barre de Kinder Bueno</option>
         <option value="18">Nugget de poulet Macdo</option>
         <option value="40">Tender de poulet KFC</option>
         <option value="60">Oeuf de poule</option>
         <option value="100">Cordon bleu Père Dodu</option>
+        <option value="100">Baton de berger, Justin Bridou</option>
         <option value="120">Herisson commun</option>
         <option value="330">Ecureuil roux</option>
         <option value="3000">Marmotte des Alpes</option>
@@ -280,7 +287,10 @@
         <option value="105000">Mike Tyson</option>
         <option value="107000">Mohamed Ali</option>
         <option value="890000">Grand Requin Blanc</option>
-        <option value="1000000">Tonne</option>
+
+        <option value="520000">2 CV</option>
+        <option value="981000">Twingo</option>
+        <option value="1475000">Kangoo 3</option>
         <option value="1800000">Tesla Modèle 3</option>
         <option value="2100000">Tesla Modèle S</option>
         <option value="2400000">Tesla Modèle X</option>
@@ -289,8 +299,12 @@
         <option value="6000000">Elephant d'Afrique mâle</option> 
         <option value="4000000">Elephant d'Asie mâle</option>
         <option value="26000000">Camion poubelle</option>
-        <option value="183500000">Boeing 747</option>
-        <option value="227000000">Airbus A330</option>
+        <option value="66000000">Boeing 737 à vide</option>
+        <option value="183500000">Boeing 747 à vide</option>
+        <option value="442000000">Boeing 747-8 à vide</option>
+        <option value="40300000">Airbus A320 à vide</option>
+        <option value="120000000">Airbus A330 à vide</option>
+        <option value="9979000">Rafale</option>
         <option value="365000000000">Empire State Building</option>
         <option value="10100000000">Tour Eiffel</option>
         <option value="5750000000000">Pyramide de Gizeh</option>
@@ -298,21 +312,27 @@
       destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
         <option value="1">grammes</option>
-        <option value="0.2">Carats</option>
         <option value="28">once anglo-saxonne (oz)</option>
+        <option value="453.5">Livre (lb)</option>
+        <option value="1000" selected>kilogramme</option>
+        <option value="1000000">Tonne</option>
         <option value="27.264">once romaine</option>
         <option value="30.594">once française (Ancien Régime)</option>
         <option value="31.1034768">once troy (ozt)</option>
         <option value="100">once néerlandaise (ons)</option>
-        <option value="453.5">Livre (lb)</option>
-        <option value="1000" selected>kilogrammes</option>
         <option value="2.7">Balle de ping-pong</option>
-        <option value="120">Banane</option>       
+        <option value="0.8">Cigarette</option>
+        <option value="0.28">Grain de riz</option>
+        <option value="0.07">Coquillette</option>
+        <option value="0.57012">Spaghetti Barilla n°3</option>
+        <option value="1">Cacahuète</option>    
+        <option value="3.5">Carambar</option>   
         <option value="21.5">Barre de Kinder Bueno</option>
         <option value="18">Nugget de poulet Macdo</option>
         <option value="40">Tender de poulet KFC</option>
         <option value="60">Oeuf de poule</option>
         <option value="100">Cordon bleu Père Dodu</option>
+        <option value="100">Baton de berger, Justin Bridou</option>
         <option value="120">Herisson commun</option>
         <option value="330">Ecureuil roux</option>
         <option value="3000">Marmotte des Alpes</option>
@@ -326,19 +346,27 @@
         <option value="27000">Basset Hound femelle</option>
         <option value="34000">Basset Hound mâle</option>
         <option value="80000">Dogue du Tibet</option>
+        <option value="62000">Charlie Chaplin</option>
         <option value="105000">Mike Tyson</option>
         <option value="107000">Mohamed Ali</option>
         <option value="890000">Grand Requin Blanc</option>
-        <option value="1000000">Tonne</option>
+        <option value="520000">2 CV</option>
+        <option value="981000">Twingo</option>
         <option value="1475000">Kangoo 3</option>
         <option value="1800000">Tesla Modèle 3</option>
         <option value="2100000">Tesla Modèle S</option>
         <option value="2400000">Tesla Modèle X</option>
-        <option value="6000000">Elephant d'Afrique mâle</option>
+        <option value="2363000">Ford F-Series</option>
+        <option value="2177000">Ram Pickup</option>
+        <option value="6000000">Elephant d'Afrique mâle</option> 
         <option value="4000000">Elephant d'Asie mâle</option>
         <option value="26000000">Camion poubelle</option>
-        <option value="183500000">Boeing 747</option>
-        <option value="227000000">Airbus A330</option>
+        <option value="66000000">Boeing 737 à vide</option>
+        <option value="183500000">Boeing 747 à vide</option>
+        <option value="442000000">Boeing 747-8 à vide</option>
+        <option value="40300000">Airbus A320 à vide</option>
+        <option value="120000000">Airbus A330 à vide</option>
+        <option value="9979000">Rafale</option>
         <option value="365000000000">Empire State Building</option>
         <option value="10100000000">Tour Eiffel</option>
         <option value="5750000000000">Pyramide de Gizeh</option>
@@ -672,7 +700,24 @@
     } if (conversionType === 'population') {
       startUnit.innerHTML = `
         <option value="1" selected>Individu(s)</option>
+<optgroup label="Mesures insolites">
+        <option value="87197">Nombre de détenus (France 2023)</option>
+        <option value="18000">Nombre de détenus en préventive (France 2023)</option>
+        <option value="84707">Nombre de détenus masculins (France 2023)</option>
+        <option value="2490">Nombre de détenus féminins (France 2023)</option>
+        <option value="2600000">Personnes handicapées (France 2023)</option>
+        <option value="6900000">Chiens en France</option>
+        <option value="10000000">Chats en France</option>
 
+        <option value="498003">Toulouse</option>
+        <option value="290576">Strasbourg</option>
+        <option value="236234">Lille</option>
+        <option value="222485">Rennes</option>
+        <option value="320732">Nantes</option>
+        <option value="34347">Nice</option>
+        <option value="299096">Montpellier</option>
+        <option value="259809">Bordeaux</option>
+</optgroup>
 <optgroup label="villes française">
         <option value="2145906">Paris</option>
         <option value="522228">Lyon</option>
@@ -756,15 +801,15 @@
         <option value="80698">Stade de France (tribunes)</option>
         </optgroup>
 <optgroup label="Syndicats et Partis politiques">
-<option value="605562">CGT</option>
-<option value="612205">CFDT</option>
-<option value="380000">FO</option>
-<option value="200000">UNSA</option>
-<option value="101000">SUD</option>
-<option value="160000">CFE-CGC</option>
-<option value="160000">FSU</option>
-<option value="140000">CFTC</option>
-<option value="190000">MEDEF</option>
+        <option value="605562">CGT</option>
+        <option value="612205">CFDT</option>
+        <option value="380000">FO</option>
+        <option value="200000">UNSA</option>
+        <option value="101000">SUD</option>
+        <option value="160000">CFE-CGC</option>
+        <option value="160000">FSU</option>
+        <option value="140000">CFTC</option>
+        <option value="190000">MEDEF</option>
         <option value="43000">PCF</option>
         <option value="11106">EELV</option>
         <option value="3">LFI, selon les statuts</option>
