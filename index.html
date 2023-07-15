@@ -1139,6 +1139,7 @@ if (Number.isInteger(invertConversionResult)) {
   displayInvertedResult = numberInvertedDisplayFormatter.format(invertConversionResult);
 }
 resultContainer.innerHTML = `${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
-Autrement dit il faut <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}] pour faire <strong>un</strong> [${destinationUnitLabel}]`;
+Autrement dit il faut  multiplier [${initialValue} ${startUnitLabel}] par <strong>${displayInvertedResult}</strong> pour faire <strong>un</strong> [${destinationUnitLabel}]</br>
+Ou encore <strong>un</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]`;
   });
 </script>
