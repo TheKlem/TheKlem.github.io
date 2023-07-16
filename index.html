@@ -40,7 +40,7 @@
       </select>
    <div id="conversion-details" style="display:none;">
 </br>
-      <input type="text" id="initial-value" name="initialValue" size="10" value="1"/>
+      <input type="text" id="initial-value" name="initialValue" size="7" value="1"/>
 
       <select id="start-unit" name="startUnit" size="1">
         <option value="">Sélectionnez une unité</option>
@@ -165,12 +165,12 @@
         <option value="460000000">Grand Bassin du chateau de Versailles</option> 
         <option value="288000000">Pièce d'eau des Suisses (Chateau de Versailles)</option> 
         <option value="120">Trou Mélanchonien dans les Alpes</option>
-        <option value="500000">Débit/sec de la Seine (Paris)</option>
-        <option value="1690000">Débit/sec du Rhône (Beaucaire)</option>
+        <option value="500000">Débit/sec de la Seine (à Paris)</option>
+        <option value="1690000">Débit/sec du Rhône (à Beaucaire)</option>
        <option value="54750">Consommation d'eau potable par personne/an en France</option>
         <option value="26000000000000">Eau utilisée pour refroidir les centrales nucléaires/an</option>
-        <option value="1000000000000">Eau potable perdue sur le réseau de distribution à cause de fuites/an</option>
-        <option value="5000000000000">Eau potable fournie par le système de distribution/an</option>
+        <option value="1000000000000">Eau potable perdue /an (fuites réseau distribution)</option>
+        <option value="5000000000000">Eau potable fournie /an par le réseau de distribution</option>
         <option value="503000000000000">Eau apportée par la pluie et la neige en France/an</option>
         <option value="314000000000000">Eau évaporée en France/an</option>
         <option value="200000000000000">Eau renouvelable en France/an</option>
@@ -242,12 +242,12 @@
         <option value="460000000">Grand Bassin du chateau de Versailles</option> 
         <option value="288000000">Pièce d'eau des Suisses (Chateau de Versailles)</option> 
         <option value="120">Trou Mélanchonien dans les Alpes</option>
-        <option value="500000">Débit/sec de la Seine (Paris)</option>
-        <option value="1690000">Débit/sec du Rhône (Beaucaire)</option>
+        <option value="500000">Débit/sec de la Seine (à Paris)</option>
+        <option value="1690000">Débit/sec du Rhône (à Beaucaire)</option>
        <option value="54750">Consommation d'eau potable par personne/an en France</option>
         <option value="26000000000000">Eau utilisée pour refroidir les centrales nucléaires/an</option>
-        <option value="1000000000000">Eau potable perdue sur le réseau de distribution à cause de fuites/an</option>
-        <option value="5000000000000">Eau potable fournie par le système de distribution/an</option>
+        <option value="1000000000000">Eau potable perdue /an (fuites réseau distribution)</option>
+        <option value="5000000000000">Eau potable fournie /an par le réseau de distribution</option>
         <option value="503000000000000">Eau apportée par la pluie et la neige en France/an</option>
         <option value="314000000000000">Eau évaporée en France/an</option>
         <option value="200000000000000">Eau renouvelable en France/an</option>
@@ -382,7 +382,7 @@
       `;
     } if (conversionType === 'distance') {
       startUnit.innerHTML = `
-        <option value="1" selected>Metre(s)</option>
+        <option value="1" selected>Mètre(s)</option>
         <option value="1000">Kilometre(s)</option>
         <option value="1.609">Miles(s) </option>
         <option value="1.852">Mile(s) nautique(s)</option>
@@ -419,7 +419,7 @@
       `;
       destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
-        <option value="0.01">centimètres</option>
+        <option value="0.01">Centimètres</option>
         <option value="0.04">Balle de ping-pong</option>
         <option value="0.044">Balle de golf</option>
         <option value="0.0668">Balle de tennis</option>
@@ -427,8 +427,8 @@
         <option value="0.30">Concombre</option>
         <option value="0.24">Rocco Sifredi ****</option>
         <option value="0.55">Manneken-Pis</option>
-        <option value="1">mètres</option>
-        <option value="1000">kilomètres</option>
+        <option value="1">Mètres</option>
+        <option value="1000">Kilomètres</option>
         <option value="1.609">Miles(s) </option>
         <option value="1.852">Mile(s) nautique(s)</option>
         <option value="1.32">Mimie Mathy</option>
