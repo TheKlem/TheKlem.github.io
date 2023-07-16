@@ -17,24 +17,26 @@ form {
       margin: 0 auto;
       width: 90%;
       margin-top: 0px;
-      border-radius: 20px;
+      border-radius: 10px;
     }
     
 form input[type=text]  {
+        background-color: #fff;
       margin-bottom: 10px;
       padding: 10px;
       border-radius: 5px;
+      border-color: #000;
       border: 1px;
-      font-size: 16px;
+
     }
     
 form select {
+      background-color: #fff;
       margin-bottom: 10px;
       padding: 10px;
       border-width: 1px;
       border-radius: 5px;
       border-color: #000;
-      font-size: 16px;
       font-weight: bold;
 
     }
@@ -46,7 +48,6 @@ form button {
       border-radius: 5px;
       cursor: pointer;
       width: 50%;
-      font-size: 16px;
       align-items: center;
     }
 
@@ -77,7 +78,7 @@ form button {
       margin: 0 auto;
       width: 90%;
       margin-top: 20px;
-      border-radius: 30px;
+      border-radius: 10px;
       font-size: 16px;
     }
     #message  {
@@ -126,13 +127,6 @@ form button {
 
 }
 
-body {
-      background-color: #fff;
-      font-family: 'Lato', sans-serif;
-      margin: 0;
-      padding: 0;
-      font-size: 14px;
-    }
 
 @media(min-width:768px){
 
@@ -171,7 +165,7 @@ body {
       margin: 0 auto;
       width: 75%;
       margin-top: 0px;
-      border-radius: 20px;
+      border-radius: 15px;
     }
     
     form input[type=text], form select {
@@ -220,7 +214,7 @@ body {
       margin: 0 auto;
       width: 75%;
       margin-top: 20px;
-      border-radius: 30px;
+      border-radius: 15px;
       font-size: 16px;
     }
     #message  {
