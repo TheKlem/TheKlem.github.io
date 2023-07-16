@@ -1,6 +1,16 @@
 
 @media only screen and (max-width:767px) {
 
+  /* Un message personnalisé */
+
+  body:before {
+    content: "Version mobile du site";
+    display: block;
+    text-align: center;
+    font-style: italic;
+    color: #7dc8ff;
+  }
+
 body {
       background-color: #fff;
       font-family: 'Lato', sans-serif;
