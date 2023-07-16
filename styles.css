@@ -17,10 +17,10 @@ body {
       font-family: 'Lato', sans-serif;
       margin: 0;
       padding: 0;
+      font-size: 13px;
     }
-
 form {
-     
+      background-color: #f2f2f2;
       border: 2px solid #999;
       flex-direction: column;
       align-items: left;
@@ -29,8 +29,8 @@ form {
       width: 100%;
       margin-top: 0px;
       border-radius: 10px;
-    }
-    
+      font-size: 13px;
+    } 
 form input[type=text]  {
       background-color: #fff;
       margin-bottom: 10px;
@@ -38,8 +38,7 @@ form input[type=text]  {
       border-radius: 5px;
       border-color: #000;
       border: 1px;
-    }
-    
+    }  
 form select {
       background-color: #fff;
       margin-bottom: 10px;
@@ -57,6 +56,7 @@ form button {
       cursor: pointer;
       width: 50%;
       align-items: center;
+      font-size: 16px;
     }
 
 h1 {
@@ -146,7 +146,7 @@ body {
       font-size: 14px;
     }
     
-    header {
+header {
       background-color: #7dc8ff;
       color: #fff;
       display: flex;
@@ -158,13 +158,13 @@ body {
       border-color: black;
     }
     
-    header a {
+header a {
       color: #fff;
       text-decoration: none;
       margin-left: 20px;
     }
     
-    form {
+form {
       background-color: #f2f2f2;
       border: 2px solid #999;
       flex-direction: column;
@@ -176,15 +176,14 @@ body {
       border-radius: 15px;
     }
     
-    form input[type=text], form select {
+form input[type=text], form select {
       margin-bottom: 10px;
       padding: 10px;
       border-radius: 5px;
       border: none;
       font-size: 15px;
     }
-    
-    form button {
+form button {
       padding: 10px;
       background-color: #7dc8ff;
       color: #fff;
@@ -195,7 +194,7 @@ body {
       font-size: 16px;
       align-items: center;
     }
-    h1 {
+h1 {
       font-size: 60px;
       color: #000;
       border: none;
@@ -203,17 +202,16 @@ body {
        margin-top: 20px;
       margin-bottom: 20px;
     }
-
-    #logo {
+#logo {
       display: block;
       margin: 0 auto;
     }
-    #conversion-result {
+#conversion-result {
       margin-top: 20px;
       font-size: 16px;
       text-align: center;
     }
-    #result-container {
+#result-container {
       background-color: #f2f2f2;
       border: 2px solid #999;
       flex-direction: column;
@@ -225,7 +223,7 @@ body {
       border-radius: 15px;
       font-size: 16px;
     }
-    #message  {
+#message  {
       background-color: #ffffff;
       border: 0px solid #999;
       flex-direction: column;
@@ -235,7 +233,7 @@ body {
       width: 75%;
       margin-top: 20px;
     }
-    #news
+#news
   {
       padding: 0px;
       margin: 0 auto;
@@ -253,21 +251,20 @@ body {
       font-size: 15px;
       color: #707070;
     }
-    .containerCredits {
+.containerCredits {
         display: flex;
         justify-content: center;
         margin-top: 30px;
     }
-        
-    .columnCredits {
+.columnCredits {
       flex: 1;
       text-align: center;
       justify-content: center;
     }
-    .logo {
+.logo {
       max-width: 100%;
       height: auto;
       margin: 0 auto;
     }
 
-    }
+}
