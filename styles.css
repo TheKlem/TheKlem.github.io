@@ -4,7 +4,7 @@
   /* Un message personnalisé */
 
   body:before {
-    content: "Version mobile du site";
+    content: "Version mobile du site 1.0";
     display: block;
     text-align: center;
     font-style: italic;
