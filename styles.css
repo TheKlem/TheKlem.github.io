@@ -1,66 +1,17 @@
 
 @media only screen and (max-width:767px) {
 
-  * {
-    box-sizing: border-box;
-  }
-  
-  /* passer body (et tous les éléments de largeur fixe) en largeur automatique */
-
-/* fixer une largeur maximale de 100% aux éléments potentiellement problématiques */
-
-  img,
-  table,
-  td,
-  blockquote,
-  code,
-  pre,
-  textarea,
-  input,
-  iframe,
-  object,
-  embed,
-  video {
-    max-width: 100%;
-  }
-
-  /* gestion des mots longs */
-  textarea,
-  table,
-  td,
-  th,
-  code,
-  pre,
-  samp {
-    -webkit-hyphens: auto; /* césure propre */
-    -moz-hyphens: auto;
-    hyphens: auto;
-    word-wrap: break-word; /* passage à la ligne forcé */
-  }
-
-  /* Un message personnalisé */
-
-  body:before {
-    content: "Version mobile du site";
-    display: block;
-    text-align: center;
-    font-style: italic;
-    color: 
-#777;
-  }
-
-  
-  body {
-    width: auto;
-    margin: 0;
-    padding: 0;
-          background-color: #fff;
+body {
+      background-color: #fff;
       font-family: 'Lato', sans-serif;
-  }
+      margin: 0;
+      padding: 0;
+    }
 
 form {
       background-color: #f2f2f2;
       border: 2px solid #999;
+      flex-direction: column;
       align-items: left;
       padding: 10px;
       margin: 0 auto;
@@ -176,7 +127,7 @@ form button {
 }
 
 
-@media @media screen and (min-width:768px){
+@media (min-width:768px){
 
 body {
       background-color: #fff;
