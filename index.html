@@ -39,6 +39,7 @@
         <option value="surfaces">Surfaces: un must pour l'agriculture, l'architecture</ption>
         <option value="money">Argent: pèze, flouze, pognon. Toujours pratique, d'en avoir</option>
         <option value="population">Population : pratique pour les manifs, les concerts</option>
+         <option value="dosimetry">Dosimétrie: doses, bananes, Fukushima, voyages en avion et dans l'espace</option>
       </select>
    <div id="conversion-details" style="display:none;">
 </br>
@@ -80,7 +81,7 @@
     const conversionFormElement = document.getElementById("conversion-details");
 
     conversionTypeElement.addEventListener("change", function() {
-      if (conversionTypeElement.value === "volume" || conversionTypeElement.value === "weight"  || conversionTypeElement.value === "population" || conversionTypeElement.value === "surfaces"   || conversionTypeElement.value === "money" || conversionTypeElement.value === "distance")   {
+      if (conversionTypeElement.value === "volume" || conversionTypeElement.value === "weight"  || conversionTypeElement.value === "population" || conversionTypeElement.value === "surfaces"   || conversionTypeElement.value === "money" || conversionTypeElement.value === "dosimetry" || conversionTypeElement.value === "distance")   {
         conversionFormElement.style.display = "block";
       } else {
         conversionFormElement.style.display = "none";
@@ -1327,7 +1328,93 @@
         <option value="480">Ecoles vétérinaires (les 4)</option>
 </optgroup> 
       `;
+    } if (conversionType === 'dosimetry') {
+      startUnit.innerHTML = `
+        <option value="1" selected>Sievert (Sv)</option>
+<optgroup label="Unités SI">
+        <option value="0.001">mSv</option>
+        <option value="0.000000001">nSv</option>
+        <option value="0.01">rem</option>
+</optgroup>
+<optgroup label="Fruits et Légumes">
+        <option value="0.00000012">Dose équivalente Banane (DEB)</option>
+        <option value="0.0000007">Dose équivalente Noix du Brésil</option>
+</optgroup>
+<optgroup label="La vie de tous les jours">
+        <option value="0.00055">Exposition moyenne des français (par an)</option>
+        <option value="0.000005">Radiographie dentaire intra-orale</option>
+        <option value="0.000001">Habitant proche d'une centrale nucléaire (par an)</option>
+        <option value="0.00000009">Habitant à proximité (~80km) d'une centrale nucléaire (par an)</option>
+        <option value="0.0000003">Habitant à proximité (~80km) d'une centrale à charbon (par an)</option>
+        <option value="0.0001">Radiographie pulmonaire</option>
+        <option value="0.00002">Vol d'avion à travers l'Europe</option>
+        <option value="0.001">Travailleur d'une mine d'Uranium ou d'une centrale nucléaire</option>
+        <option value="0.007">Tomodensitogramme typique des poumons</option>
+        <option value="0.150">Exposition de Thomas Pesquet en mission</option>
+        <option value="1">Dose entraînant la maladie des rayons</option>
+        <option value="8">Dose fatale</option>
+        <option value="0.0000005">Dormir à côté de quelqu'un</option>
+        <option value="0.00007">Habiter dans une maison en béton (par an)</option>
+        <option value="0.0001">Dose reçu à la mairie de Fukushima 2 semaines après l'incident</option>
+        <option value="0.00039">Dose annuelle de potassium dans le corps</option>
+        <option value="0.0004">Mammographie</option>
+        <option value="0.04">Dose reçue par 2 opérateurs de la centrale de Fukushima</option>
+        <option value="0.000001">2L/jour d'eau tritiée (par an)</option>
+        <option value="0.0005">Dose reçue par des survivants d'Hiroshima</option>
+        <option value="0.00025">Dose reçue par les pompiers de Tchernobyl</option>
+</optgroup>
+<optgroup label="Limites légales">
+        <option value="0.001">Limite de dose Euratom</option>
+        <option value="0.05">Limite de dose Travailleur du nucléaire</option>
+        <option value="0.1">Limite de dose Travailleur du nucléaire sur 5 ans</option>
+</optgroup>
+
+      `;
+      destinationUnit.innerHTML = `
+        <option value="">Sélectionnez une unité</option>
+        <option value="1">Sievert (Sv)</option>
+<optgroup label="Unités SI">
+        <option value="0.001">mSv</option>
+        <option value="0.000000001">nSv</option>
+        <option value="0.01">rem</option>
+</optgroup>
+<optgroup label="Fruits et Légumes">
+        <option value="0.00000012">Dose équivalente Banane (DEB)</option>
+        <option value="0.0000007">Dose équivalente Noix du Brésil</option>
+</optgroup>
+<optgroup label="La vie de tous les jours">
+        <option value="0.00055">Exposition moyenne des français (par an)</option>
+        <option value="0.000005">Radiographie dentaire intra-orale</option>
+        <option value="0.000001">Habitant proche d'une centrale nucléaire (par an)</option>
+        <option value="0.00000009">Habitant à proximité (~80km) d'une centrale nucléaire (par an)</option>
+        <option value="0.0000003">Habitant à proximité (~80km) d'une centrale à charbon (par an)</option>
+        <option value="0.0001">Radiographie pulmonaire</option>
+        <option value="0.00002">Vol d'avion à travers l'Europe</option>
+        <option value="0.001">Travailleur d'une mine d'Uranium ou d'une centrale nucléaire</option>
+        <option value="0.007">Tomodensitogramme typique des poumons</option>
+        <option value="0.150">Exposition de Thomas Pesquet en mission</option>
+        <option value="1">Dose entraînant la maladie des rayons</option>
+        <option value="8">Dose fatale</option>
+        <option value="0.0000005">Dormir à côté de quelqu'un</option>
+        <option value="0.00007">Habiter dans une maison en béton (par an)</option>
+        <option value="0.0001">Dose reçu à la mairie de Fukushima 2 semaines après l'incident</option>
+        <option value="0.00039">Dose annuelle de potassium dans le corps</option>
+        <option value="0.0004">Mammographie</option>
+        <option value="0.04">Dose reçue par 2 opérateurs de la centrale de Fukushima</option>
+        <option value="0.000001">2L/jour d'eau tritiée (par an)</option>
+        <option value="0.0005">Dose reçue par des survivants d'Hiroshima</option>
+        <option value="0.00025">Dose reçue par les pompiers de Tchernobyl</option>
+</optgroup>
+<optgroup label="Limites légales">
+        <option value="0.001">Limite de dose Euratom</option>
+        <option value="0.05">Limite de dose Travailleur du nucléaire</option>
+        <option value="0.1">Limite de dose Travailleur du nucléaire sur 5 ans</option>
+</optgroup>
+
+      `;
     }
+
+
 
   });
  const integerFormatter = new Intl.NumberFormat('fr-FR', {
