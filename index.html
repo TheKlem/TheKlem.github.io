@@ -146,6 +146,8 @@
         <option value="20">Éjaculat de la baleine bleue</option>
         <option value="3.78541">Gallon (US Gallon)</option>
         <option value="159">Baril de pétrole</option>
+        <option value="100000000">Notre-Dame de Paris</option>
+        <option value="200000000">Notre-Dame d'Amiens</option>  
         <option value="2592341000">Pyramide de Kheops</option>  
         <option value="70">Douche</option>
         <option value="126">Bain</option>
@@ -224,6 +226,8 @@
         <option value="20">Éjaculat de la baleine bleue</option>
         <option value="3.78541">Gallon (US Gallon)</option>
         <option value="159">Baril de pétrole</option>
+        <option value="100000000">Notre-Dame de Paris</option>
+        <option value="200000000">Notre-Dame d'Amiens</option>   
         <option value="2592341000">Pyramide de Kheops</option>  
         <option value="70">Douche</option>
         <option value="126">Bain</option>
@@ -269,14 +273,28 @@
         <option value="30.594">Once française (Ancien Régime)</option>
         <option value="31.1034768">Once troy (ozt)</option>
         <option value="100">Once néerlandaise (ons)</option>
+
+<optgroup label="Agriculture">
         <option value="0.05">Grain de blé</option>
-        <option value="8000000">Blé/ha en France, agri conventionnelle</option>
-        <option value="3000000">Blé/ha en France, agri bio</option>
-        <option value="13431661.12">Maïs/ha en Illinois (USA)</option>
-        <option value="9700000">Maïs irrigué/ha en France</option>
-        <option value="6600000">Maïs pluvial/ha en France</option>
+        <option value="7200000">Blé tendre/ha en France 2022</option>
+        <option value="5300000">Blé dur/ha en France 2022</option>
+        <option value="8000000">Blé tendre/ha en agri conventionnelle</option>
+        <option value="3000000">Blé tendre/ha en France en  agri bio</option>
+        <option value="6600000">Orge d'hiver/ha en France 2022</option>
+        <option value="3700000">Colza/ha en France 2022</option>
+        <option value="2100000">Tournesol/ha en France 2022</option>
+        <option value="2200000">Soja/ha en France 2022</option>
+        <option value="13431661.12">Maïs/ha en Illinois (USA) 2022</option>
+        <option value="10300000">Maïs grain irrigué/ha en France 2022</option>
+        <option value="7100000">Maïs grain non irrigué/ha en France 2022</option>>
         <option value="45000">Meule de Comté (grande)</option>
         <option value="4500">Laine produite par an par mouton</option>
+        <option value="43013000000">Phytosanitaires agri conventionnelle (France 2022)</option>
+        <option value="25000000000">Phytosanitaires agri bio (France 2022)</option>
+        <option value="27210">Un boisseau US de blé/soja</option>
+        <option value="25400">Un boisseau US de maïs</option>
+</optgroup>
+<optgroup label="Divers">
         <option value="2.7">Balle de ping-pong</option>
         <option value="0.8">Cigarette</option>
         <option value="0.28">Grain de riz</option>
@@ -293,6 +311,8 @@
         <option value="60">Oeuf de poule</option>
         <option value="100">Cordon bleu Père Dodu</option>
         <option value="100">Baton de berger, Justin Bridou</option>
+</optgroup>
+<optgroup label="Animaux">     
         <option value="120">Herisson commun</option>
         <option value="330">Ecureuil roux</option>
         <option value="3000">Marmotte des Alpes</option>
@@ -309,9 +329,13 @@
         <option value="890000">Grand Requin Blanc</option>
         <option value="6000000">Elephant d'Afrique mâle</option> 
         <option value="4000000">Elephant d'Asie mâle</option>
+</optgroup>
+ <optgroup label="Personnes">       
         <option value="62000">Charlie Chaplin</option>
         <option value="105000">Mike Tyson</option>
         <option value="107000">Mohamed Ali</option>
+</optgroup>
+ <optgroup label="Véhicules">       
         <option value="520000">2 CV</option>
         <option value="981000">Twingo</option>
         <option value="1475000">Kangoo 3</option>
@@ -333,13 +357,16 @@
         <option value="40300000">Airbus A320 à vide</option>
         <option value="120000000">Airbus A330 à vide</option>
         <option value="9979000">Rafale</option>
+</optgroup>
+<optgroup label="Monuments">
         <option value="365000000000">Empire State Building</option>
         <option value="10100000000">Tour Eiffel</option>
         <option value="5750000000000">Pyramide de Gizeh</option>
+</optgroup>
       `;
       destinationUnit.innerHTML = `
-        <option value="">Sélectionnez une unité</option>
-        <option value="1">Grammes</option>
+    <option value="">Sélectionnez une unité</option>
+        <option value="1">Gramme</option>
         <option value="0.2">Carat</option>
         <option value="453.5">Livre (lb)</option>
         <option value="1000">Kilogramme</option>
@@ -350,16 +377,28 @@
         <option value="30.594">Once française (Ancien Régime)</option>
         <option value="31.1034768">Once troy (ozt)</option>
         <option value="100">Once néerlandaise (ons)</option>
-        <option value="27210">Boisseau US de blé/soja</option>
-        <option value="25400">Boisseau US de maïs</option>
+
+<optgroup label="Agriculture">
         <option value="0.05">Grain de blé</option>
-        <option value="8000000">Blé/ha en France, agri conventionnelle</option>
-        <option value="3000000">Blé/ha en France, agri bio</option>
-        <option value="13431661.12">Maïs/ha en Illinois (USA)</option>
-        <option value="9700000">Maïs irrigué/ha en France</option>
-        <option value="6600000">Maïs pluvial/ha en France</option>
+        <option value="7200000">Blé tendre/ha en France 2022</option>
+        <option value="5300000">Blé dur/ha en France 2022</option>
+        <option value="8000000">Blé tendre/ha en agri conventionnelle</option>
+        <option value="3000000">Blé tendre/ha en France en  agri bio</option>
+        <option value="6600000">Orge d'hiver/ha en France 2022</option>
+        <option value="3700000">Colza/ha en France 2022</option>
+        <option value="2100000">Tournesol/ha en France 2022</option>
+        <option value="2200000">Soja/ha en France 2022</option>
+        <option value="13431661.12">Maïs/ha en Illinois (USA) 2022</option>
+        <option value="10300000">Maïs grain irrigué/ha en France 2022</option>
+        <option value="7100000">Maïs grain non irrigué/ha en France 2022</option>>
         <option value="45000">Meule de Comté (grande)</option>
         <option value="4500">Laine produite par an par mouton</option>
+        <option value="43013000000">Phytosanitaires agri conventionnelle (France 2022)</option>
+        <option value="25000000000">Phytosanitaires agri bio (France 2022)</option>
+        <option value="27210">Un boisseau US de blé/soja</option>
+        <option value="25400">Un boisseau US de maïs</option>
+</optgroup>
+<optgroup label="Divers">
         <option value="2.7">Balle de ping-pong</option>
         <option value="0.8">Cigarette</option>
         <option value="0.28">Grain de riz</option>
@@ -376,6 +415,8 @@
         <option value="60">Oeuf de poule</option>
         <option value="100">Cordon bleu Père Dodu</option>
         <option value="100">Baton de berger, Justin Bridou</option>
+</optgroup>
+<optgroup label="Animaux">     
         <option value="120">Herisson commun</option>
         <option value="330">Ecureuil roux</option>
         <option value="3000">Marmotte des Alpes</option>
@@ -389,12 +430,16 @@
         <option value="27000">Basset Hound femelle</option>
         <option value="34000">Basset Hound mâle</option>
         <option value="80000">Dogue du Tibet</option>
+        <option value="890000">Grand Requin Blanc</option>
         <option value="6000000">Elephant d'Afrique mâle</option> 
         <option value="4000000">Elephant d'Asie mâle</option>
+</optgroup>
+ <optgroup label="Personnes">       
         <option value="62000">Charlie Chaplin</option>
         <option value="105000">Mike Tyson</option>
         <option value="107000">Mohamed Ali</option>
-        <option value="890000">Grand Requin Blanc</option>
+</optgroup>
+ <optgroup label="Véhicules">       
         <option value="520000">2 CV</option>
         <option value="981000">Twingo</option>
         <option value="1475000">Kangoo 3</option>
@@ -416,9 +461,12 @@
         <option value="40300000">Airbus A320 à vide</option>
         <option value="120000000">Airbus A330 à vide</option>
         <option value="9979000">Rafale</option>
+</optgroup>
+<optgroup label="Monuments">
         <option value="365000000000">Empire State Building</option>
         <option value="10100000000">Tour Eiffel</option>
         <option value="5750000000000">Pyramide de Gizeh</option>
+</optgroup>
       `;
     } if (conversionType === 'distance') {
       startUnit.innerHTML = `
@@ -446,6 +494,9 @@
         <option value="3.20">Etage (immeuble hausmanien)</option>
         <option value="105">Stade de foot</option>
         <option value="105">Arc de Triomphe</option>
+        <option value="35">Notre-Dame de Paris (sous voutes)</option> 
+        <option value="42.30">Notre-Dame d'Amiens (sous voutes)</option> 
+        <option value="138">Pyramide de Khéops (hauteur)</option>
         <option value="300">Tour Eiffel</option>
         <option value="381">Empire State Building</option>
         <option value="828">Burj Khalifa(Dubaï)</option>
@@ -495,6 +546,9 @@
         <option value="105">Stade de foot</option>
         <option value="105">Arc de Triomphe</option>
         <option value="300">Tour Eiffel</option>
+        <option value="35">Notre-Dame de Paris (sous voutes)</option> 
+        <option value="42.30">Notre-Dame d'Amiens (sous voutes)</option> 
+        <option value="138">Pyramide de Khéops (hauteur)</option>
         <option value="381">Empire State Building</option>
         <option value="828">Burj Khalifa(Dubaï)</option>
         <option value="250">Du capitole à la roche tarpeienne</option>
@@ -553,6 +607,9 @@
         <option value="300000">Exploitation viticole moyenne en Californie</option>
         <option value"100000">Mega Bassine de Sainte-Soline</option>
         <option value="21000">Place du Trocadéro</option>
+        <option value="439300">Cimetière du Pêre Lachaise</option>
+        <option value="926600">Ensemble des cimetières parisiens</option>
+        <option value="7000000">Cîté des morts, Le Caire</option>
         <option value="245000">Champs de mars</option>
         <option value="8460000">Bois de Boulogne</option>
         <option value="9950000">Bois de Vincennes</option>
@@ -564,6 +621,9 @@
         <option value="46000">Parc des expositions de Villepinte</option>
         <option value="180000">Parc Asterix</option>
         <option value="22300000">Disneyland Paris</option>
+        <option value="6000">Notre-Dame de Paris</option>
+        <option value="7700">Notre-Dame d'Amiens</option>   
+        <option value="52900">Pyramide de Khéops</option>
         <option value="177020000">Forêt de Fontainebleau</option>
         <option value="32380000">Aéroport Roissy Charles de Gaulle</option>
         option value="15000000">Aéroport Orly</option>
@@ -610,6 +670,9 @@
         <option value="300000">Exploitation viticole moyenne en Californie</option>
         <option value"100000">Mega Bassine de Sainte-Soline</option>
         <option value="21000">Place du Trocadéro</option>
+        <option value="439300">Cimetière du Pêre Lachaise</option>
+        <option value="926600">Ensemble des cimetières parisiens</option>
+        <option value="7000000">Cîté des morts, Le Caire</option>
         <option value="245000">Champs de mars</option>
         <option value="8460000">Bois de Boulogne</option>
         <option value="9950000">Bois de Vincennes</option>
@@ -621,6 +684,9 @@
         <option value="46000">Parc des expositions de Villepinte</option>
         <option value="180000">Parc Asterix</option>
         <option value="22300000">Disneyland Paris</option>
+        <option value="6000">Notre-Dame de Paris</option>
+        <option value="7700">Notre-Dame d'Amiens</option>    
+        <option value="52900">Pyramide de Khéops</option>
         <option value="177020000">Forêt de Fontainebleau</option>
         <option value="32380000">Aéroport Roissy Charles de Gaulle</option>
         option value="15000000">Aéroport Orly</option>
