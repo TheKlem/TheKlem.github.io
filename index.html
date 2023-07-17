@@ -149,6 +149,7 @@
         <option value="2592341000">Pyramide de Kheops</option>  
         <option value="70">Douche</option>
         <option value="126">Bain</option>
+        <option value="15">Production d'urine / vache / jour</option>
         <option value="600000">Piscine municpale (25x12,5x2m)</option>
         <option value="3750000">Piscine olympique (50x25x3m)</option>
         <option value="650000000">Mega bassine de Sainte-Soline</option>
@@ -257,16 +258,25 @@
       `;
     } if (conversionType === 'weight') {
       startUnit.innerHTML = `
-        <option value="1" selected>gramme</option>
+        <option value="1">Gramme</option>
         <option value="0.2">Carat</option>
-        <option value="28">once anglo-saxonne (oz)</option>
         <option value="453.5">Livre (lb)</option>
-        <option value="1000">kilogramme</option>
+        <option value="1000" selected>Kilogramme</option>
+        <option value="100000">Quintal / Quintaux (Qt)</option>
         <option value="1000000">Tonne</option>
-        <option value="27.264">once romaine</option>
-        <option value="30.594">once française (Ancien Régime)</option>
-        <option value="31.1034768">once troy (ozt)</option>
-        <option value="100">once néerlandaise (ons)</option>
+        <option value="28">Once anglo-saxonne (oz)</option>
+        <option value="27.264">Once romaine</option>
+        <option value="30.594">Once française (Ancien Régime)</option>
+        <option value="31.1034768">Once troy (ozt)</option>
+        <option value="100">Once néerlandaise (ons)</option>
+        <option value="0.05">Grain de blé</option>
+        <option value="8000000">Blé/ha en France, agri conventionnelle</option>
+        <option value="3000000">Blé/ha en France, agri bio</option>
+        <option value="13431661.12">Maïs/ha en Illinois (USA)</option>
+        <option value="9700000">Maïs irrigué/ha en France</option>
+        <option value="6600000">Maïs pluvial/ha en France</option>
+        <option value="45000">Meule de Comté (grande)</option>
+        <option value="4500">Laine produite par an par mouton</option>
         <option value="2.7">Balle de ping-pong</option>
         <option value="0.8">Cigarette</option>
         <option value="0.28">Grain de riz</option>
@@ -296,12 +306,12 @@
         <option value="27000">Basset Hound femelle</option>
         <option value="34000">Basset Hound mâle</option>
         <option value="80000">Dogue du Tibet</option>
-        <option value="62000">Charlie Chaplin</option>
-        <option value="105000">Mike Tyson</option>
-        <option value="107000">Mohamed Ali</option>
         <option value="890000">Grand Requin Blanc</option>
         <option value="6000000">Elephant d'Afrique mâle</option> 
         <option value="4000000">Elephant d'Asie mâle</option>
+        <option value="62000">Charlie Chaplin</option>
+        <option value="105000">Mike Tyson</option>
+        <option value="107000">Mohamed Ali</option>
         <option value="520000">2 CV</option>
         <option value="981000">Twingo</option>
         <option value="1475000">Kangoo 3</option>
@@ -329,15 +339,27 @@
       `;
       destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
-        <option value="1">grammes</option>
-        <option value="28">once anglo-saxonne (oz)</option>
+        <option value="1">Grammes</option>
+        <option value="0.2">Carat</option>
         <option value="453.5">Livre (lb)</option>
-        <option value="1000" selected>kilogramme</option>
+        <option value="1000">Kilogramme</option>
+        <option value="100000">Quintal / Quintaux (Qt)</option>
         <option value="1000000">Tonne</option>
-        <option value="27.264">once romaine</option>
-        <option value="30.594">once française (Ancien Régime)</option>
-        <option value="31.1034768">once troy (ozt)</option>
-        <option value="100">once néerlandaise (ons)</option>
+        <option value="28">Once anglo-saxonne (oz)</option>
+        <option value="27.264">Once romaine</option>
+        <option value="30.594">Once française (Ancien Régime)</option>
+        <option value="31.1034768">Once troy (ozt)</option>
+        <option value="100">Once néerlandaise (ons)</option>
+        <option value="27210">Boisseau US de blé/soja</option>
+        <option value="25400">Boisseau US de maïs</option>
+        <option value="0.05">Grain de blé</option>
+        <option value="8000000">Blé/ha en France, agri conventionnelle</option>
+        <option value="3000000">Blé/ha en France, agri bio</option>
+        <option value="13431661.12">Maïs/ha en Illinois (USA)</option>
+        <option value="9700000">Maïs irrigué/ha en France</option>
+        <option value="6600000">Maïs pluvial/ha en France</option>
+        <option value="45000">Meule de Comté (grande)</option>
+        <option value="4500">Laine produite par an par mouton</option>
         <option value="2.7">Balle de ping-pong</option>
         <option value="0.8">Cigarette</option>
         <option value="0.28">Grain de riz</option>
@@ -400,10 +422,11 @@
       `;
     } if (conversionType === 'distance') {
       startUnit.innerHTML = `
+        <option value="0.01">Centimètres</option>
         <option value="1" selected>Mètre(s)</option>
         <option value="1000">Kilometre(s)</option>
-        <option value="1.609">Miles(s) </option>
-        <option value="1.852">Mile(s) nautique(s)</option>
+        <option value="1609">Miles(s) </option>
+        <option value="1852">Mile(s) nautique(s)</option>
         <option value="0.04">Balle de ping-pong</option>
         <option value="0.044">Balle de golf</option>
         <option value="0.0668">Balle de tennis</option>
@@ -448,6 +471,10 @@
       destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
         <option value="0.01">Centimètres</option>
+        <option value="1">Mètres</option>
+        <option value="1000">Kilomètres</option>
+        <option value="1609">Miles(s) </option>
+        <option value="1852">Mile(s) nautique(s)</option>
         <option value="0.04">Balle de ping-pong</option>
         <option value="0.044">Balle de golf</option>
         <option value="0.0668">Balle de tennis</option>
@@ -459,10 +486,6 @@
         <option value="0.55">Manneken-Pis</option>
         <option value="5.50">Intestin grêle</option>
         <option value="0.972">Pied grec</option>
-        <option value="1">Mètres</option>
-        <option value="1000">Kilomètres</option>
-        <option value="1.609">Miles(s) </option>
-        <option value="1.852">Mile(s) nautique(s)</option>
         <option value="1.32">Mimie Mathy</option>
         <option value="1.66">Nicolas Sarkozy</option>
         <option value="1.88">Tony Parker</option>
@@ -519,6 +542,9 @@
         <option value="195.629">Terrain de handball</option>
         <option value="7266">Terrain de football</option>
         <option value"500000">Terrain de Golf (moyenne)</option>
+        <option value="690000">Exploitation agricole moyenne en France</option>
+        <option value="50000">Exploitation agricole moyenne DOM-TOM</option>
+        <option value="54000">Exploitation viticole moyenne en Champagne</option>
         <option value="54000">Exploitation viticole moyenne en Champagne</option>
         <option value="85000">Exploitation viticole moyenne en Bourgogne</option>
         <option value="170000">Exploitation viticole moyenne en Bordelais</option>
@@ -546,7 +572,7 @@
         <option value="240600000">Marseille</option>
         <option value="550000000000">France</option>
         <option value="148000000000000">Superficie Terre : terres émergées</option>
-        <option value="510000000000000">Superficie  terrestre</option>>
+        <option value="510000000000000">Superficie  terrestre</option>
 
       `;
       destinationUnit.innerHTML = `
@@ -574,6 +600,8 @@
         <option value="195.629">Terrain de handball</option>
         <option value="7266">Terrain de football</option>
         <option value"500000">Terrain de Golf (moyenne)</option>
+        <option value="690000">Exploitation agricole moyenne en France</option>
+        <option value="50000">Exploitation agricole moyenne DOM-TOM</option>
         <option value="54000">Exploitation viticole moyenne en Champagne</option>
         <option value="85000">Exploitation viticole moyenne en Bourgogne</option>
         <option value="170000">Exploitation viticole moyenne en Bordelais</option>
@@ -670,9 +698,9 @@
          <option value="1850">Louis Vuitton sac Neverfull</option>
         <option value="1500">Louis Vuitton sac Alma</option>
         <option value="17000">Hermès sac Birkin (prix moyen)</option>
-        <option value="234">Caviar Beluga, 30g</option>
-        <option value="7800">Caviar Beluga, au kg</option>
-        <option value="2480">Caviar Sevruga, au kg</option>
+        <option value="234">Boite de 30 g de Caviar Beluga</option>
+        <option value="7800">Kg de ce Caviar Beluga</option>
+        <option value="2480">Kg de Caviar Sevruga</option>
 </optgroup>
 <optgroup label="Nourriture">
         <option value="2.9">Coquillettes Panzani, 1kg</option>
@@ -680,7 +708,7 @@
         <option value="4.20">Camembert -de qualité- Isigny</option>
         <option value="1.69">Coca-Cola 1l</option>
         <option value="2.69">Jambon 4 tranches Fleury Michon</option>
-        <option value="2.95">Oeufs plein air Matines (12)</option>
+        <option value="2.95">Boîte de 12 oeufs plein air Matines</option>
 </optgroup>
 <optgroup label="Entreprises">
         <option value="10000000">CA de Qwant</option>
@@ -779,9 +807,9 @@
          <option value="1850">Louis Vuitton sac Neverfull</option>
         <option value="1500">Louis Vuitton sac Alma</option>
         <option value="17000">Hermès sac Birkin (prix moyen)</option>
-        <option value="234">Caviar Beluga, 30g</option>
-        <option value="7800">Caviar Beluga, au kg</option>
-        <option value="2480">Caviar Sevruga, au kg</option>
+        <option value="234">Boite de 30 g de Caviar Beluga</option>
+        <option value="7800">Kg de ce Caviar Beluga</option>
+        <option value="2480">Kg de Caviar Sevruga</option>
 </optgroup>
 <optgroup label="Nourriture">
         <option value="2.9">Coquillettes Panzani, 1kg</option>
@@ -789,7 +817,7 @@
         <option value="4.20">Camembert -de qualité- Isigny</option>
         <option value="1.69">Coca-Cola 1l</option>
         <option value="2.69">Jambon 4 tranches Fleury Michon</option>
-        <option value="2.95">Oeufs plein air Matines (12)</option>
+        <option value="2.95">Boîte de 12 oeufs plein air Matines</option>
 </optgroup>
 <optgroup label="Entreprises">
         <option value="10000000">CA de Qwant</option>
@@ -842,6 +870,12 @@
         <option value="600000">Couples échangistes en France</option>
         <option value="6900000">Chiens en France</option>
         <option value="10000000">Chats en France</option>
+        <option value="490000">Exploitations agricoles Fce 2010</option>
+        <option value="389800">Exploitations agricoles Fce 2020</option>
+        <option value="213000000">Entrées au cinéma en 2019 (Fce)</option>
+        <option value="65300000">Entrées au cinéma en 2020 (Fce)</option>
+        <option value="95500000">Entrées au cinéma en 2021 (Fce)</option>
+        <option value="151970000">Entrées au cinéma en 2022 (Fce)</option>
 </optgroup>
 <optgroup label="villes française">
         <option value="2145906">Paris</option>
@@ -945,9 +979,9 @@
         <option value="40000">FN</option>
 </optgroup>
 <optgroup label="Enseignement">
-        <option value="6538000">France, 1er degré</option>
-        <option value="6175900">France, 2e degré</option>
-        <option value="2968900">France, Enseignement supérieur</option>
+        <option value="6538000">Eléves du 1er degré, France</option>
+        <option value="6175900">Elèves du 2e degré</option>
+        <option value="2968900">Elèves dans l'enseignement supérieur, France</option>
         <option value="65760">Université d'Aix-Marseille</option>
         <option value="26849">Université d'Amiens</option>
         <option value="62200">Université de Bordeaux + Bordeaux II</option>
@@ -1017,6 +1051,12 @@
         <option value="600000">Couples échangistes en France</option>
         <option value="6900000">Chiens en France</option>
         <option value="10000000">Chats en France</option>
+        <option value="490000">Exploitations agricoles Fce 2010</option>
+        <option value="389800">Exploitations agricoles Fce 2020</option>
+        <option value="213000000">Entrées au cinéma en 2019 (Fce)</option>
+        <option value="65300000">Entrées au cinéma en 2020 (Fce)</option>
+        <option value="95500000">Entrées au cinéma en 2021 (Fce)</option>
+        <option value="151970000">Entrées au cinéma en 2022 (Fce)</option>
 </optgroup>
 <optgroup label="villes française">
         <option value="2145906">Paris</option>
@@ -1119,9 +1159,9 @@
         <option value="40000">FN</option>
 </optgroup>
 <optgroup label="Enseignement">
-        <option value="6538000">France, 1er degré</option>
-        <option value="6175900">France, 2e degré</option>
-        <option value="2968900">France, Enseignement supérieur</option>
+        <option value="6538000">Eléves du 1er degré, France</option>
+        <option value="6175900">Elèves du 2e degré</option>
+        <option value="2968900">Elèves dans l'enseignement supérieur, France</option>
         <option value="65760">Université d'Aix-Marseille</option>
         <option value="26849">Université d'Amiens</option>
         <option value="62200">Université de Bordeaux + Bordeaux II</option>
@@ -1220,6 +1260,6 @@ if (Number.isInteger(invertConversionResult)) {
 }
 resultContainer.innerHTML = `${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
 Autrement dit il faut  multiplier [${initialValue} ${startUnitLabel}] par <strong>${displayInvertedResult}</strong> pour faire <strong>1</strong> [${destinationUnitLabel}]</br>
-Ou encore <strong>un</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]`;
+Ou encore <strong>1</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]`;
   });
 </script>
