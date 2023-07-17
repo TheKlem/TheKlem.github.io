@@ -1,108 +1,128 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Dumb Converter for smart journalists, by TheKlem</title>
-  <link href="styles.css" rel="stylesheet" media="all" type="text/css"> 
 
-  <!-- Matomo RGPC Commpliant analytics-->
-<script>
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="https://mesvolontes.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '8']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src='//cdn.matomo.cloud/mesvolontes.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
+<head>
+    <title>Dumb Converter for smart journalists, by TheKlem</title>
+    <link href="styles.css" rel="stylesheet" media="all" type="text/css">
+
+    <!-- Matomo RGPC Commpliant analytics-->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "https://mesvolontes.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '8']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = '//cdn.matomo.cloud/mesvolontes.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
 
 </head>
 
 <body>
 
-<h1 align="center">Convertisseur stupide</h1>
-<div id="message" align="center">Grâce à ce site tu peux enfin convertir n'importe-quoi en véritable #nimportequoi.<p>Bien entendu, ce site s'adresse avant tout aux journalistes en mal d'inspiration.</div>
-
-  <div id="form-container">
-    <form id="conversion-form">
-      <label for="conversion-type">Convertir</label>
-      <select id="conversion-type" name="conversionType" size="1">
-        <option value="">quoi</option>
-        <option value="volume">Contenances et volumes: pratique pour déchets, soirées arrosées, bassines</option>
-        <option value="weight">Masse (alias le poids pour les moldus): pratique pour, ben comparer des masses quoi !</option>
-        <option value="distance">Longeurs et distances: pratique pour manifestations, bouchons, voyages</option>
-        <option value="surfaces">Surfaces: pratique pour l'agriculture, l'architecture, les meetings</option>
-        <option value="money">Argent: pèze, flouze, brouzoufs, pognon. Toujours pratique, d'en avoir.</option>
-        <option value="population">Population: masses, foules, peons. Pratique pour les manifs, les pétitions, les concerts</option>
-      </select>
-   <div id="conversion-details" style="display:none;">
-</br>
-      CONVERTIR <input type="text" id="initial-value" name="initialValue" size="10"/>
-
-      <select id="start-unit" name="startUnit" size="1">
-        <option value="">Sélectionnez une unité</option>
-      </select> EN 
-
-
-      <select id="destination-unit" name="destinationUnit">
-        <option value="">Sélectionnez une unité</option>
-      </select><br><br>
-
-      <button type="submit">Convertir</button></div>
-    </form>
-  </div>
-
-  <div id="result-container" ></div>
-
-<div id="news">À venir: à la demande quasi-générale le jour du lancement, j'ajouterai bientôt l'énergie et la radiologie.</div>
-
-  <div id="credits" class="credits">Warning et autopromo. J'ai réalisé ce site pour le fun, en quelques heures grapillées ici et là. Je n'avais plus codé quoi que ce soit depuis 15 ans, alors soyez indulgents ! Tous les chiffres sont très sérieux par contre, j'ai essayé d'être le plus rigoureux possible, même si une erreur est toujours possible. Si vous repérez une erreur quelque part ou que vous voulez me proposer de nouvelles conversions marrantes, vous pouvez me contacter sur Twitter: <a href="https://twitter.com/DrScratch">DrScratch</a></p>
-  <p>Si vous voulez voir un vrai service joli (pas comme ici), bien fait et utile, faites un tour sur <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> le seul service de transfert de fichiers 100% souverain, qui n'utilise ni AWS, ni Google ou autre. Ziplo est aussi un service de création de preuves de dépôt (preuve d'antériorité) pour défendre vos droits d'auteur notamment. Je suis l'un des 4 fondateurs, mais pas de ceux qui codent, heureusement pour nos utilisateurs ;-). Je suis aussi le fondateur de <a href="https://mesvolontes.net" target="_new">Mes Volontés</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.</p>
-
-    <div class="containerCredits">
-        <div class="columnCredits">
-            <a href="https://ziplo.fr" target="_new"><img class="logo" src="logo-ziplo.png" width="200"></a>
-        </div>
-        <div class="columnCredits">
-            <a href="https://mesvolontes.net" target="_new"><img class="logo" src="logo-mesvolontes.png" width="200"></a>
-        </div>
+    <h1 align="center">Convertisseur stupide</h1>
+    <div id="message" align="center">Grâce à ce site tu peux enfin convertir n'importe-quoi en véritable #nimportequoi.
+        <p>Bien entendu, ce site s'adresse avant tout aux journalistes en mal d'inspiration.
     </div>
 
+    <div id="form-container">
+        <form id="conversion-form">
+            <label for="conversion-type">Convertir</label>
+            <select id="conversion-type" name="conversionType" size="1">
+                <option value="">quoi</option>
+                <option value="volume">Contenances et volumes: pratique pour déchets, soirées arrosées, bassines
+                </option>
+                <option value="weight">Masse (alias le poids pour les moldus): pratique pour, ben comparer des masses
+                    quoi !</option>
+                <option value="distance">Longeurs et distances: pratique pour manifestations, bouchons, voyages</option>
+                <option value="surfaces">Surfaces: pratique pour l'agriculture, l'architecture, les meetings</option>
+                <option value="money">Argent: pèze, flouze, brouzoufs, pognon. Toujours pratique, d'en avoir.</option>
+                <option value="population">Population: masses, foules, peons. Pratique pour les manifs, les pétitions,
+                    les concerts</option>
+            </select>
+            <div id="conversion-details" style="display:none;">
+                </br>
+                CONVERTIR <input type="text" id="initial-value" name="initialValue" size="10" />
+
+                <select id="start-unit" name="startUnit" size="1">
+                    <option value="">Sélectionnez une unité</option>
+                </select> EN
+
+
+                <select id="destination-unit" name="destinationUnit">
+                    <option value="">Sélectionnez une unité</option>
+                </select><br><br>
+
+                <button type="submit">Convertir</button>
+            </div>
+        </form>
     </div>
 
- <!-- selecteurs dynamiques --> 
-<script type="text/javascript">
-   const conversionTypeElement = document.getElementById("conversion-type");
-    const conversionFormElement = document.getElementById("csssonversion-details");
+    <div id="result-container"></div>
 
-    conversionTypeElement.addEventListener("change", function() {
-      if (conversionTypeElement.value === "volume" || conversionTypeElement.value === "weight"  || conversionTypeElement.value === "population" || conversionTypeElement.value === "surfaces"   || conversionTypeElement.value === "money" || conversionTypeElement.value === "distance")   {
-        conversionFormElement.style.display = "block";
-      } else {
-        conversionFormElement.style.display = "none";
-      }
-    });
-</script>
+    <div id="news">À venir: à la demande quasi-générale le jour du lancement, j'ajouterai bientôt l'énergie et la
+        radiologie.</div>
 
- <!-- valeurs, traitements et résultats --> 
-<script type="text/javascript">
+    <div id="credits" class="credits">Warning et autopromo. J'ai réalisé ce site pour le fun, en quelques heures
+        grapillées ici et là. Je n'avais plus codé quoi que ce soit depuis 15 ans, alors soyez indulgents ! Tous les
+        chiffres sont très sérieux par contre, j'ai essayé d'être le plus rigoureux possible, même si une erreur est
+        toujours possible. Si vous repérez une erreur quelque part ou que vous voulez me proposer de nouvelles
+        conversions marrantes, vous pouvez me contacter sur Twitter: <a
+            href="https://twitter.com/DrScratch">DrScratch</a></p>
+        <p>Si vous voulez voir un vrai service joli (pas comme ici), bien fait et utile, faites un tour sur <a
+                href="https://ziplo.fr" target="_new">Ziplo.fr</a> le seul service de transfert de fichiers 100%
+            souverain, qui n'utilise ni AWS, ni Google ou autre. Ziplo est aussi un service de création de preuves de
+            dépôt (preuve d'antériorité) pour défendre vos droits d'auteur notamment. Je suis l'un des 4 fondateurs,
+            mais pas de ceux qui codent, heureusement pour nos utilisateurs ;-). Je suis aussi le fondateur de <a
+                href="https://mesvolontes.net" target="_new">Mes Volontés</a> un service pas forcément drôle mais auquel
+            tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.</p>
 
-  const form = document.getElementById('conversion-form');
-  const resultContainer = document.getElementById('result-container');
-  const conversionTypeSelect = document.getElementById('conversion-type');
+        <div class="containerCredits">
+            <div class="columnCredits">
+                <a href="https://ziplo.fr" target="_new"><img class="logo" src="logo-ziplo.png" width="200"></a>
+            </div>
+            <div class="columnCredits">
+                <a href="https://mesvolontes.net" target="_new"><img class="logo" src="logo-mesvolontes.png"
+                        width="200"></a>
+            </div>
+        </div>
 
-  // Événement pour mettre à jour les options de conversion en fonction de la sélection de l'utilisateur
-  conversionTypeSelect.addEventListener('change', function(event) {
-    const conversionType = event.target.value;
-    const startUnit = document.getElementById('start-unit');
-    const destinationUnit = document.getElementById('destination-unit');
+    </div>
 
-    if (conversionType === 'volume') {
-      startUnit.innerHTML = `
+    <!-- selecteurs dynamiques -->
+    <script type="text/javascript">
+        const conversionTypeElement = document.getElementById("conversion-type");
+        const conversionFormElement = document.getElementById("csssonversion-details");
+
+        conversionTypeElement.addEventListener("change", function () {
+            if (conversionTypeElement.value === "volume" || conversionTypeElement.value === "weight" || conversionTypeElement.value === "population" || conversionTypeElement.value === "surfaces" || conversionTypeElement.value === "money" || conversionTypeElement.value === "distance") {
+                conversionFormElement.style.display = "block";
+            } else {
+                conversionFormElement.style.display = "none";
+            }
+        });
+    </script>
+
+    <!-- valeurs, traitements et résultats -->
+    <script type="text/javascript">
+
+        const form = document.getElementById('conversion-form');
+        const resultContainer = document.getElementById('result-container');
+        const conversionTypeSelect = document.getElementById('conversion-type');
+
+        // Événement pour mettre à jour les options de conversion en fonction de la sélection de l'utilisateur
+        conversionTypeSelect.addEventListener('change', function (event) {
+            const conversionType = event.target.value;
+            const startUnit = document.getElementById('start-unit');
+            const destinationUnit = document.getElementById('destination-unit');
+
+            if (conversionType === 'volume') {
+                startUnit.innerHTML = `
 <optgroup label="Unités standard">
         <option value="1">dm cube</option>
         <option value="0.001">cm cube</option>
@@ -121,7 +141,7 @@
 </optgroup>
 <optgroup label="Verres et Bouteilles">
         <option value="0.125">Un galopin</option>
-        <option value="0.25">Un demi</option>       
+        <option value="0.25">Un demi</option>
         <option value="0.473176">Pinte (US Pint)</option>
         <option value="0.568">Pinte (UK Pint)</option>
         <option value="0.75">bouteilles de vin standard</option>
@@ -150,11 +170,11 @@
         <option value="56940000">Canal de l'Ourq</option>
         <option value="3620300000000">Lac du Bourget</option>
         <option value="1124000000000">Lac d'Annecy</option>
-        <option value="89000000000000">Lac Leman</option>      
-        <option value="8700000000">Lac du Drennec (Bretagne)</option> 
+        <option value="89000000000000">Lac Leman</option>
+        <option value="8700000000">Lac du Drennec (Bretagne)</option>
         <option value="3600000000">Lac du Graon (Vendée)</option>
-        <option value="460000000">Grand Bassin du chateau de Versailles</option> 
-        <option value="460000000">Pièce d'eau des Suisses (Chateau de Versailles)</option> 
+        <option value="460000000">Grand Bassin du chateau de Versailles</option>
+        <option value="460000000">Pièce d'eau des Suisses (Chateau de Versailles)</option>
         <option value="120">Trou Mélanchonien dans les Alpes</option>
         <option value="500000">Débit/sec de la Seine (Paris)</option>
         <option value="1690000">Débit/sec du Rhône (Beaucaire)</option>
@@ -165,12 +185,12 @@
         <option value="503000000000000">Eau apportée par la pluie et la neige en France/an</option>
         <option value="314000000000000">Eau évaporée en France/an</option>
         <option value="200000000000000">Eau renouvelable en France/an</option>
-                 <option value="2592341000">Pyramide de Kheops</option>       
+                 <option value="2592341000">Pyramide de Kheops</option>
 
       </optgroup>
 
       `;
-      destinationUnit.innerHTML = `
+                destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
 <optgroup label="Unités standard">
         <option value="1">dm cube</option>
@@ -190,7 +210,7 @@
 </optgroup>
 <optgroup label="Verres et Bouteilles">
         <option value="0.125">Un galopin</option>
-        <option value="0.25">Un demi</option>       
+        <option value="0.25">Un demi</option>
         <option value="0.473176">Pinte (US Pint)</option>
         <option value="0.568">Pinte (UK Pint)</option>
         <option value="0.75">bouteille de vin standard</option>
@@ -218,11 +238,11 @@
         <option value="56940000">Canal de l'Ourq</option>
         <option value="3620300000000">Lac du Bourget</option>
         <option value="1124000000000">Lac d'Annecy</option>
-        <option value="89000000000000">Lac Leman</option>      
-        <option value="8700000000">Lac du Drennec (Bretagne)</option> 
+        <option value="89000000000000">Lac Leman</option>
+        <option value="8700000000">Lac du Drennec (Bretagne)</option>
         <option value="3600000000">Lac du Graon (Vendée)</option>
-        <option value="460000000">Grand Bassin du chateau de Versailles</option> 
-        <option value="460000000">Pièce d'eau des Suisses (Chateau de Versailles)</option> 
+        <option value="460000000">Grand Bassin du chateau de Versailles</option>
+        <option value="460000000">Pièce d'eau des Suisses (Chateau de Versailles)</option>
         <option value="120">Trou Mélanchonien dans les Alpes</option>
         <option value="500000">Débit/sec de la Seine (Paris)</option>
         <option value="1690000">Débit/sec du Rhône (Beaucaire)</option>
@@ -233,12 +253,12 @@
         <option value="503000000000000">Eau apportée par la pluie et la neige en France/an</option>
         <option value="314000000000000">Eau évaporée en France/an</option>
         <option value="200000000000000">Eau renouvelable en France/an</option>
-         <option value="2592341000">Pyramide de Kheops</option>       
+         <option value="2592341000">Pyramide de Kheops</option>
       </optgroup>
 
       `;
-    } if (conversionType === 'weight') {
-      startUnit.innerHTML = `
+            } if (conversionType === 'weight') {
+                startUnit.innerHTML = `
         <option value="1" selected>gramme</option>
         <option value="0.2">Carat</option>
         <option value="28">once (oz)</option>
@@ -275,7 +295,7 @@
         <option value="10100000000">Tour Eiffel</option>
         <option value="5750000000000">Pyramide de Gizeh</option>
       `;
-      destinationUnit.innerHTML = `
+                destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
         <option value="1">grammes</option>
         <option value="0.2">Carats</option>
@@ -311,8 +331,8 @@
         <option value="10100000000">Tour Eiffel</option>
         <option value="5750000000000">Pyramide de Gizeh</option>
       `;
-    } if (conversionType === 'distance') {
-      startUnit.innerHTML = `
+            } if (conversionType === 'distance') {
+                startUnit.innerHTML = `
         <option value="1" selected>Metre(s)</option>
         <option value="1000">Kilometre(s)</option>
         <option value="1.609">Miles(s) </option>
@@ -343,7 +363,7 @@
         <option value="40075000">Tour de la Terre</option>
         <option value="384400000">Terre-Lune</option>
       `;
-      destinationUnit.innerHTML = `
+                destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
         <option value="0.01">centimètres</option>
         <option value="0.04">Balle de ping-pong</option>
@@ -377,8 +397,8 @@
         <option value="384400000">Terre-Lune</option>
       `;
 
-      } if (conversionType === 'surfaces') {
-      startUnit.innerHTML = `
+            } if (conversionType === 'surfaces') {
+                startUnit.innerHTML = `
         <option value="1" selected>m2</option>
         <option value="0.0929">Square feet (sd ft)</option>
         <option value="100">ares</option>
@@ -386,7 +406,7 @@
         <option value="1000000">km2</option>
         <option value="4046.85">acres</option>
         <option value="1.6562">Tatami</option>
-                <option value="0.00522">Carte à jouer</option>      
+                <option value="0.00522">Carte à jouer</option>
         <option value="0.00672"> Carte de Tarot</option>
         <option value="4.183">table de ping-pong</option>
         <option value="60">terrain de pétanque</option>
@@ -407,7 +427,7 @@
         <option value="510000000000000">Superficie terrestre</option>
 
       `;
-      destinationUnit.innerHTML = `
+                destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
         <option value="1">m2</option>
         <option value="0.0929">Square feet (sd ft)</option>
@@ -415,7 +435,7 @@
         <option value="10000">hectare</option>
         <option value="1000000">km2</option>
         <option value="4046.85">acres</option>
-        <option value="0.00522">Carte à jouer</option>      
+        <option value="0.00522">Carte à jouer</option>
         <option value="0.00672"> Carte de Tarot</option>
         <option value="1.6562">Tatami</option>
         <option value="4.183">table de ping-pong</option>
@@ -437,8 +457,8 @@
 
       `;
 
-    } if (conversionType === 'money') {
-      startUnit.innerHTML = `
+            } if (conversionType === 'money') {
+                startUnit.innerHTML = `
         <option value="1">euro</option>
         <option value="0.879">Livre Sterling</option>
         <option value="1.088">Dollar US</option>
@@ -498,7 +518,7 @@
         <option value="130000000000">Plan Marshal (valeur actualisée)</option>
 
       `;
-      destinationUnit.innerHTML = `
+                destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
         <option value="1">euro</option>
         <option value="0.879">Livre sterling</option>
@@ -516,13 +536,12 @@
         <option value="3675000">Salaire mensuel brut de Neymar</option>
         <option value="3375000">Salaire mensuel brut de Messi</option>
         <option value="300000000">Mbappé. Prime cash pour rester au PSG</option>
-<<<<<<< HEAD
         <option value="123300000000">Jeff Bezos (fortune de)</option>
         <option value="213000000000">Bernard Arnault (fortune de)</option>
  </optgroup>
 
- <optgroup label="Divers">   
-         <option value="5000000000">Une Kerviel</option>    
+ <optgroup label="Divers">
+         <option value="5000000000">Une Kerviel</option>
         <option value="690000">Bus electrique Irizar (dédicace Courier Picard)</option>
         <option value="713000">Bus Irizar + bus diesel d'occassion en secours</option>
         <option value="16404">WC parisien (1.5m2) en juillet 2023</option>
@@ -537,8 +556,6 @@
         <option value="130000000000">Plan Marshal (valeur actualisée)</option>
 </optgroup>
 <optgroup label="Luxe">
-=======
->>>>>>> parent of 3871793 (Update index.html)
         <option value="950">Cognac Hennessy XXO hors d'âge</option>
         <option value="250">Cognac Hennessy XO Extra Old</option>
         <option value="47">Cognac Hennessy VS </option>
@@ -579,8 +596,8 @@
         <option value="130000000000">Plan Marshal (valeur actualisée)</option>
       `;
 
-    } if (conversionType === 'population') {
-      startUnit.innerHTML = `
+            } if (conversionType === 'population') {
+                startUnit.innerHTML = `
         <option value="1" selected>Individus(s)</option>
 
 <optgroup label="villes française">
@@ -676,9 +693,9 @@
         <option value="40000">FN</option>
 </optgroup>
 
-        
+
       `;
-      destinationUnit.innerHTML = `
+                destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
         <option value="1">Individu(s)</option>
 <optgroup label="villes française">
@@ -775,11 +792,95 @@
         <option value="40000">FN</option>
 </optgroup>
 
- 
+
       `;
+            } if (conversionType === 'dosimétrie') {
+                startUnit.innerHTML = `
+        <option value="1" selected>Sievert (Sv)</option>
+
+<optgroup label="Unités SI">
+        <option value="0.001">mSv</option>
+        <option value="0.000000001">nSv</option>
+        <option value="0.01">rem</option>
+</optgroup>
+<optgroup label="Fruits et Légumes">
+        <option value="0.00000012">Dose équivalente Banane (DEB)</option>
+        <option value="0.0000007">Dose équivalente Noix du Brésil</option>
+</optgroup>
+<optgroup label="La vie de tous les jours">
+        <option value="0.00055">Exposition moyenne des français (par an)</option>
+        <option value="0.000005">Radiographie dentaire intra-orale</option>
+        <option value="0.000001">Habitant proche d'une centrale nucléaire (par an)</option>
+        <option value="0.00000009">Habitant à proximité (~80km) d'une centrale nucléaire (par an)</option>
+        <option value="0.0000003">Habitant à proximité (~80km) d'une centrale à charbon (par an)</option>
+        <option value="0.0001">Radiographie pulmonaire</option>
+        <option value="0.00002">Vol d'avion à travers l'Europe</option>
+        <option value="0.001">Travailleur d'une mine d'Uranium ou d'une centrale nucléaire</option>
+        <option value="0.007">Tomodensitogramme typique des poumons</option>
+        <option value="0.150">Exposition de Thomas Pesquet en mission</option>
+        <option value="1">Dose entraînant la maladie des rayons</option>
+        <option value="8">Dose fatale</option>
+        <option value="0.0000005">Dormir à côté de quelqu'un</option>
+        <option value="0.00007">Habiter dans une maison en béton (par an)</option>
+        <option value="0.0001">Dose reçu à la mairie de Fukushima 2 semaines après l'incident</option>
+        <option value="0.00039">Dose annuelle de potassium dans le corps</option>
+        <option value="0.0004">Mammographie</option>
+        <option value="0.04">Dose reçue par 2 opérateurs de la centrale de Fukushima</option>
+        <option value="0.000001">2L/jour d'eau tritiée (par an)</option>
+        <option value="0.0005">Dose reçue par des survivants d'Hiroshima</option>
+        <option value="0.00025">Dose reçue par les pompiers de Tchernobyl</option>
+</optgroup>
+<optgroup label="Limites légales">
+        <option value="0.001">Limite de dose Euratom</option>
+        <option value="0.05">Limite de dose Travailleur du nucléaire</option>
+        <option value="0.1">Limite de dose Travailleur du nucléaire sur 5 ans</option>
+</optgroup>
+
+      `;
+                destinationUnit.innerHTML = `
+        <option value="">Sélectionnez une unité</option>
+        <option value="1" selected>Sievert (Sv)</option>
+
+<optgroup label="Unités SI">
+        <option value="0.001">mSv</option>
+        <option value="0.000000001">nSv</option>
+        <option value="0.01">rem</option>
+</optgroup>
+<optgroup label="Fruits et Légumes">
+        <option value="0.00000012">Dose équivalente Banane (DEB)</option>
+        <option value="0.0000007">Dose équivalente Noix du Brésil</option>
+</optgroup>
+<optgroup label="La vie de tous les jours">
+        <option value="0.00055">Exposition moyenne des français (par an)</option>
+        <option value="0.000005">Radiographie dentaire intra-orale</option>
+        <option value="0.000001">Habitant proche d'une centrale nucléaire (par an)</option>
+        <option value="0.00000009">Habitant à proximité (~80km) d'une centrale nucléaire (par an)</option>
+        <option value="0.0000003">Habitant à proximité (~80km) d'une centrale à charbon (par an)</option>
+        <option value="0.0001">Radiographie pulmonaire</option>
+        <option value="0.00002">Vol d'avion à travers l'Europe</option>
+        <option value="0.001">Travailleur d'une mine d'Uranium ou d'une centrale nucléaire</option>
+        <option value="0.007">Tomodensitogramme typique des poumons</option>
+        <option value="0.150">Exposition de Thomas Pesquet en mission</option>
+        <option value="1">Dose entraînant la maladie des rayons</option>
+        <option value="8">Dose fatale</option>
+        <option value="0.0000005">Dormir à côté de quelqu'un</option>
+        <option value="0.00007">Habiter dans une maison en béton (par an)</option>
+        <option value="0.0001">Dose reçu à la mairie de Fukushima 2 semaines après l'incident</option>
+        <option value="0.00039">Dose annuelle de potassium dans le corps</option>
+        <option value="0.0004">Mammographie</option>
+        <option value="0.04">Dose reçue par 2 opérateurs de la centrale de Fukushima</option>
+        <option value="0.000001">2L/jour d'eau tritiée (par an)</option>
+        <option value="0.0005">Dose reçue par des survivants d'Hiroshima</option>
+        <option value="0.00025">Dose reçue par les pompiers de Tchernobyl</option>
+</optgroup>
+<optgroup label="Limites légales">
+        <option value="0.001">Limite de dose Euratom</option>
+        <option value="0.05">Limite de dose Travailleur du nucléaire</option>
+        <option value="0.1">Limite de dose Travailleur du nucléaire sur 5 ans</option>
+</optgroup>
     }
   });
-  
+
   const integerFormatter = new Intl.NumberFormat('fr-FR', {
       maximumFractionDigits: 0
   });
@@ -826,10 +927,7 @@ if (Number.isInteger(invertConversionResult)) {
 } else {
   displayInvertedResult = numberInvertedDisplayFormatter.format(invertConversionResult);
 }
-resultContainer.innerHTML = `${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
-Autrement dit il faut ${displayInvertedResult} fois ${initialValue} ${startUnitLabel} pour faire un(e) ${destinationUnitLabel}`;
+resultContainer.innerHTML = `${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel} <br>
+                    Autrement dit il faut ${displayInvertedResult} fois ${initialValue} ${startUnitLabel} pour faire un(e) ${destinationUnitLabel}`;
   });
-</script>
-
-
- 
+    </script>
