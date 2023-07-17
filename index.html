@@ -5,6 +5,12 @@
 
   <title>Dumb Converter for smart journalists, by TheKlem</title>
   <link href="styles.css" rel="stylesheet" media="all" type="text/css"> 
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@DrScratch">
+<meta name="twitter:creator" content="@DrScratch">
+<meta name="twitter:title" content="Dumb Converter for smart journalists, by TheKlem">
+<meta name="twitter:description" content="Grâce à ce site tu peux enfin convertir n'importe-quoi en véritable #nimportequoi.<p>Bien entendu, ce site s'adresse avant tout aux journalistes en mal d'inspiration.">
+<meta name="twitter:image" content="https://theklem.github.io/img/basset.jpg">
 
   <!-- Matomo RGPC Commpliant analytics-->
 <script>
@@ -39,7 +45,8 @@
         <option value="surfaces">Surfaces: un must pour l'agriculture, l'architecture</ption>
         <option value="money">Argent: pèze, flouze, pognon. Toujours pratique, d'en avoir</option>
         <option value="population">Population : pratique pour les manifs, les concerts</option>
-         <option value="dosimetry">Dosimétrie: doses, bananes, Fukushima, voyages en avion et dans l'espace</option>
+        <option value="dosimetry">Dosimétrie: doses, bananes, Fukushima, voyages en avion et dans l'espace
+                </option>
       </select>
    <div id="conversion-details" style="display:none;">
 </br>
@@ -81,11 +88,13 @@
     const conversionFormElement = document.getElementById("conversion-details");
 
     conversionTypeElement.addEventListener("change", function() {
-      if (conversionTypeElement.value === "volume" || conversionTypeElement.value === "weight"  || conversionTypeElement.value === "population" || conversionTypeElement.value === "surfaces"   || conversionTypeElement.value === "money" || conversionTypeElement.value === "dosimetry" || conversionTypeElement.value === "distance")   {
-        conversionFormElement.style.display = "block";
-      } else {
-        conversionFormElement.style.display = "none";
-      }
+
+    	if(conversionTypeElement.value === ""){
+    		conversionFormElement.style.display = "none";
+    	} else {
+    		conversionFormElement.style.display = "block";
+    	}
+      
     });
 </script>
 
@@ -97,12 +106,15 @@
   const conversionTypeSelect = document.getElementById('conversion-type');
 
   // Événement pour mettre à jour les options de conversion en fonction de la sélection de l'utilisateur
-  conversionTypeSelect.addEventListener('change', function(event) {
+  conversionTypeSelect.addEventListener('change', function(event) 
+  {
     const conversionType = event.target.value;
+    console.log(conversionType);
     const startUnit = document.getElementById('start-unit');
     const destinationUnit = document.getElementById('destination-unit');
 
-    if (conversionType === 'volume') {
+    if (conversionType === 'volume') 
+    {
       startUnit.innerHTML = `
 <optgroup label="Unités standard">
         <option value="0.000001">mm3</option>
@@ -1328,8 +1340,10 @@
         <option value="480">Ecoles vétérinaires (les 4)</option>
 </optgroup> 
       `;
-    } if (conversionType === 'dosimetry') {
-      startUnit.innerHTML = `
+     } 
+
+     if (conversionType === 'dosimetry') {
+                startUnit.innerHTML = `
         <option value="1" selected>Sievert (Sv)</option>
 <optgroup label="Unités SI">
         <option value="0.001">mSv</option>
@@ -1368,11 +1382,10 @@
         <option value="0.05">Limite de dose Travailleur du nucléaire</option>
         <option value="0.1">Limite de dose Travailleur du nucléaire sur 5 ans</option>
 </optgroup>
-
       `;
-      destinationUnit.innerHTML = `
+                destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
-        <option value="1">Sievert (Sv)</option>
+        <option value="1" selected>Sievert (Sv)</option>
 <optgroup label="Unités SI">
         <option value="0.001">mSv</option>
         <option value="0.000000001">nSv</option>
@@ -1409,14 +1422,14 @@
         <option value="0.001">Limite de dose Euratom</option>
         <option value="0.05">Limite de dose Travailleur du nucléaire</option>
         <option value="0.1">Limite de dose Travailleur du nucléaire sur 5 ans</option>
-</optgroup>
+</optgroup>`;
 
-      `;
-    }
+}
 
 
 
   });
+
  const integerFormatter = new Intl.NumberFormat('fr-FR', {
       maximumFractionDigits: 0
   });
@@ -1463,8 +1476,12 @@ if (Number.isInteger(invertConversionResult)) {
 } else {
   displayInvertedResult = numberInvertedDisplayFormatter.format(invertConversionResult);
 }
-resultContainer.innerHTML = `${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
+resultContainer.innerHTML = `
+${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
 Autrement dit il faut  multiplier [${initialValue} ${startUnitLabel}] par <strong>${displayInvertedResult}</strong> pour faire <strong>1</strong> [${destinationUnitLabel}]</br>
-Ou encore <strong>1</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]`;
+Ou encore <strong>1</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]</br>
+<a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachez-tu+%3F%3F%3F+%0D%0A%0D%0A${initialValue}+${startUnitLabel}++est+%C3%A9gal+%C3%A0+${displayResult}+${destinationUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"> Partager ce résultat sur twitter</a>
+`;
+
   });
 </script>
