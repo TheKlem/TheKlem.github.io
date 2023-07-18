@@ -1036,14 +1036,14 @@
 
     } if (conversionType === 'population') {
       startUnit.innerHTML = `
-        <option value="1" selected>Individu(s)</option>
+        <option value="1" selected>Individu</option>
 <optgroup label="Mesures insolites">
         <option value="87197">Nombre de détenus (France 2023)</option>
         <option value="18000">Nombre de détenus en préventive (France 2023)</option>
         <option value="84707">Nombre de détenus masculins (France 2023)</option>
         <option value="2490">Nombre de détenus féminins (France 2023)</option>
         <option value="2600000">Personnes handicapées (France 2023)</option>
-        <option value="3024000">Bretons (personnes nées en Bretagne)</option>
+        <option value="3024000">Peuple breton (personnes nées en Bretagne)</option>
         <option value="8952">Personnes titulaires d'une ALD pour transidentité</option>
         <option value="30000">Personnes centennaires (France)</option>
         <option value="10000">Personnes de petite taille (France)</option>
@@ -1220,7 +1220,7 @@
       `;
       destinationUnit.innerHTML = `
         <option value="">Sélectionnez une unité</option>
-        <option value="1">Individu(s)</option>
+        <option value="1">Individu</option>
 
 <optgroup label="Mesures insolites">
         <option value="87197">Nombre de détenus (France 2023)</option>
@@ -1228,7 +1228,7 @@
         <option value="84707">Nombre de détenus masculins (France 2023)</option>
         <option value="2490">Nombre de détenus féminins (France 2023)</option>
         <option value="2600000">Personnes handicapées (France 2023)</option>
-        <option value="3024000">Bretons (personnes nées en Bretagne)</option>
+        <option value="3024000">Peuple Breton (personnes nées en Bretagne)</option>
         <option value="8952">Personnes titulaires d'une ALD pour transidentité</option>
         <option value="30000">Personnes centennaires (France)</option>
         <option value="10000">Personnes de petite taille (France)</option>
@@ -1538,10 +1538,10 @@ if (Number.isInteger(invertConversionResult)) {
   displayInvertedResult = numberInvertedDisplayFormatter.format(invertConversionResult);
 }
 resultContainer.innerHTML = `
-${initialValue} ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
-Autrement dit il faut  multiplier [${initialValue} ${startUnitLabel}] par <strong>${displayInvertedResult}</strong> pour faire <strong>1</strong> [${destinationUnitLabel}]</br>
+<strong>${initialValue}</strong> ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
+Il faut  multiplier [${initialValue} ${startUnitLabel}] par <strong>${displayInvertedResult}</strong> pour faire <strong>1</strong> [${destinationUnitLabel}]</br>
 Ou encore <strong>1</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]</br>
-<a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachez-tu+%3F%3F%3F+%0D%0A%0D%0A${initialValue}+${startUnitLabel}++est+%C3%A9gal+%C3%A0+${displayResult}+${destinationUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"> Partager ce résultat sur twitter</a>
+ <a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachez-tu+%3F%3F%3F+%0D%0A%0D%0A${initialValue}+${startUnitLabel}++est+%C3%A9gal+%C3%A0+${displayResult}+${destinationUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="30" height="29" align="middle"> Partager ce résultat sur twitter</a>
 `;
 
   });
