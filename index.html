@@ -32,7 +32,7 @@
 
 <body>
 <h1 align="center">Convertisseur stupide</h1>
-<div id="message" align="center">Grâce à ce site tu peux enfin convertir n'importe-quoi en véritable #nimportequoi.<p>Bien entendu, ce site s'adresse avant tout aux journalistes en mal d'inspiration.</div>
+<div id="message" align="center">Grâce à ce site tu peux enfin convertir n'importe-quoi en véritable #nimportequoi. Bien entendu, ce site s'adresse avant tout aux <strong>journalistes</strong> en mal d'inspiration.</div>
 
   <div id="form-container">
     <form id="conversion-form">
@@ -68,15 +68,15 @@
   <div id="result-container" ></div>
 
 <div id="news">La dosmiétrie vient d'être ajoutée grâce à une contribution extérieure. A venir l'énergie ou le CO2</div>
-<div id="credits" class="credits">Warning. Site réalisé le fun, en qqs heures grapillées ici et là. Je n'avais plus codé depuis 15 ans, alors soyez indulgents ! Tous les chiffres sont très sérieux par contre, j'ai essayé d'être le plus rigoureux possible, même si une erreur est toujours possible. Si vous en repérez une ou que vous voulez proposer de nouvelles conversions marrantes, vous pouvez me contacter sur Twitter: <a href="https://twitter.com/DrScratch">DrScratch</a></p>
-  <p>Autopromo. Si vous voulez voir un vrai service joli (pas comme ici), bien fait et utile, allez sur <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> le seul service de transfert de fichiers 100% souverain, qui n'utilise ni AWS, ni Google ou autre. Ziplo est aussi un service de création de preuves de dépôt (preuve d'antériorité) pour défendre vos droits d'auteur notamment. Je suis un des fondateurs, mais de pas de ceux qui codent, heureusement pour nos utilisateurs ;-). Vous pouvez même créer un compte gratuitement pour le transfert et abandonner WeTruc ;-)</br>Je suis aussi le fondateur de <a href="https://mesvolontes.net" target="_new">Mes Volontés</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.</p>
+<div id="credits" class="credits">Warning. Site réalisé le fun, en qqs heures et je n'avais plus codé depuis 15 ans, soyez indulgents ! Tous les chiffres sont très sérieux par contre, j'ai essayé d'être le plus rigoureux possible. Une erreur est toujours possible. Si vous en repérez une ou que vous voulez proposer de nouvelles conversions marrantes, contactez-moi sur Twitter : <a href="https://twitter.com/DrScratch">DrScratch</a></p>
+  <p>Autopromo. pour voir un vrai service joli (pas comme ici), bien fait et utile, allez sur <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> le seul service de transfert de fichiers 100% souverain, qui n'utilise ni AWS, ni Google ou autre. Ziplo est aussi et surtout un service de création de preuves de dépôt (aka preuve d'antériorité) pour défendre ses droits d'auteur notamment. Je suis un des fondateurs, mais de pas de ceux qui codent, heureusement pour nos utilisateurs ;-). Vous pouvez même créer un compte gratuitement pour le transfert et abandonner WeTruc qui vous colle de la pub ;-)</br>Je suis aussi le fondateur de <a href="https://mesvolontes.net" target="_new">Mes Volontés</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.</p>
 
     <div class="containerCredits">
         <div class="columnCredits">
-            <a href="https://ziplo.fr" target="_new"><img class="logo" src="logo-ziplo.png" width="200"></a>
+            <a href="https://ziplo.fr" target="_new"><img class="logo" src="logo-ziplo.png"></a>
         </div>
         <div class="columnCredits">
-            <a href="https://mesvolontes.net" target="_new"><img class="logo" src="logo-mesvolontes.png" width="200"></a>
+            <a href="https://mesvolontes.net" target="_new"><img class="logo" src="logo-mesvolontes.png"></a>
         </div>
     </div>
 
@@ -123,6 +123,7 @@
         <option value="1000">m3</option>
         <option value="1000000000">hm3 (hectometre cube)</option>
         <option value="1000000000000">km3</option>
+        <option value="0.113"  style="font-weight:bold; color:limegreen;">Banane</option>
       </optgroup>
 <optgroup label="Unités de cuisine">
         <option value="0.001">millilitre</option>
@@ -207,6 +208,7 @@
         <option value="1000">m3</option>
         <option value="1000000000">hm3 (hectometre cube)</option>
         <option value="1000000000000">km3</option>
+        <option value="0.113" style="font-weight:bold; color:limegreen;">Banane</option>
       </optgroup>
 <optgroup label="Les trucs de cuisine">
         <option value="0.001">millilitre</option>
@@ -285,6 +287,7 @@
       startUnit.innerHTML = `
         <option value="1">Gramme</option>
         <option value="0.2">Carat</option>
+        <option value="120" style="font-weight:bold; color:limegreen;">Banane</option>
         <option value="453.5">Livre (lb)</option>
         <option value="1000" selected>Kilogramme</option>
         <option value="100000">Quintal / Quintaux (Qt)</option>
@@ -401,6 +404,7 @@
     <option value="">Sélectionnez une unité</option>
         <option value="1">Gramme</option>
         <option value="0.2">Carat</option>
+        <option value="120" style="font-weight:bold; color:limegreen;">Banane</option>
         <option value="453.5">Livre (lb)</option>
         <option value="1000">Kilogramme</option>
         <option value="100000">Quintal / Quintaux (Qt)</option>
@@ -523,7 +527,7 @@
         <option value="0.04">Balle de ping-pong</option>
         <option value="0.044">Balle de golf</option>
         <option value="0.0668">Balle de tennis</option>
-        <option value="0.14">Banane</option>
+        <option value="0.16" style="font-weight:bold; color:limegreen;">Banane</option>
         <option value="0.25">Noix de coco</option>
         <option value="0.30">Concombre</option>
         <option value="0.075">Coton Tige</option>
@@ -584,7 +588,7 @@
         <option value="0.04">Balle de ping-pong</option>
         <option value="0.044">Balle de golf</option>
         <option value="0.0668">Balle de tennis</option>
-        <option value="0.14">Banane</option>
+        <option value="0.16" style="font-weight:bold; color:limegreen;">Banane</option>
         <option value="0.25">Noix de coco</option>
         <option value="0.075">Coton Tige</option>
         <option value="0.30">Concombre</option>
@@ -644,6 +648,7 @@
         <option value="10000">hectare</option>
         <option value="1000000">km2</option>
         <option value="4046.85">acres</option>
+        <option value="0.0024" style="font-weight:bold; color:limegreen;">Banane</option>
         <option value="0.0048">Carte de visite classique</option>
         <option value="0.00522">Carte à jouer</option>      
         <option value="0.00672">Carte de Tarot</option>
@@ -710,6 +715,7 @@
         <option value="10000">hectare</option>
         <option value="1000000">km2</option>
         <option value="4046.85">acres</option>
+        <option value="0.0024" style="font-weight:bold; color:limegreen;">Banane</option>
         <option value="0.0048">Carte de visite classique</option>
         <option value="0.00522">Carte à jouer</option>      
         <option value="0.00672"> Carte de Tarot</option>
@@ -1404,7 +1410,7 @@
         <option value="0.01">rem</option>
 </optgroup>
 <optgroup label="Fruits et Légumes">
-        <option value="0.00000012">Dose équivalente Banane (DEB)</option>
+        <option value="0.00000012" style="font-weight:bold; color:limegreen;">Dose équivalente Banane (DEB)</option>
         <option value="0.0000007">Dose équivalente Noix du Brésil</option>
 </optgroup>
 <optgroup label="La vie de tous les jours">
@@ -1445,7 +1451,7 @@
         <option value="0.01">rem</option>
 </optgroup>
 <optgroup label="Fruits et Légumes">
-        <option value="0.00000012">Dose équivalente Banane (DEB)</option>
+        <option value="0.00000012" style="font-weight:bold; color:limegreen;">Dose équivalente Banane (DEB)</option>
         <option value="0.0000007">Dose équivalente Noix du Brésil</option>
 </optgroup>
 <optgroup label="La vie de tous les jours">
