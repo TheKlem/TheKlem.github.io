@@ -31,24 +31,24 @@
 </head>
 
 <body>
-<h1 align="center">Convertisseur stupide</h1>
+<h1 align="center">CONVERTISSUER STUPIDE</h1>
 <div id="message" align="center">Convertir n'importe-quoi en véritable #nimportequoi. Ce site s'adresse avant tout aux <strong>journalistes</strong> en mal d'inspiration.</div>
   <div id="form-container">
     <form id="conversion-form">
       <select id="conversion-type" name="conversionType" size="1">
         <option value=""> Convertir quoi</option>
-        <option value="volume">Contenances et volumes: idéal pour soirées arrosées</option>
+        <option value="volume">Contenances et volumes: pour soirées arrosées</option>
         <option value="weight">Masse (le poids des moldus): pratique c'est tout !</option>
-        <option value="distance">Longueurs et distances: manifs, bouchons, voyages</option>
-        <option value="surfaces">Surfaces: un must pour l'agriculture, l'architecture</ption>
-        <option value="money">Argent: pèze, flouze, pognon. Toujours pratique, d'en avoir</option>
-        <option value="population">Population : pratique pour les manifs, les concerts</option>
-        <option value="dosimetry">Dosimétrie: atome, radiations, bananes, Fukushima</option>
+        <option value="distance">Longueurs / Distances: manifs, bouchons, voyages</option>
+        <option value="surfaces">Surfaces: agriculture, architecture...</option>
+        <option value="money">Argent: pèze, flouze, pognon, PIB, dette</option>
+        <option value="population">Population : des concerts aux pays</option>
+        <option value="dosimetry">Dosimétrie: atome, radiations, Fukushima</option>
       </select>
    <div id="conversion-details" style="display:none;">
 </br>
       <input type="text" id="initial-value" name="initialValue" size="7" value="1"/>
-      <select id="start-unit" name="startUnit" size="1">
+      <select id="start-unit" name="startUnit">
         <option value="">Sélectionnez une unité</option>
       </select>
        EN 
@@ -561,14 +561,14 @@
         <option value="3.20">Etage (immeuble hausmanien)</option>
         <option value="105">Terrain de foot</option>
         <option value="105">Arc de Triomphe</option>
-        <option value="35">Notre-Dame de Paris (sous voutes)</option> 
-        <option value="42.30">Notre-Dame d'Amiens (sous voutes)</option> 
+        <option value="35">Notre-Dame de Paris (ss voutes)</option> 
+        <option value="42.30">Notre-Dame d'Amiens (ss voutes)</option> 
         <option value="138">Pyramide de Khéops (hauteur)</option>
         <option value="300">Tour Eiffel</option>
         <option value="381">Empire State Building</option>
         <option value="828">Burj Khalifa(Dubaï)</option>
-        <option value="250">Du capitole à la roche tarpeienne</option>
-        <option value="2141">Pont de Normandie (au plus long)</option>
+        <option value="250">Du capitole > Roche tarpeienne</option>
+        <option value="2141">Pont de Normandie (max)</option>
         <option value="5440">Nation-Opera</option>
         <option value="2180">Bastille Nation</option>
         <option value="1910">Champs Elysées</option>
@@ -621,15 +621,15 @@
         <option value="2.11">Joakim Noah</option>
         <option value="3.20">Etage (immeuble hausmanien)</option>
         <option value="105">Terrain de foot</option>
-        <option value="105">Arc de Triomphe</option>
-        <option value="300">Tour Eiffel</option>
-        <option value="35">Notre-Dame de Paris (sous voutes)</option> 
-        <option value="42.30">Notre-Dame d'Amiens (sous voutes)</option> 
+       <option value="105">Arc de Triomphe</option>
+        <option value="35">Notre-Dame de Paris (ss voutes)</option> 
+        <option value="42.30">Notre-Dame d'Amiens (ss voutes)</option> 
         <option value="138">Pyramide de Khéops (hauteur)</option>
+        <option value="300">Tour Eiffel</option>
         <option value="381">Empire State Building</option>
         <option value="828">Burj Khalifa(Dubaï)</option>
-        <option value="250">Du capitole à la roche tarpeienne</option>
-        <option value="2141">Pont de Normandie (au plus long)</option>
+        <option value="250">Du capitole > Roche tarpeienne</option>
+        <option value="2141">Pont de Normandie (max)</option>
         <option value="5440">Nation-Opera</option>
         <option value="2180">Bastille Nation</option>
         <option value="1910">Champs Elysées</option>
@@ -715,7 +715,8 @@
         <option value="48870000">Lyon</option>
         <option value="240600000">Marseille</option>
         <option value="550000000000">France</option>
-        <option value="148000000000000">Superficie Terre : terres émergées</option>
+        <option value="148000000000000">Superficie terrestre : terres émergées</option>
+		<option value="362000000000 000">Superficie terrestre : oceans et mers</option>
         <option value="510000000000000">Superficie  terrestre</option>
 
       `;
@@ -785,7 +786,8 @@
         <option value="48870000">Lyon</option>
         <option value="240600000">Marseille</option>
         <option value="550000000000">France</option>
-        <option value="148000000000000">Superficie Terre : terres émergées</option>
+        <option value="148000000000000">Superficie terrestre : terres émergées</option>
+		<option value="362000000000 000">Superficie terrestre : oceans et mers</option>
         <option value="510000000000000">Superficie  terrestre</option>
       `;
 
@@ -1565,8 +1567,9 @@ if (Number.isInteger(invertConversionResult)) {
 resultContainer.innerHTML = `
 <strong>${initialValue}</strong> ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
 Il faut  multiplier [${initialValue} ${startUnitLabel}] par <strong>${displayInvertedResult}</strong> pour faire <strong>1</strong> [${destinationUnitLabel}]</br>
-Ou encore <strong>1</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]</br>
- <a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${initialValue}+${startUnitLabel}++est+%C3%A9gal+%C3%A0+${displayResult}+${destinationUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="30" height="29" align="middle"> Partager ce résultat sur twitter</a>
+Ou encore <strong>1</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]
+	
+ <p><a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${initialValue}+${startUnitLabel}++est+%C3%A9gal+%C3%A0+${displayResult}+${destinationUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="30" height="29" align="middle"> Partager ce résultat sur twitter</a></p>
 `;
 
   });
