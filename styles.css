@@ -25,7 +25,7 @@ form {
 	align-items: left;
 	padding: 15px;
 	margin: 0 auto;
-	width: 75%;
+	width: 85%;
 	margin-top: 0px;
 	border-radius: 0px;
     }
@@ -86,7 +86,7 @@ h1 {
 	align-items: left;
 	padding: 10px;
 	margin: 0 auto;
-	width: 75%;
+	width: 85%;
 	margin-top: 20px;
 	border-radius: 8px;
 	font-size: 16px;
@@ -114,27 +114,30 @@ h1 {
       padding: 0px;
       margin: 0 auto;
       width: 90%;
-      margin-top: 20px;
+      margin-top: 10px;
       font-size: 15px;
       color: #707070;
     }
 .containerCredits {
         display: flex;
         justify-content: center;
-        margin-top: 30px;
+        margin-top: 20px;
     }
         
 .columnCredits {
       flex: 1;
       text-align: center;
       justify-content: center;
+		border-color: #6F9BE8;
+	border-style: solid;
+	padding: 10px;
+	padding-top: 20px;
     }
 .logo {
-      max-width: 9%;
-      max-width: 60%;
+      max-width: 100%;
       height: auto;
       margin: 0 auto;
- 
+ margin-bottom: 10px;
     }
 
 }
@@ -256,25 +259,30 @@ h1 {
       padding: 0px;
       margin: 0 auto;
       width: 75%;
-      margin-top: 20px;
+      margin-top: 10px;
       font-size: 15px;
       color: #707070;
     }
 .containerCredits {
         display: flex;
         justify-content: center;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 .columnCredits {
       flex: 1;
       text-align: center;
       justify-content: center;
+	border-color: #6F9BE8;
+	border-style: solid;
+	padding: 10px;
+	padding-top: 20px;
     }
 .logo {
       max-width: 100%;
-      width: 40%;
+      width: 50%;
       height: auto;
       margin: 0 auto;
+	 margin-bottom: 10px;
     }
 
 }
