@@ -60,14 +60,14 @@
   </div>
 <div id="result-container" ></div>
 
-<div id="credits" class="credits">Warning. Site réalisé pour le fun, je n'avais plus codé très longtemps, soyez indulgents ! Tous les chiffres sont très sérieux, eux, mais erreur étant toujours possible si vous en repérez une contactez-moi sur Twitter : <a href="https://twitter.com/DrScratch">DrScratch</a>. Et tant qu'à faire, un peu d'autopromo, découvrez : </p>
+<div id="credits" class="credits">Warning. Site sans prétention, réalisé pour le fun, soyez indulgents ! Tous les chiffres sont très sérieux, eux, mais l'erreur étant toujours possible si vous en repérez une contactez-moi sur Twitter : <a href="https://twitter.com/DrScratch">DrScratch</a>. Et tant qu'à faire, un peu d'autopromo, découvrez : </p>
       <div class="containerCredits">
         <div class="columnCredits">
             <a href="https://ziplo.fr" target="_new"><img class="logo" src="logo-ziplo.png"></a><br/>Un vrai service joli (pas comme ici), bien fait et très utile. <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> est le seul service de transfert de fichiers 100% souverain (ni AWS, ni Google, ni Azure). Ziplo est aussi et surtout un service de création de preuves numériques (aka preuve d'antériorité) pour défendre, entre autres, ses droits d'auteur. Comme la fameuse enveloppe de l'INPI mais en mieux. 
         </div>
         <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <div class="columnCredits">
-            <a href="https://www.kayz.fr" target="_new"><img class="logo" src="logo-kayz.png"></a><br/>Je suis aussi le fondateur de <a href="https://www.kayz.fr" target="_new">Kayz</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.
+            <a href="https://www.kayz.fr" target="_new"><img class="logo" src="logo-kayz.png"></a><br/>Je participe également au projet Kayz <a href="https://www.kayz.fr" target="_new">Kayz</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts.
         </div>
     </div>
 
@@ -1564,8 +1564,8 @@ if (Number.isInteger(invertConversionResult)) {
   displayInvertedResult = numberInvertedDisplayFormatter.format(invertConversionResult);
 }
 resultContainer.innerHTML = `
-<strong>${initialValue}</strong> ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}<br>
-Il faut  multiplier [${initialValue} ${startUnitLabel}] par <strong>${displayInvertedResult}</strong> pour faire <strong>1</strong> [${destinationUnitLabel}]</br>
+<strong>${initialValue}</strong> ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}</br>
+<!-- Il faut  multiplier [${initialValue} ${startUnitLabel}] par <strong>${displayInvertedResult}</strong> pour faire <strong>1</strong> [${destinationUnitLabel}]</br> -->
 Ou encore <strong>1</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]
 	
  <p><a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${initialValue}+${startUnitLabel}++est+%C3%A9gal+%C3%A0+${displayResult}+${destinationUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="30" height="29" align="middle"> Partager ce résultat sur twitter</a></p>
