@@ -87,7 +87,7 @@ h1 {
 	padding: 10px;
 	margin: 0 auto;
 	width: 85%;
-	margin-top: 20px;
+	margin-top: 10px;
 	border-radius: 8px;
 	font-size: 16px;
     }
@@ -114,7 +114,7 @@ h1 {
       padding: 0px;
       margin: 0 auto;
       width: 90%;
-      margin-top: 10px;
+      margin-top: 05px;
       font-size: 15px;
       color: #707070;
     }
@@ -130,8 +130,8 @@ h1 {
     justify-content: center;
 	border-color: #6F9BE8;
 
-	padding: 10px;
-	padding-top: 20px;
+	padding: 05px;
+	padding-top: 05px;
     }
 .logo {
     max-width: 100%;
