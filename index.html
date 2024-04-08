@@ -45,6 +45,7 @@
         <option value="money">Argent: pèze, flouze, pognon, PIB, dette</option>
         <option value="population">Population : des concerts aux pays</option>
         <option value="dosimetry">Dosimétrie: atome, radiations, Fukushima</option>
+        <option value="calories">Calories: la bouffe, le sport</option>
       </select>
    <div id="conversion-details" style="display:none;">
 </br>
@@ -105,15 +106,15 @@
     if (conversionType === 'volume') 
     {
       startUnit.innerHTML = `
-<optgroup label="Unités standard">
-        <option value="0.000001">mm3</option>
-        <option value="0.001">cm3</option>
-        <option value="1">dm3</option>
-        <option value="1000">m3</option>
-        <option value="1000000000">hm3 (hectometre cube)</option>
-        <option value="1000000000000">km3</option>
-        <option value="0.113"  style="font-weight:bold; color:limegreen;">Banane</option>
-      </optgroup>
+        <optgroup label="Unités standard">
+                <option value="0.000001">mm3</option>
+                <option value="0.001">cm3</option>
+                <option value="1">dm3</option>
+                <option value="1000">m3</option>
+                <option value="1000000000">hm3 (hectometre cube)</option>
+                <option value="1000000000000">km3</option>
+                <option value="0.113"  style="font-weight:bold; color:limegreen;">Banane</option>
+        </optgroup>
 <optgroup label="Unités de cuisine">
         <option value="0.001">millilitre</option>
         <option value="0.01">centilitre</option>
@@ -1509,7 +1510,31 @@
         <option value="0.05">Limite de dose Travailleur du nucléaire</option>
         <option value="0.1">Limite de dose Travailleur du nucléaire sur 5 ans</option>
 </optgroup>`;
-
+        if (conversionType === 'calories') 
+    {
+              startUnit.innerHTML = `
+                <optgroup label="Unités standard">
+                        <option value="1">calorie</option>
+                        <option value="0.9" style="font-weight:bold; color:limegreen;">Banane (cal/g)</option>
+                </optgroup>
+                <optgroup label="viande">
+                        <option value="2,16">Agneau</option>
+                        <option value="1">Blanc de poulet</option>
+                        <option value="1,88">Boeuf</option>
+                        <option value="2,96">Echine de porc</option>
+                        <option value="1,92">Jambon cru</option>
+                        <option value="2,9">Jambon cuit</option>
+                        <option value="1,47">Poulet Rôti</option>
+                        <option value="2,5">Saucisse</option>
+                        <option value="2,1">Steak haché</option>
+                </optgroup>
+      `;
+      destinationUnit.innerHTML = `
+        <option value="">Sélectionnez une unité</option>
+                <optgroup label="Unités standard">
+                        <option value="1">calorie</option>
+                </optgroup>
+      `;
 }
 
 
