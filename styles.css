@@ -1,3 +1,38 @@
+
+.conversion-container {
+    width:90%;
+    padding-top:25px;
+    padding-bottom:25px;
+    display:flex;
+    flex-direction: row;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.input-container {
+    min-width:40%;
+    display:flex;
+    flex-direction: row;
+    gap:10px;
+}
+.output-container {
+    min-width:40%;
+    display:flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+
+}
+
+#result-container{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 6px;
+    width: fit-content !important;
+    padding-left:25px !important;
+    padding-right:25px !important;
+}
+
+
 @media only screen and (max-width:767px) {
 
   /* Un message personnalisé */
@@ -138,6 +173,31 @@ h1 {
     height: auto;
     margin: 0 auto;
     margin-bottom: 10px;
+    }
+
+    .conversion-container {
+        width:90%;
+        padding-top:25px;
+        padding-bottom:25px;
+        display:flex;
+        flex-direction: row;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+    
+    .input-container {
+        min-width:40%;
+        display:flex;
+        flex-direction: row;
+        gap:10px;
+    }
+    .output-container {
+        min-width:40%;
+        display:flex;
+        flex-direction: row;
+        gap:10px;
+        align-items: center;
+    
     }
 }
 
