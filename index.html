@@ -35,31 +35,32 @@
 <h1 align="center">CONVERTISSEUR STUPIDE</h1>
 <div id="message" align="center">Convertir n'importe-quoi en véritable #nimportequoi. Ce site s'adresse avant tout aux <strong>journalistes</strong> en mal d'inspiration. <p>Une erreur étant toujours possible si vous repérez une erreur de conversion contactez-moi sur Twitter : <a href="https://twitter.com/DrScratch">DrScratch</a>.</div>
   <div id="form-container">
-    <form id="conversion-form">
-      <select id="conversion-type" name="conversionType" size="1">
-        <option value=""> Convertir quoi</option>
-        <option value="volume">Contenances et volumes: pour soirées arrosées</option>
-        <option value="weight">Masse (le poids des moldus): pratique c'est tout !</option>
-        <option value="distance">Longueurs / Distances: manifs, bouchons, voyages</option>
-        <option value="surfaces">Surfaces: agriculture, architecture...</option>
-        <option value="money">Argent: pèze, flouze, pognon, PIB, dette</option>
-        <option value="population">Population : des concerts aux pays</option>
-        <option value="dosimetry">Dosimétrie: atome, radiations, Fukushima</option>
-      </select>
-   <div id="conversion-details" style="display:none;">
-</br>
-      <input type="text" id="initial-value" name="initialValue" size="7" value="1"/>
-      <select id="start-unit" name="startUnit">
-        <option value="">Sélectionnez une unité</option>
-      </select>
-       EN 
-      <select id="destination-unit" name="destinationUnit">
-        <option value="">Sélectionnez une unité</option>
-      </select><br><br>
-      <button type="submit">Convertir</button></div>
-    </form>
+        <form id="conversion-form">
+                <select id="conversion-type" name="conversionType" size="1">   
+                </select>
+                        
+                <div id="conversion-details" class="conversion-container" style="display:none;">
+                        <div class="input-container">
+                                <input type="text" id="initial-value" name="initialValue" size="7" value="1"/>
+                                <select id="start-unit" name="startUnit">
+                                        <option value="">Sélectionnez une unité</option>
+                                </select>
+                        </div>
+                
+                        <div class="output-container">
+                                <span>EN</span> 
+                                <select id="destination-unit" name="destinationUnit">
+                                        <option value="">Sélectionnez une unité</option>
+                                </select><br><br>
+                        </div>
+                        
+                </div>
+        </form>
   </div>
-<div id="result-container" ></div>
+<div id="result-container" style="display:none">
+
+
+</div>
 
 <div id="credits" class="credits"> Tant qu'à faire, un peu d'autopromo, découvrez :
         <div class="containerCredits">
@@ -71,1504 +72,234 @@
 
 
 
- <!-- selecteurs dynamiques --> 
-<script type="text/javascript">
-   const conversionTypeElement = document.getElementById("conversion-type");
-    const conversionFormElement = document.getElementById("conversion-details");
-
-    conversionTypeElement.addEventListener("change", function() {
-
-    	if(conversionTypeElement.value === ""){
-    		conversionFormElement.style.display = "none";
-    	} else {
-    		conversionFormElement.style.display = "block";
-    	}
-      
-    });
-</script>
 
  <!-- valeurs, traitements et résultats --> 
 <script type="text/javascript">
 
-  const form = document.getElementById('conversion-form');
-  const resultContainer = document.getElementById('result-container');
-  const conversionTypeSelect = document.getElementById('conversion-type');
+        const integerFormatter = new Intl.NumberFormat('fr-FR', {
+        maximumFractionDigits: 0
+        });
+        const smallNumberFormatter = new Intl.NumberFormat('fr-FR', {
+        maximumFractionDigits: 8,
+        minimumFractionDigits: 8,
+        });
+        const smallNumberInvertedFormatter = new Intl.NumberFormat('fr-FR', {
+        maximumFractionDigits: 12,
+        minimumFractionDigits: 12,
+        });
+        const numberDisplayFormatter = new Intl.NumberFormat('fr-FR', {
+        maximumFractionDigits: 3,
+        minimumFractionDigits: 3
+        });
+        const numberInvertedDisplayFormatter = new Intl.NumberFormat('fr-FR', {
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2
+        });
 
-  // Événement pour mettre à jour les options de conversion en fonction de la sélection de l'utilisateur
-  conversionTypeSelect.addEventListener('change', function(event) 
-  {
-    const conversionType = event.target.value;
-    console.log(conversionType);
-    const startUnit = document.getElementById('start-unit');
-    const destinationUnit = document.getElementById('destination-unit');
+        function NewGroup(title,style){
+                return {label:title, 
+                        style:style, 
+                        conversions:[],
+                        pushConversions: function(arrConv){
+                                arrConv.forEach(con => {
+                                        this.conversions.push(NewConversion(con[0], con[1], con[2] ? con[2]:''));
+                                })
+                        }
+                }
+        }
+        function NewConversion(title, value, style){
+                return {label:title, value:value, style:style}
+        }
 
-    if (conversionType === 'volume') 
-    {
-      startUnit.innerHTML = `
-<optgroup label="Unités standard">
-        <option value="0.000001">mm3</option>
-        <option value="0.001">cm3</option>
-        <option value="1">dm3</option>
-        <option value="1000">m3</option>
-        <option value="1000000000">hm3 (hectometre cube)</option>
-        <option value="1000000000000">km3</option>
-        <option value="0.113"  style="font-weight:bold; color:limegreen;">Banane</option>
-      </optgroup>
-<optgroup label="Unités de cuisine">
-        <option value="0.001">millilitre</option>
-        <option value="0.01">centilitre</option>
-        <option value="0.1">décilitre</option>
-        <option value="1" selected>litre</option>
-        <option value="100">hectolitre</option>
-        <option value="0.005">Cuillère à café</option>
-        <option value="0.014">Cuillère à soupe</option>
-        <option value="0.237">Tasse (fr) ou chopine (ca)</option>
-</optgroup>
-<optgroup label="Verres et Bouteilles">
-        <option value="0.125">Galopin</option>
-        <option value="0.25">Demi</option>       
-        <option value="0.473176">Pinte (US Pint)</option>
-        <option value="0.568">Pinte (UK Pint)</option>
-        <option value="0.375">Chopine</option>
-        <option value="0.75">Bouteille de vin standard</option>
-        <option value="1.5">Bouteille d'Evian</option>
-        <option value="3">Jéroboam </option>
-        <option value="4.5">Réhoboam </option>
-        <option value="6">Mathusalem </option>
-        <option value="9">Salmanazar </option>
-        <option value="12">Balthazar </option>
-        <option value="15">Nabuchodonosor  </option>
-        <option value="18">Melchior  </option>
-</optgroup>
-<optgroup label="Tout le reste">
-        <option value="0.004">Dé à coudre</option>
-        <option value="0.003">Éjaculat d'un humain</option>
-        <option value="0.007">Éjaculat d'un taureau</option>
-        <option value="0.070">Éjaculat d'un étalon</option>
-        <option value="0.250">Éjaculat du lion</option>
-        <option value="20">Éjaculat de la baleine bleue</option>
-        <option value="3.78541">Gallon (US Gallon)</option>
-        <option value="159">Baril de pétrole</option>
-        <option value="100000000">Notre-Dame de Paris</option>
-        <option value="200000000">Notre-Dame d'Amiens</option>  
-        <option value="2592341000">Pyramide de Kheops</option>
-        <option value="10">Toilettes (par chasse tirée)</option>
-        <option value="5">Toilettes double-flux (par chasse tirée)</option>
-        <option value="15">Lave-vaisselle (par cycle de lavage)</option>  
-        <option value="50">Lave-linge (par cycle de lavage)</option>
-        <option value="70">Douche</option>
-        <option value="126">Bain</option>
-        <option value="15">Production d'urine / vache / jour</option>
-        <option value="2200">Montgolfière</option>
-        <option value="600000">Piscine municpale (25x12,5x2m)</option>
-        <option value="3750000">Piscine olympique (50x25x3m)</option>
-        <option value="650000000">Mega bassine de Sainte-Soline</option>
-        <option value="127218000">Bassin de La Vilette</option>
-        <option value="56940000">Canal de l'Ourq</option>
-        <option value="3620300000000">Lac du Bourget</option>
-        <option value="1124000000000">Lac d'Annecy</option>
-        <option value="89000000000000">Lac Leman</option>      
-        <option value="8700000000">Lac du Drennec (Bretagne)</option> 
-        <option value="3600000000">Lac du Graon (Vendée)</option>
-        <option value="1272000000000">Lac de Serre-Ponçon</option>
-        <option value="3000000000">Etang de saint-Quentin en Yvelines</option>
-        <option value="980000000000">Etang de Berre</option>
-        <option value="500000000000">Etang de Cazaux (Gironde)</option>
-        <option value="460000000">Grand Bassin du chateau de Versailles</option> 
-        <option value="288000000">Pièce d'eau des Suisses (Chateau de Versailles)</option> 
-        <option value="3765000000000000000">Mer Méditerannée</option> 
-        <option value="120">Trou Mélanchonien dans les Alpes</option>
-        <option value="500000">Débit/sec de la Seine (à Paris)</option>
-        <option value="1690000">Débit/sec du Rhône (à Beaucaire)</option>
-        <option value="54750">Consommation eau potable par personne/an (France)</option>
-        <option value="5300000000000">Eau utilisée pour refroidir les centrales nucléaires/an</option>
-        <option value="1000000000000">Eau potable perdue /an (fuites réseau distribution)</option>
-        <option value="5000000000000">Eau potable fournie /an par le réseau de distribution</option>
-        <option value="503000000000000">Eau apportée par la pluie et la neige en France/an</option>
-        <option value="314000000000000">Eau évaporée en France/an</option>
-        <option value="200000000000000">Eau renouvelable en France/an</option>
-</optgroup>
+        const AppConversions = {
+                Categories :  [],
 
-      `;
-      destinationUnit.innerHTML = `
-        <option value="">Sélectionnez une unité</option>
-<optgroup label="Unités standard">
-        <option value="0.000001">mm3</option>
-        <option value="0.001">cm3</option>
-        <option value="1">dm3</option>
-        <option value="1000">m3</option>
-        <option value="1000000000">hm3 (hectometre cube)</option>
-        <option value="1000000000000">km3</option>
-        <option value="0.113" style="font-weight:bold; color:limegreen;">Banane</option>
-      </optgroup>
-<optgroup label="Les trucs de cuisine">
-        <option value="0.001">millilitre</option>
-        <option value="0.01">centilitre</option>
-        <option value="0.1">décilitre</option>
-        <option value="1">litre</option>
-        <option value="100">hectolitre</option>
-        <option value="0.005">Cuillère à café</option>
-        <option value="0.014">Cuillère à soupe</option>
-        <option value="0.237">Tasse (fr) ou chopine (ca)</option>
-</optgroup>
-<optgroup label="Verres et Bouteilles">
-        <option value="0.125">Galopin</option>
-        <option value="0.25">Demi</option>       
-        <option value="0.473176">Pinte (US Pint)</option>
-        <option value="0.568">Pinte (UK Pint)</option>
-        <option value="0.375">Chopine</option>
-        <option value="0.75">Bouteille de vin standard</option>
-        <option value="1.5">Bouteille d'Evian</option>
-        <option value="3">Jéroboam </option>
-        <option value="4.5">Réhoboam </option>
-        <option value="6">Mathusalem </option>
-        <option value="9">Salmanazar </option>
-        <option value="12">Balthazar </option>
-        <option value="15">Nabuchodonosor  </option>
-        <option value="18">Melchior  </option>
-</optgroup>
-<optgroup label="Tout le reste">
-        <option value="0.004">Dé à coudre</option>
-        <option value="0.003">Éjaculat d'un humain</option>
-        <option value="0.007">Éjaculat d'un taureau</option>
-        <option value="0.070">Éjaculat d'un étalon</option>
-        <option value="0.250">Éjaculat du lion</option>
-        <option value="20">Éjaculat de la baleine bleue</option>
-        <option value="3.78541">Gallon (US Gallon)</option>
-        <option value="159">Baril de pétrole</option>
-        <option value="100000000">Notre-Dame de Paris</option>
-        <option value="200000000">Notre-Dame d'Amiens</option>   
-        <option value="2592341000">Pyramide de Kheops</option>
-        <option value="10">Toilettes (par chasse tirée)</option>
-        <option value="5">Toilettes double-flux (par chasse tirée)</option>
-        <option value="15">Lave-vaisselle (par cycle de lavage)</option>  
-        <option value="50">Lave-linge (par cycle de lavage)</option>  
-        <option value="70">Douche</option>
-        <option value="126">Bain</option>
-        <option value="2200">Montgolfière</option>
-        <option value="600000">Piscine municpale (25x12,5x2m)</option>
-        <option value="3750000">Piscine olympique (50x25x3m)</option>
-        <option value="650000000">Mega bassine de Sainte-Soline</option>
-        <option value="127218000">Bassin de La Vilette</option>
-        <option value="56940000">Canal de l'Ourq</option>
-        <option value="3620300000000">Lac du Bourget</option>
-        <option value="1124000000000">Lac d'Annecy</option>
-        <option value="89000000000000">Lac Leman</option>      
-        <option value="8700000000">Lac du Drennec (Bretagne)</option> 
-        <option value="3600000000">Lac du Graon (Vendée)</option>
-        <option value="1272000000000">Lac de Serre-Ponçon</option>
-        <option value="3000000000">Etang de saint-Quentin en Yvelines</option>
-        <option value="980000000000">Etang de Berre</option>
-        <option value="500000000000">Etang de Cazaux (Gironde)</option>
-        <option value="460000000">Grand Bassin du chateau de Versailles</option> 
-        <option value="288000000">Pièce d'eau des Suisses (Chateau de Versailles)</option>
-        <option value="3765000000000000000">Mer Méditerannée</option>  
-        <option value="120">Trou Mélanchonien dans les Alpes</option>
-        <option value="500000">Débit/sec de la Seine (à Paris)</option>
-        <option value="1690000">Débit/sec du Rhône (à Beaucaire)</option>
-        <option value="54750">Consommation eau potable par personne/an (France)</option>
-        <option value="5300000000000">Eau utilisée pour refroidir les centrales nucléaires/an</option>
-        <option value="1000000000000">Eau potable perdue /an (fuites réseau distribution)</option>
-        <option value="5000000000000">Eau potable fournie /an par le réseau de distribution</option>
-        <option value="503000000000000">Eau apportée par la pluie et la neige en France/an</option>
-        <option value="314000000000000">Eau évaporée en France/an</option>
-        <option value="200000000000000">Eau renouvelable en France/an</option>
-      </optgroup>
+                Conversions : {},
 
-      `;
-    } if (conversionType === 'weight') {
-      startUnit.innerHTML = `
-        <option value="1">Gramme</option>
-        <option value="0.2">Carat</option>
-        <option value="120" style="font-weight:bold; color:limegreen;">Banane</option>
-        <option value="453.5">Livre (lb)</option>
-        <option value="1000" selected>Kilogramme</option>
-        <option value="100000">Quintal / Quintaux (Qt)</option>
-        <option value="1000000">Tonne</option>
-        <option value="28">Once anglo-saxonne (oz)</option>
-        <option value="27.264">Once romaine</option>
-        <option value="30.594">Once française (Ancien Régime)</option>
-        <option value="31.1034768">Once troy (ozt)</option>
-        <option value="100">Once néerlandaise (ons)</option>
-
-<optgroup label="Agriculture">
-<option value="10">Tomate cerise</option>
-        <option value="0.05">Grain de blé</option>
-        <option value="7200000">Blé tendre/ha en France 2022</option>
-        <option value="5300000">Blé dur/ha en France 2022</option>
-        <option value="8000000">Blé tendre/ha en agri conventionnelle</option>
-        <option value="3000000">Blé tendre/ha en France en  agri bio</option>
-        <option value="800">Blé nécessaire pour fabriquer 1kg de pain</option>
-        <option value="200">Blé nécessaire pour fabriquer 1 baguette</option>
-        <option value="6600000">Orge d'hiver/ha en France 2022</option>
-        <option value="3700000">Colza/ha en France 2022</option>
-        <option value="2100000">Tournesol/ha en France 2022</option>
-        <option value="2200000">Soja/ha en France 2022</option>
-        <option value="13431661.12">Maïs/ha en Illinois (USA) 2022</option>
-        <option value="10300000">Maïs grain irrigué/ha en France 2022</option>
-        <option value="7100000">Maïs grain non irrigué/ha en France 2022</option>>
-        <option value="45000">Meule de Comté (grande)</option>
-        <option value="4500">Laine produite par an par mouton</option>
-        <option value="43013000000">Phytosanitaires agri conventionnelle (Fce 2022)</option>
-        <option value="25000000000">Phytosanitaires agri bio (Fce 2022)</option>
-        <option value="27210">Un boisseau US de blé/soja</option>
-        <option value="25400">Un boisseau US de maïs</option>
-</optgroup>
-<optgroup label="Divers">
-<option value="1.67">Pièce de un centime</option> 
-<option value="3.92">Pièce de cinq centimes</option>
-<option value="7.5">Pièce de un euro</option> 
-<option value="8.5">Pièce de deux euros</option>   
-        <option value="2.7">Balle de ping-pong</option>
-        <option value="0.8">Cigarette</option>
-        <option value="0.28">Grain de riz</option>
-        <option value="0.07">Coquillette</option>
-        <option value="0.57012">Spaghetti Barilla n°3</option>
-        <option value="1">Cacahuète</option>    
-        <option value="3.5">Mini-Carambar</option>
-        <option value="4.23">Dragibus</option>
-        <option value="5.71">Fraise Tagada</option> 
-        <option value="8.57>Rouleau de reglisse Rotella</option>   
-        <option value="21.5">Barre de Kinder Bueno</option>
-        <option value="18">Nugget de poulet Macdo</option>
-        <option value="40">Tender de poulet KFC</option>
-        <option value="60">Oeuf de poule</option>
-        <option value="100">Cordon bleu Père Dodu</option>
-        <option value="100">Baton de berger, Justin Bridou</option>
-</optgroup>
-<optgroup label="Animaux">     
-        <option value="120">Herisson commun</option>
-        <option value="330">Ecureuil roux</option>
-        <option value="3000">Marmotte des Alpes</option>
-        <option value="9000">Raton laveur</option>
-        <option value="1250">Lapin nain</option>
-        <option value="8000">Lapin géant des Flandres</option>
-        <option value="180000">Grizzli</option>
-        <option value="450000">Ours blanc</option>
-        <option value="310">Pigeon parisien</option>
-        <option value="1500">Chihuahua</option>
-        <option value="27000">Basset Hound femelle</option>
-        <option value="34000">Basset Hound mâle</option>
-        <option value="80000">Dogue du Tibet</option>
-        <option value="890000">Grand Requin Blanc</option>
-        <option value="6000000">Elephant d'Afrique mâle</option> 
-        <option value="4000000">Elephant d'Asie mâle</option>
-</optgroup>
- <optgroup label="Personnes">       
-        <option value="45000">Kate Moss à 20 ans</option>
-        <option value="52000">Emily Ratajkowsi</option>      
-        <option value="62000">Charlie Chaplin</option>
-        <option value="68000">Tom Cruise</option>
-        <option value="69000">Beyoncé</option>
-        <option value="70000">Emmanuel Macron</option>
-        <option value="77000">Novak Djokovic</option>
-        <option value="80000">DrScratch</option>
-        <option value="81000">Carlos Alcaraz</option>
-        <option value="85000">Rafael Nadal</option>
-        <option value="85000">Roger Federer</option>
-        <option value="105000">Mike Tyson</option>
-        <option value="107000">Mohamed Ali</option>
-</optgroup>
- <optgroup label="Véhicules">       
-        <option value="520000">2 CV</option>
-        <option value="981000">Twingo</option>
-        <option value="1475000">Kangoo 3</option>
-        <option value="1800000">Tesla Modèle 3</option>
-        <option value="2100000">Tesla Modèle S</option>
-        <option value="2400000">Tesla Modèle X</option>
-        <option value="2363000">Ford F-Series</option>
-        <option value="2177000">Ram Pickup</option>
-        <option value="46000000000">Paquebot Titanic</option>
-        <option value="55000000000">Paquebot Le France</option>
-        <option value="114000000000">Paquebot Costa Concordia</option>
-        <option value="75000000000">Porte Avions Charles de Gaulle</option>
-        <option value="100000000000">Porte Avions USS Gerald Ford</option>
-        <option value="9500000000">Sous-marin Le Redoutable</option>
-        <option value="26000000">Camion poubelle</option>
-        <option value="66000000">Boeing 737 à vide</option>
-        <option value="183500000">Boeing 747 à vide</option>
-        <option value="442000000">Boeing 747-8 à vide</option>
-        <option value="40300000">Airbus A320 à vide</option>
-        <option value="120000000">Airbus A330 à vide</option>
-        <option value="9979000">Rafale</option>
-</optgroup>
-<optgroup label="Monuments">
-        <option value="365000000000">Empire State Building</option>
-        <option value="10100000000">Tour Eiffel</option>
-        <option value="5750000000000">Pyramide de Gizeh</option>
-</optgroup>
-      `;
-      destinationUnit.innerHTML = `
-    <option value="">Sélectionnez une unité</option>
-        <option value="1">Gramme</option>
-        <option value="0.2">Carat</option>
-        <option value="120" style="font-weight:bold; color:limegreen;">Banane</option>
-        <option value="453.5">Livre (lb)</option>
-        <option value="1000">Kilogramme</option>
-        <option value="100000">Quintal / Quintaux (Qt)</option>
-        <option value="1000000">Tonne</option>
-        <option value="28">Once anglo-saxonne (oz)</option>
-        <option value="27.264">Once romaine</option>
-        <option value="30.594">Once française (Ancien Régime)</option>
-        <option value="31.1034768">Once troy (ozt)</option>
-        <option value="100">Once néerlandaise (ons)</option>
-
-<optgroup label="Agriculture">
-<option value="10">Tomate cerise</option>
-        <option value="0.05">Grain de blé</option>
-        <option value="7200000">Blé tendre/ha en France 2022</option>
-        <option value="5300000">Blé dur/ha en France 2022</option>
-        <option value="8000000">Blé tendre/ha en agri conventionnelle</option>
-        <option value="3000000">Blé tendre/ha en France en  agri bio</option>
-        <option value="800">Blé nécessaire pour fabriquer 1kg de pain</option>
-        <option value="200">Blé nécessaire pour fabriquer 1 baguette</option>
-        <option value="6600000">Orge d'hiver/ha en France 2022</option>
-        <option value="3700000">Colza/ha en France 2022</option>
-        <option value="2100000">Tournesol/ha en France 2022</option>
-        <option value="2200000">Soja/ha en France 2022</option>
-        <option value="13431661.12">Maïs/ha en Illinois (USA) 2022</option>
-        <option value="10300000">Maïs grain irrigué/ha en France 2022</option>
-        <option value="7100000">Maïs grain non irrigué/ha en France 2022</option>>
-        <option value="45000">Meule de Comté (grande)</option>
-        <option value="4500">Laine produite par an par mouton</option>
-        <option value="43013000000">Phytosanitaires agri conventionnelle (France 2022)</option>
-        <option value="25000000000">Phytosanitaires agri bio (France 2022)</option>
-        <option value="27210">Un boisseau US de blé/soja</option>
-        <option value="25400">Un boisseau US de maïs</option>
-</optgroup>
-<optgroup label="Divers">
-<option value="1.67">Pièce de un centime</option> 
-<option value="3.92">Pièce de cinq centimes</option>
-<option value="7.5">Pièce de un euro</option>  
-<option value="8.5">Pièce de deux euros</option> 
-        <option value="2.7">Balle de ping-pong</option>
-        <option value="0.8">Cigarette</option>
-        <option value="0.28">Grain de riz</option>
-        <option value="0.07">Coquillette</option>
-        <option value="0.57012">Spaghetti Barilla n°3</option>
-        <option value="1">Cacahuète</option>    
-        <option value="3.5">Mini-Carambar</option>
-        <option value="4.23">Dragibus</option>
-        <option value="5.71">Fraise Tagada</option> 
-        <option value="8.57>Rouleau de reglisse Rotella</option>    
-        <option value="21.5">Barre de Kinder Bueno</option>
-        <option value="18">Nugget de poulet Macdo</option>
-        <option value="40">Tender de poulet KFC</option>
-        <option value="60">Oeuf de poule</option>
-        <option value="100">Cordon bleu Père Dodu</option>
-        <option value="100">Baton de berger, Justin Bridou</option>
-</optgroup>
-<optgroup label="Animaux">     
-        <option value="120">Herisson commun</option>
-        <option value="330">Ecureuil roux</option>
-        <option value="3000">Marmotte des Alpes</option>
-        <option value="9000">Raton laveur</option>
-        <option value="1250">Lapin nain</option>
-        <option value="8000">Lapin géant des Flandres</option>
-        <option value="180000">Grizzli</option>
-        <option value="450000">Ours blanc</option>
-        <option value="310">Pigeon parisien</option>
-        <option value="1500">Chihuahua</option>
-        <option value="27000">Basset Hound femelle</option>
-        <option value="34000">Basset Hound mâle</option>
-        <option value="80000">Dogue du Tibet</option>
-        <option value="890000">Grand Requin Blanc</option>
-        <option value="6000000">Elephant d'Afrique mâle</option> 
-        <option value="4000000">Elephant d'Asie mâle</option>
-</optgroup>
- <optgroup label="Personnes">  
-        <option value="45000">Kate Moss à 20 ans</option>
-        <option value="52000">Emily Ratajkowsi</option>      
-        <option value="62000">Charlie Chaplin</option>
-        <option value="68000">Tom Cruise</option>
-        <option value="69000">Beyoncé</option>
-        <option value="70000">Emmanuel Macron</option>
-        <option value="77000">Novak Djokovic</option>
-        <option value="80000">DrScratch</option>
-        <option value="81000">Carlos Alcaraz</option>
-        <option value="85000">Rafael Nadal</option>
-        <option value="85000">Roger Federer</option>
-        <option value="105000">Mike Tyson</option>
-        <option value="107000">Mohamed Ali</option>
-</optgroup>
- <optgroup label="Véhicules">       
-        <option value="520000">2 CV</option>
-        <option value="981000">Twingo</option>
-        <option value="1475000">Kangoo 3</option>
-        <option value="1800000">Tesla Modèle 3</option>
-        <option value="2100000">Tesla Modèle S</option>
-        <option value="2400000">Tesla Modèle X</option>
-        <option value="2363000">Ford F-Series</option>
-        <option value="2177000">Ram Pickup</option>
-        <option value="46000000000">Paquebot Titanic</option>
-        <option value="55000000000">Paquebot Le France</option>
-        <option value="114000000000">Paquebot Costa Concordia</option>
-        <option value="75000000000">Porte Avions Charles de Gaulle</option>
-        <option value="100000000000">Porte Avions USS Gerald Ford</option>
-        <option value="9500000000">Sous-marin Le Redoutable</option>
-        <option value="26000000">Camion poubelle</option>
-        <option value="66000000">Boeing 737 à vide</option>
-        <option value="183500000">Boeing 747 à vide</option>
-        <option value="442000000">Boeing 747-8 à vide</option>
-        <option value="40300000">Airbus A320 à vide</option>
-        <option value="120000000">Airbus A330 à vide</option>
-        <option value="9979000">Rafale</option>
-</optgroup>
-<optgroup label="Monuments">
-        <option value="365000000000">Empire State Building</option>
-        <option value="10100000000">Tour Eiffel</option>
-        <option value="5750000000000">Pyramide de Gizeh</option>
-</optgroup>
-      `;
-    } if (conversionType === 'distance') {
-      startUnit.innerHTML = `
-        <option value="0.01">Centimètres</option>
-        <option value="1" selected>Mètre(s)</option>
-        <option value="1000">Kilometre(s)</option>
-        <option value="1609">Miles(s) </option>
-        <option value="1852">Mile(s) nautique(s)</option>
-        <option value="0.04">Balle de ping-pong</option>
-        <option value="0.044">Balle de golf</option>
-        <option value="0.0668">Balle de tennis</option>
-        <option value="0.16" style="font-weight:bold; color:limegreen;">Banane</option>
-        <option value="0.25">Noix de coco</option>
-        <option value="0.30">Concombre</option>
-        <option value="0.075">Coton Tige</option>
-        <option value="0.24">Rocco Sifredi ****</option>
-        <option value="0.05">Schtroumpf</option>
-        <option value="0.55">Manneken-Pis</option>
-        <option value="5.50">Intestin grêle</option>
-        <option value="0.2972">Pied grec</option>
-        <option value="1.32">Mimie Mathy</option>
-        <option value="1.66">Nicolas Sarkozy</option>
-        <option value="1.88">Tony Parker</option>
-        <option value="1.96">Charles de Gaulle</option>
-        <option value="2.15">Rudy Gobert</option>
-        <option value="1.7">Tom Cruise</option>
-        <option value="1.69">Beyoncé</option>
-        <option value="1.7">Emmanuel Macron</option>
-        <option value="1.88">Novak Djokovic</option>
-        <option value="1.85">Carlos Alcaraz</option>
-        <option value="1.85">Rafael Nadal</option>
-        <option value="1.85">Roger Federer</option>
-        <option value="1.93">Yannick Noah</option>
-        <option value="2.11">Joakim Noah</option>
-        <option value="3.20">Etage (immeuble hausmanien)</option>
-        <option value="105">Terrain de foot</option>
-        <option value="105">Arc de Triomphe</option>
-        <option value="35">Notre-Dame de Paris (ss voutes)</option> 
-        <option value="42.30">Notre-Dame d'Amiens (ss voutes)</option> 
-        <option value="138">Pyramide de Khéops (hauteur)</option>
-        <option value="300">Tour Eiffel</option>
-        <option value="381">Empire State Building</option>
-        <option value="828">Burj Khalifa(Dubaï)</option>
-        <option value="250">Du capitole -> Roche tarpeienne</option>
-        <option value="2141">Pont de Normandie (max)</option>
-        <option value="5440">Nation -> Opera</option>
-        <option value="2180">Bastille -> Nation</option>
-        <option value="1910">Champs Elysées</option>
-        <option value="4807">Mont-Blanc</option>
-        <option value="8849">Everest</option>
-        <option value="4500">Mont-Saint-Michel -> Bretagne</option>
-        <option value="60000">Nantes -> Bretagne</option>
-        <option value="150">Largeur du Canal de Panama</option>
-        <option value="80000">Longeur du Canal de Panama</option>
-        <option value="21700">Manhattan (longeur)</option>
-        <option value="40000">Détroit d'Ormuz</option>
-        <option value="50000">Calais -> Douvres</option>
-        <option value="900680">Brest -> Strasbourg</option>
-        <option value="5836000">Paris -> NewYork</option>
-        <option value="40075000">Tour de la Terre</option>
-        <option value="384400000">Terre -> Lune</option>
-        <option value="62100000000">Terre -> Mars</option>
-        <option value="149000000000">Terre -> Soleil</option>
-      `;
-      destinationUnit.innerHTML = `
-        <option value="">Sélectionnez une unité</option>
-        <option value="0.01">Centimètres</option>
-        <option value="1">Mètres</option>
-        <option value="1000">Kilomètres</option>
-        <option value="1609">Miles(s) </option>
-        <option value="1852">Mile(s) nautique(s)</option>
-        <option value="0.04">Balle de ping-pong</option>
-        <option value="0.044">Balle de golf</option>
-        <option value="0.0668">Balle de tennis</option>
-        <option value="0.16" style="font-weight:bold; color:limegreen;">Banane</option>
-        <option value="0.25">Noix de coco</option>
-        <option value="0.075">Coton Tige</option>
-        <option value="0.30">Concombre</option>
-        <option value="0.24">Rocco Sifredi ****</option>
-        <option value="0.05">Schtroumpf</option>
-        <option value="0.55">Manneken-Pis</option>
-        <option value="5.50">Intestin grêle</option>
-        <option value="0.2972">Pied grec</option>
-        <option value="1.32">Mimie Mathy</option>
-        <option value="1.66">Nicolas Sarkozy</option>
-        <option value="1.88">Tony Parker</option>
-        <option value="1.96">Charles de Gaulle</option>
-        <option value="2.15">Rudy Gobert</option>
-        <option value="1.7">Tom Cruise</option>
-        <option value="1.69">Beyoncé</option>
-        <option value="1.7">Emmanuel Macron</option>
-        <option value="1.88">Novak Djokovic</option>
-        <option value="1.85">Carlos Alcaraz</option>
-        <option value="1.85">Rafael Nadal</option>
-        <option value="1.85">Roger Federer</option>
-        <option value="1.93">Yannick Noah</option>
-        <option value="2.11">Joakim Noah</option>
-        <option value="3.20">Etage (immeuble hausmanien)</option>
-        <option value="105">Terrain de foot</option>
-       <option value="105">Arc de Triomphe</option>
-        <option value="35">Notre-Dame de Paris (ss voutes)</option> 
-        <option value="42.30">Notre-Dame d'Amiens (ss voutes)</option> 
-        <option value="138">Pyramide de Khéops (hauteur)</option>
-        <option value="300">Tour Eiffel</option>
-        <option value="381">Empire State Building</option>
-        <option value="828">Burj Khalifa(Dubaï)</option>
-        <option value="250">Du capitole -> Roche tarpeienne</option>
-        <option value="2141">Pont de Normandie (max)</option>
-        <option value="5440">Nation -> Opera</option>
-        <option value="2180">Bastille -> Nation</option>
-        <option value="1910">Champs Elysées</option>
-        <option value="4807">Mont-Blanc</option>
-        <option value="8849">Everest</option>
-        <option value="4500">Mont-Saint-Michel -> Bretagne</option>
-        <option value="60000">Nantes -> Bretagne</option>
-        <option value="150">Largeur du Canal de Panama</option>
-        <option value="80000">Longeur du Canal de Panama</option>
-        <option value="21700">Manhattan (longeur)</option>
-        <option value="40000">Détroit d'Ormuz</option>
-        <option value="50000">Calais -> Douvres</option>
-        <option value="900680">Brest -> Strasbourg</option>
-        <option value="5836000">Paris -> NewYork</option>
-        <option value="40075000">Tour de la Terre</option>
-        <option value="384400000">Terre -> Lune</option>
-        <option value="62100000000">Terre -> Mars</option>
-        <option value="149000000000">Terre -> Soleil</option>
-      `;
-
-      } if (conversionType === 'surfaces') {
-      startUnit.innerHTML = `
-        <option value="1" selected>m2</option>
-        <option value="0.0929">Square feet (sd ft)</option>
-        <option value="100">ares</option>
-        <option value="10000">hectare</option>
-        <option value="1000000">km2</option>
-        <option value="4046.85">acres</option>
-        <option value="0.003" style="font-weight:bold; color:limegreen;">Banane</option>
-        <option value="0.000541">Pièce de 1 euro</option>
-        <option value="0.0048">Carte de visite classique</option>
-        <option value="0.00522">Carte à jouer</option>      
-        <option value="0.00672">Carte de Tarot</option>
-        <option value="0.01925">Pleïade</option>        
-        <option value="0.0198">Livre de poche</option>
-        <option value="0.0623">Feuille A4</option>
-        <option value="0.1504">Format Berlinois (Le Mondde, L'Humanité...)</option>
-        <option value="0.23575">Format Tabloïd (The Sun, Libération...)</option>
-        <option value="4.183">Table de ping-pong</option>
-        <option value="1.6562">Tatami</option>
-        <option value="60">Terrain de pétanque</option>
-        <option value="69.68">Terrain de badminton</option>
-        <option value="195.629">Terrain de tennis</option>
-        <option value="420">Terrain de basket</option>
-        <option value="195.629">Terrain de handball</option>
-        <option value="7266">Terrain de football</option>
-        <option value="500000">Terrain de Golf 18 trous</option>
-        <option value="91">Logement moyen en Fce</option>
-        <option value="109">Logement moyen en Fce (proprétaire)</option>
-        <option value="68">Logement moyen en Fce (locataire)</option>
-        <option value="2000">Eolienne, emrpise au sol (2MW)</option>
-        <option value="20000">Eolienne, emprise physique (2MW)</option>
-        <option value="690000">Exploitation agricole moyenne en France</option>
-        <option value="50000">Exploitation agricole moyenne DOM-TOM</option>
-        <option value="54000">Exploitation viticole moyenne en Champagne</option>
-        <option value="54000">Exploitation viticole moyenne en Champagne</option>
-        <option value="85000">Exploitation viticole moyenne en Bourgogne</option>
-        <option value="170000">Exploitation viticole moyenne en Bordelais</option>
-        <option value="18000">Exploitation viticole moyenne en Espagne</option>
-        <option value="20000">Exploitation viticole moyenne en Italie</option>
-        <option value="300000">Exploitation viticole moyenne en Californie</option>
-        <option value="100000">Mega Bassine de Sainte-Soline</option>
-        <option value="21000">Place du Trocadéro</option>
-        <option value="439300">Cimetière du Pêre Lachaise</option>
-        <option value="926600">Ensemble des cimetières parisiens</option>
-        <option value="7000000">Cîté des morts, Le Caire</option>
-        <option value="245000">Champs de mars</option>
-        <option value="8460000">Bois de Boulogne</option>
-        <option value="9950000">Bois de Vincennes</option>
-        <option value="80000">Parc Monceau (Paris)</option>
-        <option value="1050000">Parc de la Tête d'or (Lyon)</option>
-        <option value="3410000">Central Park</option>
-        <option value="440000">Vatican</option>
-        <option value="352000000">Las Vegas</option>
-        <option value="46000">Parc des expositions de Villepinte</option>
-        <option value="340000">Parc Asterix</option>
-        <option value="22300000">Disneyland Paris</option>
-        <option value="6000">Notre-Dame de Paris</option>
-        <option value="7700">Notre-Dame d'Amiens</option>   
-        <option value="52900">Pyramide de Khéops</option>
-        <option value="177020000">Forêt de Fontainebleau</option>
-        <option value="32380000">Aéroport Roissy Charles de Gaulle</option>
-        option value="15000000">Aéroport Orly</option>
-        <option value="105000000">Paris</option>
-        <option value="48870000">Lyon</option>
-        <option value="240600000">Marseille</option>
-        <option value="550000000000">France</option>
-        <option value="148000000000000">Superficie terrestre : terres émergées</option>
-	<option value="362000000000000">Superficie terrestre : oceans et mers</option>
-        <option value="510000000000000">Superficie  terrestre</option>
-
-      `;
-      destinationUnit.innerHTML = `
-        <option value="">Sélectionnez une unité</option>
-        <option value="1">m2</option>
-        <option value="0.0929">Square feet (sd ft)</option>
-        <option value="100">ares</option>
-        <option value="10000">hectare</option>
-        <option value="1000000">km2</option>
-        <option value="4046.85">acres</option>
-        <option value="0.0024" style="font-weight:bold; color:limegreen;">Banane</option>
-        <option value="0.000541">Pièce de 1 euro</option>
-        <option value="0.0048">Carte de visite classique</option>
-        <option value="0.00522">Carte à jouer</option>      
-        <option value="0.00672"> Carte de Tarot</option>
-        <option value="0.01925">Pleïade</option>
-        <option value="0.0198">Livre de poche</option>
-        <option value="0.0623">Feuille A4</option>
-        <option value="0.1504">Format Berlinois (Le Mondde, L'Humanité...)</option>
-        <option value="0.23575">Format Tabloïd (The Sun, Libération...)</option>
-        <option value="4.183">Table de ping-pong</option>
-        <option value="1.6562">Tatami</option>
-        <option value="60">Terrain de pétanque</option>
-        <option value="69.68">Terrain de badminton</option>
-        <option value="195.629">Terrain de tennis</option>
-        <option value="420">Terrain de basket</option>
-        <option value="195.629">Terrain de handball</option>
-        <option value="7266">Terrain de football</option>
-        <option value="500000">Terrain de Golf (18 trous)</option>
-        <option value="91">Logement moyen en Fce</option>
-        <option value="109">Logement moyen en Fce (proprétaires)</option>
-        <option value="68">Logement moyen en Fce (locataires)</option>
-        <option value="2000">Eolienne, emrpise au sol (2MW)</option>
-        <option value="20000">Eolienne, emprise physique (2MW)</option>
-        <option value="690000">Exploitation agricole moyenne en France</option>
-        <option value="50000">Exploitation agricole moyenne DOM-TOM</option>
-        <option value="54000">Exploitation viticole moyenne en Champagne</option>
-        <option value="85000">Exploitation viticole moyenne en Bourgogne</option>
-        <option value="170000">Exploitation viticole moyenne en Bordelais</option>
-        <option value="18000">Exploitation viticole moyenne en Espagne</option>
-        <option value="20000">Exploitation viticole moyenne en Italie</option>
-        <option value="300000">Exploitation viticole moyenne en Californie</option>
-        <option value="100000">Mega Bassine de Sainte-Soline</option>
-        <option value="21000">Place du Trocadéro</option>
-        <option value="439300">Cimetière du Pêre Lachaise</option>
-        <option value="926600">Ensemble des cimetières parisiens</option>
-        <option value="7000000">Cîté des morts, Le Caire</option>
-        <option value="245000">Champs de mars</option>
-        <option value="8460000">Bois de Boulogne</option>
-        <option value="9950000">Bois de Vincennes</option>
-        <option value="80000">Parc Monceau (Paris)</option>
-        <option value="1050000">Parc de la Tête d'or (Lyon)</option>
-        <option value="3410000">Central Park</option>
-        <option value="440000">Vatican</option>
-        <option value="352000000">Las Vegas</option>
-        <option value="46000">Parc des expositions de Villepinte</option>
-        <option value="340000">Parc Asterix</option>
-        <option value="22300000">Disneyland Paris</option>
-        <option value="6000">Notre-Dame de Paris</option>
-        <option value="7700">Notre-Dame d'Amiens</option>    
-        <option value="52900">Pyramide de Khéops</option>
-        <option value="177020000">Forêt de Fontainebleau</option>
-        <option value="32380000">Aéroport Roissy Charles de Gaulle</option>
-        option value="15000000">Aéroport Orly</option>
-        <option value="105000000">Paris</option>
-        <option value="48870000">Lyon</option>
-        <option value="240600000">Marseille</option>
-        <option value="550000000000">France</option>
-        <option value="148000000000000">Superficie terrestre : terres émergées</option>
-	<option value="362000000000000">Superficie terrestre : oceans et mers</option>
-        <option value="510000000000000">Superficie  terrestre</option>
-      `;
-
-    } if (conversionType === 'money') {
-      startUnit.innerHTML = `
-        <option value="1">euro</option>
-        <option value="0.879">Livre Sterling</option>
-        <option value="1.088">Dollar US</option>
-        <option value="0.25"  style="font-weight:bold; color:limegreen;">Banane à l'unité</option>
-        <optgroup label="Divers">     
-        <option value="5000000000">Une Kerviel</option>
-        <option value="315808">Un cabinet de Brigitte Macron / an</option>
-        <option value="230000000">Record de gains à EuroMillions</option>
-        <option value="26000000">Record de gains au Loto</option>
-        <option value="2040000000">Record de gains à la loterie US</option>
-        <option value="687.5">Kg de tabac en France (cigarettes en paquet)</option>      
-        <option value="690000">Bus electrique Irizar (dédicace Courier Picard)</option>
-        <option value="713000">Bus Irizar + bus diesel d'occassion en secours</option>
-        <option value="16404">WC parisien (1.5m2) en juillet 2023</option>
-        <option value="8620">WC marseillais (1.5m2) en juillet 2023</option>
-        <option value="502000000">Stade de France</option>
-        <option value="405000000">Groupama Stadium (Lyon)</option>
-        <option value="250000000">Emeutes de 2005</option>
-        <option value="700000000">Emeutes de 2023</option>
-        <option value="16257000000">Plan Borloo (2005-2009)</option>
-        <option value="2325">m2 de HLM (prix de revient moyen en 2020)</option>
-        <option value="16500000000">Plan Marshal (valeur de l'époque)</option>
-        <option value="130000000000">Plan Marshal (valeur actualisée)</option>
-        <option value="140000000000">Collecte annuelle Assurance-Vie en France</option>
-        <option value="778000000000">Dépenses militaires US / an</option>
-        <option value="470000000000">Prestations sociales France / an</option> 
-</optgroup>
- <optgroup label="Salaires, revenus : des FLUX (coucou Oxfam)">
-        <option value="1353.07">SMIC mensuel net en France</option>
-        <option value="1709.28">SMIC mensuel brut en France</option>
-        <option value="2587">Salaire mensuel net moyen en France</option>        
-        <option value="1353.07">SMIC mensuel net en France</option>
-        <option value="1709.28">SMIC mensuel brut en France</option>
-        <option value="2587">Salaire mensuel net moyen en France</option>
-        <option value="1850">Salaire mensuel net median en France</option>
-        <option value="4684">Salaire mensuel net moyen en Suisse</option>
-        <option value="40600">Salaire annuel brut moyen France</option>
-        <option value="56000">Salaire annuel brut moyen Allemagne</option>
-        <option value="64800">Salaire annuel brut moyen Suisse</option>
-        <option value="70123">Salaire annuel brut moyen USA</option>
-        <option value="1420">Retraite mensuelle moyenne en France</option>
-        <option value="8500">Retraite mensuelle de Jean-Luc Mélenchon (source AN)</option>
-        <option value="6000000">Salaire mensuel brut de Mbappé 2023-2026</option>
-        <option value="3675000">Salaire mensuel brut de Neymar</option>
-        <option value="3375000">Salaire mensuel de Messi</option>
-</optgroup>
-<optgroup label="Fortunes : des STOCKS (rebonjour Oxfam)">
-        <option value="124800">Patrimoine net médian en France (2021)</option>
-        <option value="321500">Patrimoine net moyen des habitants de Paris (2021)</option>
-        <option value="716300">Patrimoine net moyen des 10% les plus riches en France (2021)</option>
-        <option value="300000000">Prime de Mbappé pour rester au PSG</option>
-        <option value="1465000">Patrimoine de Jean-Luc Mélenchon</option>
-        <option value="213000000000">Bernard Arnault (fortune de)</option>
-        <option value="180000000000">Elon Musk (fortune de)</option>
-        <option value="123300000000">Jeff Bezos (fortune de)</option>
-        <option value="104300000000">Bill Gates (fortune de)</option>
-        <option value="137800000000">Famille Hermès (fortune de)</option>
-        <option value="100000000000">Famille Wertheimer (fortune de)</option>
-        <option value="80500000000">Famille Bettencourt (fortune de)</option>
-        <option value="20000000000">Famille Mulliez (fortune de)</option>
-        <option value="1100000000">Tiger Woods (fortune de)</option>
- </optgroup>
-+<optgroup label="Luxe">
-        <option value="950">Cognac Hennessy XXO hors d'âge</option>
-        <option value="250">Cognac Hennessy XO Extra Old</option>
-        <option value="47">Cognac Hennessy VS </option>
-         <option value="1850">Louis Vuitton sac Neverfull</option>
-        <option value="1500">Louis Vuitton sac Alma</option>
-        <option value="17000">Hermès sac Birkin (prix moyen)</option>
-        <option value="234">Boite de 30 g de Caviar Beluga</option>
-        <option value="7800">Kg de ce Caviar Beluga</option>
-        <option value="2480">Kg de Caviar Sevruga</option>
-        <option value="52000">Bouteille d'eau la plus chère du monde</option>
-</optgroup>
-<optgroup label="Nourriture">
-        <option value="2.9">Coquillettes Panzani, 1kg</option>
-        <option value="2.09">Camembert -sans intérêt- Président</option>
-        <option value="4.20">Camembert -de qualité- Isigny</option>
-        <option value="1.69">Coca-Cola 1l</option>
-        <option value="2.69">Jambon 4 tranches Fleury Michon</option>
-        <option value="2.95">Boîte de 12 oeufs plein air Matines</option>
-        <option value="6.23">Big Mac en Suisse</option>
-        <option value="5.7">Big Mac en Norvège</option>
-        <option value="5.18">Big Mac aux USA</option>
-        <option value="2.95">Big Mac aux France</option>
-        <option value="4.42">Big Mac zone Euro</option>
-        <option value="3.85">Big Mac au Brésil</option>
-        <option value="3.43">Big mac en Thailande</option>
-        <option value="3.02">Big mac au Japon</option>
-        <option value="2.67">Big mac en Jordanie</option>
-        <option value="2.41">Big mac en Egypte</option>
-        <option value="2.30">Big mac en Afrique du Sud</option>
-        <option value="2.27">Big mac en Inde</option>
-        <option value="2.14">Big mac en Roumanie</option>
-        <option value="1.66">Big mac en Turquie</option>
-        <option value="1.56">Big mac en Russie</option>
-</optgroup>
-<optgroup label="Entreprises">
-        <option value="10000000">CA de Qwant</option>
-        <option value="42000000">Pertes de Qwant</option>
-        <option value="198000000000">CA de Microsoft</option>
-        <option value="257640000000">CA de Google</option>
-        <option value="386000000000">CA d'Amazon</option>
-        <option value="79184000000">CA Mondial LVMH</option>
-        <option value="14084000000">Résultat net LVMH</option>
-        <option value="4500000000">Fiscalité LVMH en France (IS, TVA, charges sociales)</option>
-</optgroup>
-<optgroup label="Finances publiques, collectivtés, infrastructures">
-        <option value="2300000000000">Dette française</option>
-        <option value="170400000000">Recette TVA 2022 (France)</option>
-        <option value="106500000000">Recette Impôt sur le Revenu 2022 (France)</option>
-        <option value="85300000000">Recette Impôt sur les Sociétés 2022 (France)</option>
-        <option value="20000000000">Recette Taxe produits énergetiques (France)</option>
-        <option value="24900000000">Contribution FR au budget Europe</option>
-        <option value="2958000000000">PIB français</option>
-        <option value="4260000000000">PIB allemand</option>
-        <option value="1250000000">Budget de la Justice, France</option>
-        <option value="81710000000">Budget Education nationale, France</option>
-        <option value="26410000000">Budget Enseignement Supérieur et recherche, France</option>
-        <option value="63990000000">Budget Armées, France</option>
-        <option value="10000000000">Budget Ville de Paris</option>
-        <option value="892000000">Budget Ville de Lyon</option>
-        <option value="3176000000">Budget Métropole de Lyon</option>
-        <option value="4978000000">Budget Ville de Lille</option>
-        <option value="1996000000">Budget Métropole de Lille</option>
-        <option value="200348000">Budget Ville de Cannes</option>
-        <option value="16257000000">Plan Borloo (2005-2009)</option>
-        <option value="16500000000">Plan Marshal (valeur de l'époque)</option>
-        <option value="130000000000">Plan Marshal (valeur actualisée)</option>
-</optgroup>
-
-      `;
-      destinationUnit.innerHTML = `
-        <option value="">Sélectionnez une unité</option>
-        <option value="1">euro</option>
-        <option value="0.879">Livre sterling</option>
-        <option value="1.088">Dollar US</option>
-        <option value="0.25"  style="font-weight:bold; color:limegreen;">Banane à l'unité</option>
-<optgroup label="Divers">     
-        <option value="5000000000">Une Kerviel</option>
-        <option value="315808">Un cabinet de Brigitte Macron / an</option>
-        <option value="230000000">Record de gains à EuroMillions</option>
-        <option value="26000000">Record de gains au Loto</option>
-        <option value="2040000000">Record de gains à la loterie US</option>
-        <option value="687.5">Kg de tabac en France (cigarettes en paquet)</option>   
-        <option value="690000">Bus electrique Irizar (dédicace Courier Picard)</option>
-        <option value="713000">Bus Irizar + bus diesel d'occassion en secours</option>
-        <option value="16404">WC parisien (1.5m2) en juillet 2023</option>
-        <option value="8620">WC marseillais (1.5m2) en juillet 2023</option>
-        <option value="502000000">Stade de France</option>
-        <option value="405000000">Groupama Stadium (Lyon)</option>
-        <option value="250000000">Emeutes de 2005</option>
-        <option value="700000000">Emeutes de 2023</option>
-        <option value="16257000000">Plan Borloo (2005-2009)</option>
-        <option value="2325">m2 de HLM (prix de revient moyen en 2020)</option>
-        <option value="16500000000">Plan Marshal (valeur de l'époque)</option>
-        <option value="130000000000">Plan Marshal (valeur actualisée)</option>
-        <option value="140000000000">Collecte annuelle Assurance-Vie en France</option>
-        <option value="778000000000">Dépenses militaires US / an</option> 
-        <option value="470000000000">Prestations sociales France / an</option> 
-</optgroup>
- <optgroup label="Salaires, revenus : des FLUX (coucou Oxfam)">
-        <option value="1353.07">SMIC mensuel net en France</option>
-        <option value="1709.28">SMIC mensuel brut en France</option>
-        <option value="2587">Salaire mensuel net moyen en France</option>        
-        <option value="1353.07">SMIC mensuel net en France</option>
-        <option value="1709.28">SMIC mensuel brut en France</option>
-        <option value="2587">Salaire mensuel net moyen en France</option>
-        <option value="1850">Salaire mensuel net median en France</option>
-        <option value="4684">Salaire mensuel net moyen en Suisse</option>
-        <option value="40600">Salaire annuel brut moyen France</option>
-        <option value="56000">Salaire annuel brut moyen Allemagne</option>
-        <option value="64800">Salaire annuel brut moyen Suisse</option>
-        <option value="70123">Salaire annuel brut moyen USA</option>
-        <option value="1420">Retraite mensuelle moyenne en France</option>
-        <option value="8500">Retraite mensuelle de Jean-Luc Mélenchon (source AN)</option>
-        <option value="6000000">Salaire mensuel brut de Mbappé 2023-2026</option>
-        <option value="3675000">Salaire mensuel brut de Neymar</option>
-        <option value="3375000">Salaire mensuel de Messi</option>
-</optgroup>
-<optgroup label="Fortunes : des STOCKS (rebonjour Oxfam)">
-        <option value="124800">Patrimoine net médian en France (2021)</option>
-        <option value="321500">Patrimoine net moyen des habitants de Paris (2021)</option>
-        <option value="716300">Patrimoine net moyen des 10% les plus riches en France (2021)</option>
-        <option value="300000000">Prime de Mbappé pour rester au PSG</option>
-        <option value="1465000">Patrimoine de Jean-Luc Mélenchon</option>
-        <option value="213000000000">Bernard Arnault (fortune de)</option>
-        <option value="180000000000">Elon Musk (fortune de)</option>
-        <option value="123300000000">Jeff Bezos (fortune de)</option>
-        <option value="104300000000">Bill Gates (fortune de)</option>
-        <option value="137800000000">Famille Hermès (fortune de)</option>
-        <option value="100000000000">Famille Wertheimer (fortune de)</option>
-        <option value="80500000000">Famille Bettencourt (fortune de)</option>
-        <option value="20000000000">Famille Mulliez (fortune de)</option>
-        <option value="1100000000">Tiger Woods (fortune de)</option>
- </optgroup>
-+<optgroup label="Luxe">
-        <option value="950">Cognac Hennessy XXO hors d'âge</option>
-        <option value="250">Cognac Hennessy XO Extra Old</option>
-        <option value="47">Cognac Hennessy VS </option>
-         <option value="1850">Louis Vuitton sac Neverfull</option>
-        <option value="1500">Louis Vuitton sac Alma</option>
-        <option value="17000">Hermès sac Birkin (prix moyen)</option>
-        <option value="234">Boite de 30 g de Caviar Beluga</option>
-        <option value="7800">Kg de ce Caviar Beluga</option>
-        <option value="2480">Kg de Caviar Sevruga</option>
-        <option value="52000">Bouteille d'eau la plus chère du monde</option>
-</optgroup>
-<optgroup label="Nourriture">
-        <option value="2.9">Coquillettes Panzani, 1kg</option>
-        <option value="2.09">Camembert -sans intérêt- Président</option>
-        <option value="4.20">Camembert -de qualité- Isigny</option>
-        <option value="1.69">Coca-Cola 1l</option>
-        <option value="2.69">Jambon 4 tranches Fleury Michon</option>
-        <option value="2.95">Boîte de 12 oeufs plein air Matines</option>
-        <option value="6.23">Big Mac en Suisse</option>
-        <option value="5.7">Big Mac en Norvège</option>
-        <option value="5.18">Big Mac aux USA</option>
-        <option value="2.95">Big Mac aux France</option>
-        <option value="4.42">Big Mac zone Euro</option>
-        <option value="3.85">Big Mac au Brésil</option>
-        <option value="3.43">Big mac en Thailande</option>
-        <option value="3.02">Big mac au Japon</option>
-        <option value="2.67">Big mac en Jordanie</option>
-        <option value="2.41">Big mac en Egypte</option>
-        <option value="2.30">Big mac en Afrique du Sud</option>
-        <option value="2.27">Big mac en Inde</option>
-        <option value="2.14">Big mac en Roumanie</option>
-        <option value="1.66">Big mac en Turquie</option>
-        <option value="1.56">Big mac en Russie</option>
-</optgroup>
-<optgroup label="Entreprises">
-        <option value="10000000">CA de Qwant</option>
-        <option value="42000000">Pertes de Qwant</option>
-        <option value="198000000000">CA de Microsoft</option>
-        <option value="257640000000">CA de Google</option>
-        <option value="386000000000">CA d'Amazon</option>
-        <option value="79184000000">CA Mondial LVMH</option>
-        <option value="14084000000">Résultat net LVMH</option>
-        <option value="4500000000">Fiscalité LVMH en France (IS, TVA, charges sociales)</option>
-</optgroup>
-<optgroup label="Finances publiques, collectivtés, infrastructures">
-        <option value="2300000000000">Dette française</option>
-        <option value="170400000000">Recette TVA 2022 (France)</option>
-        <option value="106500000000">Recette Impôt sur le Revenu 2022 (France)</option>
-        <option value="85300000000">Recette Impôt sur les Sociétés 2022 (France)</option>
-        <option value="20000000000">Recette Taxe produits énergetiques (France)</option>
-        <option value="24900000000">Contribution FR au budget Europe</option>
-        <option value="2958000000000">PIB français</option>
-        <option value="4260000000000">PIB allemand</option>
-        <option value="1250000000">Budget de la Justice, France</option>
-        <option value="81710000000">Budget Education nationale, France</option>
-        <option value="26410000000">Budget Enseignement Supérieur et recherche, France</option>
-        <option value="63990000000">Budget Armées, France</option>
-        <option value="10000000000">Budget Ville de Paris</option>
-        <option value="892000000">Budget Ville de Lyon</option>
-        <option value="3176000000">Budget Métropole de Lyon</option>
-        <option value="4978000000">Budget Ville de Lille</option>
-        <option value="1996000000">Budget Métropole de Lille</option>
-        <option value="200348000">Budget Ville de Cannes</option>
-        <option value="16257000000">Plan Borloo (2005-2009)</option>
-        <option value="16500000000">Plan Marshal (valeur de l'époque)</option>
-        <option value="130000000000">Plan Marshal (valeur actualisée)</option>
-</optgroup>
-
-      `;
-
-    } if (conversionType === 'population') {
-      startUnit.innerHTML = `
-        <option value="1" selected>Individu</option>
-<optgroup label="Mesures insolites">
-       <option value="87197">Détenus en France (2023)</option>
-        <option value="18000">Détenus en préventive en France (2023)</option>
-        <option value="84707">Détenus masculins en France (2023)</option>
-        <option value="2490">Détenus féminins en France (2023)</option>
-        <option value="2600000">Personnes handicapées en France (2023)</option>
-        <option value="3024000">Peuple Breton (personnes nées en Bretagne)</option>
-        <option value="8952">Personnes titulaires d'une ALD pour transidentité</option>
-        <option value="30000">Centennaires en France</option>
-        <option value="10000">Personnes de petite taille (France)</option>
-        <option value="4000000">Diabétiques en France</option>
-        <option value="30000">Religieux catholiques en France</option>
-        <option value="13700">Prêtres catholiques en France</option>
-        <option value="13700">Evêques en France</option>
-        <option value="600000">Couples échangistes en France</option>
-        <option value="6900000">Chiens en France</option>
-        <option value="10000000">Chats en France</option>
-        <option value="490000">Exploitations agricoles Fce 2010</option>
-        <option value="389800">Exploitations agricoles Fce 2020</option>
-        <option value="213000000">Entrées au cinéma en 2019 (Fce)</option>
-        <option value="65300000">Entrées au cinéma en 2020 (Fce)</option>
-        <option value="95500000">Entrées au cinéma en 2021 (Fce)</option>
-        <option value="151970000">Entrées au cinéma en 2022 (Fce)</option>
-        <option value="1285">Nb de McDonald's en France</option>
-        <option value="1800000">Nb de repas chez McDonald's /jour (Fce)</option>
-        <option value="34000">Nb de McDonald's (monde)</option>
-        <option value="29">Nb de Big mac vendus/SECONDE (monde)</option>
-</optgroup>
-<optgroup label="Villes française">
-        <option value="2145906">Paris</option>
-        <option value="522228">Lyon</option>
-        <option value="870321">Marseille</option>
-        <option value="498003">Toulouse</option>
-        <option value="290576">Strasbourg</option>
-        <option value="236234">Lille</option>
-        <option value="222485">Rennes</option>
-        <option value="320732">Nantes</option>
-        <option value="34347">Nice</option>
-        <option value="299096">Montpellier</option>
-        <option value="259809">Bordeaux</option>
-</optgroup>
-<optgroup label="Villes du monde">
-        <option value="32054159">Chongqing</option>
-        <option value="27796000">Shanghai</option>
-        <option value="21893095">Pékin</option>
-        <option value="16787941">Delhi</option>
-        <option value="15840900">Istanbul</option>
-        <option value="15628000">Kinshasa</option>
-        <option value="15388000">Lagos</option>
-        <option value="14910353">Karashi</option>
-        <option value="14904400">Canton</option>
-        <option value="14254798">Tokyo</option>
-        <option value="14047625">Chengdu</option>
-        <option value="13866009">Tianjin</option>
-</optgroup>
-<optgroup label="Pays">
-        <option value="67813396">France</option>
-        <option value="83129285">Allemagne</option>
-        <option value="67081234">Royaume-Uni</option>
-        <option value="47329981">Espagne</option>
-        <option value="58938122">Italie</option>
-        <option value="11431406">Belgique</option>
-        <option value="5789957">Danemark</option>
-        <option value="10709606">Grèce</option>
-        <option value="634730">Luxembourg</option>
-        <option value="331900000">USA</option>
-        <option value="146238185">Russie</option>
-        <option value="1412000000">Chine</option>
-        <option value="1408000000">Inde</option>
-        <option value="97470000">Vietnam</option>
-        <option value="273800000">Indonesie</option>
-        <option value="213400000">Nigeria</option>
-        <option value="231402000">Pakistan</option>
-        <option value="214326000">Brésil</option>
-        <option value="169356000">Bengladesh</option>
-        <option value="126705000">Mexique</option>
-        <option value="124612000">Japon</option>
-        <option value="120283000">Ethiopie</option>
-        <option value="113880000">Philipinnes</option>
-        <option value="109262000">Egypte</option>
-        <option value="84775000">Turquie</option>
-</optgroup>
-<optgroup label="Lieux">
-        <option value="300000">Place du Trocadéro selon Bruno Retailleau</option>
-        <option value="60000">Place du Trocadéro selon la géographie</option>
-        <option value="150000">Place de la Nation</option>
-        <option value="220000">Place de la Concorde</option>
-        <option value="700000">Champs de Mars</option>
-        <option value="35000">Hippodrome de Vincennes (Tribunes)</option>
-        <option value="75000">Hippodrome de Vincennes (Terre plein)</option>
-</optgroup>
-<optgroup label="Salles de spectacle">
-        <option value="250">La lune des pirates (Amiens)</option>
-        <option value="1100">Opéra de Lyon</option>
-        <option value="2054">Opéra Garnier</option>
-        <option value="2745">Opéra Bastille</option>
-        <option value="5999">Zenith d'Amiens</option>
-        <option value="6804">Zenith de Parids</option>
-        <option value="7000">Zenith de Lille</option>
-        <option value="12000">Palais des Sports (Grenoble)</option>
-        <option value="12079">Zenith de Strasbourg</option>
-        <option value="13000">Arènes de Nimes</option>
-        <option value="14800">Sud de France Arena (Montpellier)</option>
-        <option value="17000">Halle Tony Garnier (Lyon)</option>
-        <option value="25000">Zenith de Nancy</option>
-        <option value="20300">Accor Arena (Paris Bercy)</option>
-        <option value="40000">Paris La Defense Arena</option>
-        <option value="50000">Stade Pierre Mauroy (Lille)</option>
-        <option value="80698">Stade de France (tribunes)</option>
-        </optgroup>
-<optgroup label="Syndicats et Partis politiques">
-        <option value="605562">CGT</option>
-        <option value="612205">CFDT</option>
-        <option value="380000">FO</option>
-        <option value="200000">UNSA</option>
-        <option value="101000">SUD</option>
-        <option value="160000">CFE-CGC</option>
-        <option value="160000">FSU</option>
-        <option value="140000">CFTC</option>
-        <option value="190000">MEDEF</option>
-        <option value="43000">PCF</option>
-        <option value="11106">EELV</option>
-        <option value="3">LFI, selon les statuts</option>
-        <option value="300000">LFI, selon les organisateurs</option>
-        <option value="200000">PS</option>
-        <option value="27000">Renaissance</option>
-        <option value="48500">Les Républicains</option>
-        <option value="40000">FN</option>
-</optgroup>
-<optgroup label="Enseignement">
-        <option value="6538000">Eléves du 1er degré, France</option>
-        <option value="6175900">Elèves du 2e degré</option>
-        <option value="2968900">Elèves dans l'enseignement supérieur, France</option>
-        <option value="65760">Université d'Aix-Marseille</option>
-        <option value="26849">Université d'Amiens</option>
-        <option value="62200">Université de Bordeaux + Bordeaux II</option>
-        <option value="21766">Université de Brest</option>
-        <option value="28743">Université de Caen</option>
-        <option value="4124">Université de Corse</option>
-        <option value="27800">Université de Dijon</option>
-        <option value="44256">Université de Grenoble-Alpes</option>
-        <option value="3051">Université de Guyane</option>
-        <option value="12783">Université de La Réunion</option>
-        <option value="10262">Université de Mans</option>
-        <option value="68556">Université de Lille</option>
-        <option value="17213">Université de Limohes</option>
-        <option value="83429">Université de Lyon I, II et II</option>
-        <option value="46256">Sorbonne</option>
-        <option value="56099">Université de Paris Cité</option>
-        <option value="18807">Université de Panthéon Assas Nanterre</option>
-        <option value="32093">Université de Paris Nanterre</option>
-        <option value="36357">Université de Paris Saclay</option>
-        <option value="22348">Université de Paris Vincennes</option>
-        <option value="32452">Université de Paris XII Creteil</option>
-        <option value="26680">Université de Poitiers</option>
-        <option value="23552">Université de Reims</option>
-        <option value="49945">Université de Rennes + Rennes II</option>
-        <option value="30598">Université de Rouen</option>
-        <option value="17084">Université de Saint-Etienne</option>
-        <option value="50156">Université de Strasbourg</option>
-        <option value="10652">Université de Toulon</option>
-        <option value="63499">Université de Toulous II, III et Polytchnique Toulouse</option>
-        <option value="26413">Université de Tours</option>
-        <option value="5599">Institiut Polytechnique Paris</option>
-        <option value="2330">ENS</option>
-        <option value="1075">Mines Paris</option> 
-        <option value="4300">Centrale-Supelec</option>               
-        <option value="4500">HEC</option>
-        <option value="14000">Science-Po Paris(tous campus)</option>
-        <option value="1546">Science-Po Paris cmpus de Paris</option>
-        <option value="2000">Science-Po Lille</option>
-        <option value="1440">Science-Po Lyon</option>
-        <option value="1800">Science-Po Aix-Marseille</option>
-        <option value="1100">Science-Po Rennes</option>
-        <option value="1000">Science-Po Saint-Germain-en-lay</option>
-        <option value="1500">Science-Po Strasbourg</option>
-        <option value="1700">Science-Po Tou louse</option>
-        <option value="480">Ecoles vétérinaires (les 4)</option>
-</optgroup>
-        
-      `;
-      destinationUnit.innerHTML = `
-        <option value="">Sélectionnez une unité</option>
-        <option value="1">Individu</option>
-
-<optgroup label="Mesures insolites">
-        <option value="87197">Détenus en France (2023)</option>
-        <option value="18000">Détenus en préventive en France (2023)</option>
-        <option value="84707">Détenus masculins en France (2023)</option>
-        <option value="2490">Détenus féminins en France (2023)</option>
-        <option value="2600000">Personnes handicapées en France (2023)</option>
-        <option value="3024000">Peuple Breton (personnes nées en Bretagne)</option>
-        <option value="8952">Personnes titulaires d'une ALD pour transidentité</option>
-        <option value="30000">Centennaires en France</option>
-        <option value="10000">Personnes de petite taille (France)</option>
-        <option value="4000000">Diabétiques en France</option>
-        <option value="30000">Religieux catholiques en France</option>
-        <option value="13700">Prêtres catholiques en France</option>
-        <option value="13700">Evêques en France</option>
-        <option value="600000">Couples échangistes en France</option>
-        <option value="6900000">Chiens en France</option>
-        <option value="10000000">Chats en France</option>
-        <option value="490000">Exploitations agricoles Fce 2010</option>
-        <option value="389800">Exploitations agricoles Fce 2020</option>
-        <option value="213000000">Entrées au cinéma en 2019 (Fce)</option>
-        <option value="65300000">Entrées au cinéma en 2020 (Fce)</option>
-        <option value="95500000">Entrées au cinéma en 2021 (Fce)</option>
-        <option value="151970000">Entrées au cinéma en 2022 (Fce)</option>
-        <option value="1285">Nb de McDonald's en France</option>
-        <option value="1800000">Nb de repas chez McDonald's /jour (Fce)</option>
-        <option value="34000">Nb de McDonald's (monde)</option>
-        <option value="29">Nb de Big mac vendus/SECONDE (monde)</option>
-</optgroup>
-<optgroup label="villes française">
-        <option value="2145906">Paris</option>
-        <option value="522228">Lyon</option>
-        <option value="870321">Marseille</option>
-        <option value="498003">Toulouse</option>
-        <option value="290576">Strasbourg</option>
-        <option value="236234">Lille</option>
-        <option value="222485">Rennes</option>
-        <option value="320732">Nantes</option>
-        <option value="34347">Nice</option>
-        <option value="299096">Montpellier</option>
-        <option value="259809">Bordeaux</option>
-</optgroup>
-<optgroup label="villes du monde">
-         <option value="32054159">Chongqing</option>
-        <option value="27796000">Shanghai</option>
-        <option value="21893095">Pékin</option>
-        <option value="16787941">Delhi</option>
-        <option value="15840900">Istanbul</option>
-        <option value="15628000">Kinshasa</option>
-        <option value="15388000">Lagos</option>
-        <option value="14910353">Karashi</option>
-        <option value="14904400">Canton</option>
-        <option value="14254798">Tokyo</option>
-        <option value="14047625">Chengdu</option>
-        <option value="13866009">Tianjin</option>
-</optgroup>
-<optgroup label="pays">
-        <option value="67813396">France</option>
-        <option value="83129285">Allemagne</option>
-        <option value="67081234">Royaume-Uni</option>
-        <option value="47329981">Espagne</option>
-        <option value="58938122">Italie</option>
-        <option value="11431406">Belgique</option>
-        <option value="5789957">Danemark</option>
-        <option value="10709606">Grèce</option>
-        <option value="634730">Luxembourg</option>
-        <option value="331900000">USA</option>
-        <option value="146238185">Russie</option>
-        <option value="1412000000">Chine</option>
-        <option value="1408000000">Inde</option>
-        <option value="97470000">Vietnam</option>
-        <option value="273800000">Indonesie</option>
-        <option value="213400000">Nigeria</option>
-        <option value="231402000">Pakistan</option>
-        <option value="214326000">Brésil</option>
-        <option value="169356000">Bengladesh</option>
-        <option value="126705000">Mexique</option>
-        <option value="124612000">Japon</option>
-        <option value="120283000">Ethiopie</option>
-        <option value="113880000">Philipinnes</option>
-        <option value="109262000">Egypte</option>
-        <option value="84775000">Turquie</option>
-</optgroup>
-<optgroup label="Lieux">
-        <option value="300000">Place du Trocadéro selon Bruno Retailleau</option>
-        <option value="60000">Place du Trocadéro selon la géographie</option>
-        <option value="150000">Place de la Nation</option>
-        <option value="220000">Place de la Concorde</option>
-        <option value="700000">Champs de Mars</option>
-        <option value="35000">Hippodrome de Vincennes (Tribunes)</option>
-        <option value="75000">Hippodrome de Vincennes (Terre plein)</option>
-</optgroup>
-<optgroup label="Salles de spectacle">
-        <option value="250">La lune des pirates (Amiens)</option>
-        <option value="1100">Opéra de Lyon</option>
-        <option value="2054">Opéra Garnier</option>
-        <option value="2745">Opéra Bastille</option>
-        <option value="5999">Zenith d'Amiens</option>
-        <option value="6804">Zenith de Parids</option>
-        <option value="7000">Zenith de Lille</option>
-        <option value="12000">Palais des Sports (Grenoble)</option>
-        <option value="12079">Zenith de Strasbourg</option>
-        <option value="13000">Arènes de Nimes</option>
-        <option value="14800">Sud de France Arena (Montpellier)</option>
-        <option value="17000">Halle Tony Garnier (Lyon)</option>
-        <option value="25000">Zenith de Nancy</option>
-        <option value="20300">Accor Arena (Paris Bercy)</option>
-        <option value="40000">Paris La Defense Arena</option>
-        <option value="50000">Stade Pierre Mauroy (Lille)</option>
-        <option value="80698">Stade de France (tribunes)</option>
-</optgroup>
-<optgroup label="Syndicats et Partis politiques">
-        <option value="605562">CGT</option>
-        <option value="612205">CFDT</option>
-        <option value="380000">FO</option>
-        <option value="200000">UNSA</option>
-        <option value="101000">SUD</option>
-        <option value="160000">CFE-CGC</option>
-        <option value="160000">FSU</option>
-        <option value="140000">CFTC</option>
-        <option value="190000">MEDEF</option>
-        <option value="43000">PCF</option>
-        <option value="11106">EELV</option>
-        <option value="3">LFI</option>
-        <option value="200000">PS</option>
-        <option value="27000">Renaissance</option>
-        <option value="48500">Les Républicains</option>
-        <option value="40000">FN</option>
-</optgroup>
-<optgroup label="Enseignement">
-        <option value="6538000">Eléves du 1er degré, France</option>
-        <option value="6175900">Elèves du 2e degré</option>
-        <option value="2968900">Elèves dans l'enseignement supérieur, France</option>
-        <option value="65760">Université d'Aix-Marseille</option>
-        <option value="26849">Université d'Amiens</option>
-        <option value="62200">Université de Bordeaux + Bordeaux II</option>
-        <option value="21766">Université de Brest</option>
-        <option value="28743">Université de Caen</option>
-        <option value="4124">Université de Corse</option>
-        <option value="27800">Université de Dijon</option>
-        <option value="44256">Université de Grenoble-Alpes</option>
-        <option value="3051">Université de Guyane</option>
-        <option value="12783">Université de La Réunion</option>
-        <option value="10262">Université de Mans</option>
-        <option value="68556">Université de Lille</option>
-        <option value="17213">Université de Limohes</option>
-        <option value="83429">Université de Lyon I, II et II</option>
-        <option value="46256">Sorbonne</option>
-        <option value="56099">Université de Paris Cité</option>
-        <option value="18807">Université de Panthéon Assas Nanterre</option>
-        <option value="32093">Université de Paris Nanterre</option>
-        <option value="36357">Université de Paris Saclay</option>
-        <option value="22348">Université de Paris Vincennes</option>
-        <option value="32452">Université de Paris XII Creteil</option>
-        <option value="26680">Université de Poitiers</option>
-        <option value="23552">Université de Reims</option>
-        <option value="49945">Université de Rennes + Rennes II</option>
-        <option value="30598">Université de Rouen</option>
-        <option value="17084">Université de Saint-Etienne</option>
-        <option value="50156">Université de Strasbourg</option>
-        <option value="10652">Université de Toulon</option>
-        <option value="63499">Université de Toulous II, III et Polytchnique Toulouse</option>
-        <option value="26413">Université de Tours</option>
-        <option value="5599">Institiut Polytechnique Paris</option>
-        <option value="2330">ENS</option>
-        <option value="1075">Mines Paris</option> 
-        <option value="4300">Centrale-Supelec</option>               
-        <option value="4500">HEC</option>
-        <option value="14000">Science-Po Paris(tous campus)</option>
-        <option value="1546">Science-Po Paris cmpus de Paris</option>
-        <option value="2000">Science-Po Lille</option>
-        <option value="1440">Science-Po Lyon</option>
-        <option value="1800">Science-Po Aix-Marseille</option>
-        <option value="1100">Science-Po Rennes</option>
-        <option value="1000">Science-Po Saint-Germain-en-lay</option>
-        <option value="1500">Science-Po Strasbourg</option>
-        <option value="1700">Science-Po Tou louse</option>
-        <option value="480">Ecoles vétérinaires (les 4)</option>
-</optgroup> 
-      `;
-     } 
-
-     if (conversionType === 'dosimetry') {
-                startUnit.innerHTML = `
-        <option value="1" selected>Sievert (Sv)</option>
-<optgroup label="Unités SI">
-        <option value="0.001">mSv</option>
-        <option value="0.000000001">nSv</option>
-        <option value="0.01">rem</option>
-</optgroup>
-<optgroup label="Fruits et Légumes">
-        <option value="0.00000012" style="font-weight:bold; color:limegreen;">Dose équivalente Banane (DEB)</option>
-        <option value="0.0000007">Dose équivalente Noix du Brésil</option>
-</optgroup>
-<optgroup label="La vie de tous les jours">
-        <option value="0.00055">Dose moyenne reçue/an par un français</option>
-        <option value="0.000001">Dose reçue/an pour un habitant proche d'une centrale nucléaire</option>
-        <option value="0.00000009">Dose reçue/an à proximité (~80km) d'une centrale nucléaire</option>
-        <option value="0.0000003">Dose reçue/an à proxiité (~80km) d'une centrale à charbon</option>
-        <option value="0.000005">Radiographie dentaire intra-orale</option>
-        <option value="0.0001">Radiographie pulmonaire</option>
-        <option value="0.007">Tomodensitogramme typique des poumons</option>
-        <option value="0.0004">Mammographie</option>
-        <option value="0.00002">Vol d'avion à travers l'Europe</option>
-        <option value="0.001">Travailleur d'une mine d'Uranium ou d'une centrale nucléaire</option>
-        <option value="0.150">Exposition de Thomas Pesquet en mission</option>
-        <option value="1">Dose entraînant la maladie des rayons</option>
-        <option value="8">Dose fatale</option>
-        <option value="0.0000005">Dose reçue en dormant à côté de quelqu'un</option>
-        <option value="0.00007">Dose reçue/an en habitant dans une maison en béton</option>
-        <option value="0.0001">Dose reçu à la mairie de Fukushima 2 semaines après l'incident</option>
-        <option value="0.00039">Dose annuelle de potassium dans le corps</option>
-        <option value="0.04">Dose reçue par 2 opérateurs de la centrale de Fukushima</option>
-        <option value="0.000001">2L/jour d'eau tritiée (par an)</option>
-        <option value="0.0005">Dose reçue par des survivants d'Hiroshima</option>
-        <option value="0.00025">Dose reçue par les pompiers de Tchernobyl</option>
-</optgroup>
-<optgroup label="Limites légales">
-        <option value="0.001">Limite de dose Euratom</option>
-        <option value="0.05">Limite de dose Travailleur du nucléaire</option>
-        <option value="0.1">Limite de dose Travailleur du nucléaire sur 5 ans</option>
-</optgroup>
-      `;
-                destinationUnit.innerHTML = `
-        <option value="">Sélectionnez une unité</option>
-        <option value="1" selected>Sievert (Sv)</option>
-<optgroup label="Unités SI">
-        <option value="0.001">mSv</option>
-        <option value="0.000000001">nSv</option>
-        <option value="0.01">rem</option>
-</optgroup>
-<optgroup label="Fruits et Légumes">
-        <option value="0.00000012" style="font-weight:bold; color:limegreen;">Dose équivalente Banane (DEB)</option>
-        <option value="0.0000007">Dose équivalente Noix du Brésil</option>
-</optgroup>
-<optgroup label="La vie de tous les jours">
-        <option value="0.00055">Dose moyenne reçue/an par un français</option>
-        <option value="0.000001">Dose reçue/an pour un habitant proche d'une centrale nucléaire</option>
-        <option value="0.00000009">Dose reçue/an à proximité (~80km) d'une centrale nucléaire</option>
-        <option value="0.0000003">Dose reçue/an à proxiité (~80km) d'une centrale à charbon</option>
-        <option value="0.000005">Radiographie dentaire intra-orale</option>
-        <option value="0.0001">Radiographie pulmonaire</option>
-        <option value="0.007">Tomodensitogramme typique des poumons</option>
-        <option value="0.0004">Mammographie</option>
-        <option value="0.00002">Vol d'avion à travers l'Europe</option>
-        <option value="0.001">Travailleur d'une mine d'Uranium ou d'une centrale nucléaire</option>
-        <option value="0.150">Exposition de Thomas Pesquet en mission</option>
-        <option value="1">Dose entraînant la maladie des rayons</option>
-        <option value="8">Dose fatale</option>
-        <option value="0.0000005">Dose reçue en dormant à côté de quelqu'un</option>
-        <option value="0.00007">Dose reçue/an en habitant dans une maison en béton</option>
-        <option value="0.0001">Dose reçu à la mairie de Fukushima 2 semaines après l'incident</option>
-        <option value="0.00039">Dose annuelle de potassium dans le corps</option>
-        <option value="0.04">Dose reçue par 2 opérateurs de la centrale de Fukushima</option>
-        <option value="0.000001">2L/jour d'eau tritiée (par an)</option>
-        <option value="0.0005">Dose reçue par des survivants d'Hiroshima</option>
-        <option value="0.00025">Dose reçue par les pompiers de Tchernobyl</option>
-</optgroup>
-<optgroup label="Limites légales">
-        <option value="0.001">Limite de dose Euratom</option>
-        <option value="0.05">Limite de dose Travailleur du nucléaire</option>
-        <option value="0.1">Limite de dose Travailleur du nucléaire sur 5 ans</option>
-</optgroup>`;
-
-}
+                CategorySelectElement: document.getElementById('conversion-type'),
+                FormElement : document.getElementById('conversion-details'),
+                InputSelectElement : document.getElementById('start-unit'),
+                OutputSelectElement: document.getElementById('destination-unit'),
+                ValueElement: document.getElementById('initial-value'),
+                ResultContainerElement: document.getElementById('result-container'),
 
 
+                Value : parseFloat(1),
+                InputUnitValue: parseFloat(0),
+                InputUnitLabel: "",
+                OutputUnitValue: parseFloat(0),
+                OutputUnitLabel: "",
+                Result : parseFloat(0),
+                InverseResult: parseFloat(0),
 
-  });
 
- const integerFormatter = new Intl.NumberFormat('fr-FR', {
-      maximumFractionDigits: 0
-  });
-  const smallNumberFormatter = new Intl.NumberFormat('fr-FR', {
-      maximumFractionDigits: 8,
-      minimumFractionDigits: 8,
-  });
-  const smallNumberInvertedFormatter = new Intl.NumberFormat('fr-FR', {
-      maximumFractionDigits: 12,
-      minimumFractionDigits: 12,
-  });
-  const numberDisplayFormatter = new Intl.NumberFormat('fr-FR', {
-      maximumFractionDigits: 3,
-      minimumFractionDigits: 3
-  });
-  const numberInvertedDisplayFormatter = new Intl.NumberFormat('fr-FR', {
-      maximumFractionDigits: 2,
-      minimumFractionDigits: 2
-  });
+                AddCategory: function(value, title, style) {
+                        this.Categories.push({value:value, title:title, style:style});
+                        
+                },
+                AddGroup: function(category, group_label, group_style, conversions){
 
-  // Événement pour effectuer la conversion et afficher le résultat
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const initialValue = parseFloat(form.elements['initialValue'].value);
-    const startUnitValue = parseFloat(form.elements['startUnit'].value);
-    const destinationUnitValue = parseFloat(form.elements['destinationUnit'].value);
-    const conversionResult = ((initialValue * startUnitValue) / destinationUnitValue);
-        const invertConversionResult = (destinationUnitValue / (initialValue * startUnitValue));
-    const startUnitLabel = form.elements['startUnit'].options[form.elements['startUnit'].selectedIndex].text;
-    const destinationUnitLabel = form.elements['destinationUnit'].options[form.elements['destinationUnit'].selectedIndex].text;
-let displayResult;
-if (Number.isInteger(conversionResult)) {
-  displayResult = integerFormatter.format(conversionResult);
-} else if (conversionResult.toFixed(1).substring(0, 3) === "0.0") {
-  displayResult = smallNumberFormatter.format(conversionResult);
-} else {
-  displayResult = numberDisplayFormatter.format(conversionResult);
-}
-let displayInvertedResult;
-if (Number.isInteger(invertConversionResult)) {
-  displayInvertedResult = integerFormatter.format(invertConversionResult);
-} else if (invertConversionResult.toFixed(1).substring(0, 3) === "0.0") {
-  displayInvertedResult = smallNumberInvertedFormatter.format(invertConversionResult);
-} else {
-  displayInvertedResult = numberInvertedDisplayFormatter.format(invertConversionResult);
-}
-resultContainer.innerHTML = `
-<strong>${initialValue}</strong> ${startUnitLabel} est égal à ${displayResult} ${destinationUnitLabel}</br>
-<!-- Il faut  multiplier [${initialValue} ${startUnitLabel}] par <strong>${displayInvertedResult}</strong> pour faire <strong>1</strong> [${destinationUnitLabel}]</br> -->
-Ou encore <strong>1</strong> [${destinationUnitLabel}] égal <strong>${displayInvertedResult}</strong> fois [${initialValue} ${startUnitLabel}]
-	
- <p><a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${initialValue}+${startUnitLabel}++est+%C3%A9gal+%C3%A0+${displayResult}+${destinationUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="30" height="29" align="middle"> Partager ce résultat sur twitter</a></p>
-`;
+                        var group  = NewGroup(group_label, group_style);
+                        group.pushConversions([...conversions])
+                        
+                        const categoryExists = this.Categories.some(cat => cat.value == category);
+                        if(!categoryExists) {return console.log("La catégorie du groupe de conversion n'existe pas. Catégorie : ", category)}
+                        if(this.Conversions[category]){this.Conversions[category].push(group)}
+                        else {this.Conversions[category]=[group]}
+                        
+                },
 
-  });
+                init(){
+                        this.displayForm(false);
+                        this.loadSelectCategories();
+                        this.LoadEventsChange();
+                        
+                },
+
+                loadSelectCategories: function(){
+                       if(!this.CategorySelectElement){return console.log("No Select Category Html Element");} 
+                       var first_line = '<option value="" selected disabled> Convertir quoi</option>';
+                       this.CategorySelectElement.innerHTML = first_line
+                       this.Categories.forEach(element => {
+                                this.CategorySelectElement.innerHTML += `<option style="${element.style ? element.style : '' }" value="${element.value}">${element.title}</option>`
+                       });
+
+
+                },
+
+                displayForm : function(display){
+                      
+                        if(display){
+                                this.FormElement.style.display = "flex";
+                                
+                        }else{
+                                this.FormElement.style.display = "none";
+                                
+                        }
+                        
+                },
+
+                loadTypesFromCategory: function(category){
+                        this.InputSelectElement.innerHTML = "";
+                        this.OutputSelectElement.innerHTML = "";
+                        if(category == ""){
+                                this.displayForm(false)
+                                return;
+                        }
+
+                        const categoryExists = this.Categories.some(cat => cat.value == category);
+                        if(!categoryExists) {return console.log("La catégorie demandée pour les types n'existe pas. Catégorie : ", category)}
+                        this.OutputSelectElement.innerHTML += "<option selected disabled>Sélectionnez une unité</option>";
+                        
+                        this.Conversions[category].forEach(group => {
+                                this.InputSelectElement.innerHTML += `<optgroup label="${group.label}" style="${group.style ? group.style : ''}">`         
+                                this.OutputSelectElement.innerHTML += `<optgroup label="${group.label}" style="${group.style ? group.style : ''}">`
+
+                                group["conversions"].forEach( conversion => {
+                                        var s = `<option value="${conversion.value}" style="${conversion.style ? conversion.style : ''}">${conversion.label}</option>`;
+                                        this.InputSelectElement.innerHTML +=  s;
+                                        this.OutputSelectElement.innerHTML += s;
+                                });
+
+                                this.InputSelectElement.innerHTML += `</optgroup>`; 
+                                this.OutputSelectElement.innerHTML += `</optgroup>`;
+                        });
+                        
+                        this.displayForm(true)
+                        this.InputSelectElement.selectedIndex = 3;
+                        this.InputSelectElement.dispatchEvent(new Event('change'));
+                },
+
+                LoadEventsChange: function(){
+                        this.CategorySelectElement.addEventListener('change', function(event){
+                                CategorySelectElement = event.target;
+                                var category = CategorySelectElement[CategorySelectElement.selectedIndex].value;
+                                AppConversions.loadTypesFromCategory(category);
+                       });
+
+                       this.InputSelectElement.addEventListener('change', function(event){
+                                
+                                AppConversions.InputUnitValue = parseFloat(AppConversions.InputSelectElement[AppConversions.InputSelectElement.selectedIndex].value);
+                                AppConversions.InputUnitLabel = AppConversions.InputSelectElement[AppConversions.InputSelectElement.selectedIndex].innerText;
+                                
+                                AppConversions.calcul();
+                       });
+                       this.OutputSelectElement.addEventListener('change', function(event){
+                                
+                                AppConversions.OutputUnitValue = parseFloat(AppConversions.OutputSelectElement[AppConversions.OutputSelectElement.selectedIndex].value);
+                                AppConversions.OutputUnitLabel = AppConversions.OutputSelectElement[AppConversions.OutputSelectElement.selectedIndex].innerText;
+                                
+                                AppConversions.calcul();
+                       });
+                       this.ValueElement.addEventListener('input', function(event){
+                                
+                                AppConversions.Value = parseFloat(AppConversions.ValueElement.value);
+                                AppConversions.calcul();
+                       })
+                       
+                },
+
+                showResult: function(){
+                       
+                        this.ResultContainerElement.style.display = "block";
+                        this.ResultContainerElement.innerHTML = `<p><strong>${this.Value}</strong> ${this.InputUnitLabel} est égal à ${this.Result} ${this.OutputUnitLabel}</br>`
+                        //this.ResultContainerElement.innerHTML += `Il faut  multiplier [${this.Value} ${this.InputUnitLabel}] par <strong>${this.InverseResult}</strong> pour faire <strong>1</strong> [${this.OutputUnitLabel}]</br>`
+                        this.ResultContainerElement.innerHTML += `Ou encore <strong>1</strong> [${this.OutputUnitLabel}] égal <strong>${this.InverseResult}</strong> fois [${this.Value} ${this.InputUnitLabel}] </p>`  
+                        this.ResultContainerElement.innerHTML += `<p><a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="30" height="29" align="middle"> Partager ce résultat sur twitter</a></p>`;        
+                                                        
+                },
+                hideResult: function(){
+                       
+                        this.ResultContainerElement.style.display = "none";
+                },
+
+                calcul: function(){
+                       
+                        if(this.CategorySelectElement.selectedIndex == 0 ||  isNaN(this.Value) || this.InputUnitValue == 0 || this.OutputUnitValue == 0){
+                               
+                                this.hideResult();
+                                return;
+                        }
+                        
+                        const conversionResult = ((this.Value * this.InputUnitValue) / this.OutputUnitValue);
+                        const invertConversionResult = 1 / conversionResult;
+                        if (Number.isInteger(conversionResult)) {
+                                this.Result = integerFormatter.format(conversionResult);
+                        } else if (conversionResult.toFixed(1).substring(0, 3) === "0.0") {
+                                this.Result = smallNumberFormatter.format(conversionResult);
+                        } else {
+                                this.Result = numberDisplayFormatter.format(conversionResult);
+                        }
+                        if (Number.isInteger(invertConversionResult)) {
+                                this.InverseResult = integerFormatter.format(invertConversionResult);
+                        } else if (invertConversionResult.toFixed(1).substring(0, 3) === "0.0") {
+                                this.InverseResult = smallNumberInvertedFormatter.format(invertConversionResult);
+                        } else {
+                                this.InverseResult = numberInvertedDisplayFormatter.format(invertConversionResult);
+                        }
+
+                        this.showResult();
+
+
+                }
+        }
+
 </script>
+
+<script src="./categories/volume.js"></script>
+<script src="./categories/weight.js"></script>
+<script src="./categories/distance.js"></script>
+<script src="./categories/surface.js"></script>
+<script src="./categories/money.js"></script>
+<script src="./categories/population.js"></script>
+<script src="./categories/dosimetry.js"></script>
+
+<script type="text/javascript">
+       
+        AppConversions.init();        
+       
+</script>
+
+
+</body>
+</html>
