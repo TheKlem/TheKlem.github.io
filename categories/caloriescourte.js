@@ -14,6 +14,7 @@ var conversions = [
 ["verre de Margarita","139", ""],
 ["heure de fonctionnement du cerveau","13.4", ""],
 ["un sucre","16", ""],
+["un croissant au beurre","220", ""],
 ["un pain au chocolat","300", ""],
 ["une baguette (250g)","700", ""],
 ["une pomme","54", ""],
@@ -54,6 +55,8 @@ var conversions = [
 ["	heure de Ménage","	246	", ""],
 ["	heure de Bricolage","	246	", ""],
 ["	heure de Jardinage","	281	", ""],
+["	heure de lecture","	80	", ""],
+["	heure de cuisine","	140	", ""],
 ]
 
 AppConversions.AddGroup(category.value, "Activité physique (personne de 70kg)", "font-weight: bold; color: red;", conversions);
@@ -68,7 +71,7 @@ var conversions = [
 ["	Cognac (verre 4 cl)	","	192	", ""],
 ["	Mojito	","	100	", ""],
 ["	Orangina (verre 15 cl)	","	71	", ""],
-["	Rhum (verre 4 cl)	","	154	", ""],
+["	Rhum (verre 4 cl)	","	154	", ""], 
 ["	Ricard (dose 4 cl)	","	130	", ""],
 ["	Vin (verre 15 cl)	","	108	", ""],
 ["	Vodka (4 cl)	","	100	", ""],
