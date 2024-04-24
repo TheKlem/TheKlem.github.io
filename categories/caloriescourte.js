@@ -22,7 +22,7 @@ var conversions = [
 ["	cuillère à soupe de mayonnaise (30g)","220	", ""],
 ["	cuillère à soupe de Nutella (30g)","160	", ""],
 ["	un hérisson (12g)","52	", ""],
-["	un kebab fritte","1000	", ""],
+["	un kebab frites","1000	", ""],
 ["	100g de Fruits","	50	", ""],
 ["	100g de Biscuits apéritifs","	540	", ""],
 ["	100g de Boeuf","	540	", ""],
