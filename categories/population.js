@@ -39,7 +39,7 @@ var conversions = [
     
 ]
 
-AppConversions.AddGroup(category.value, "Villes françaises", "", conversions);
+AppConversions.AddGroup(category.value, "Mesures insolites", "", conversions);
 
 
 var conversions = [
@@ -57,7 +57,7 @@ var conversions = [
     
 ]
 
-AppConversions.AddGroup(category.value, "Villes étrangères", "", conversions);
+AppConversions.AddGroup(category.value, "Villes françaises", "", conversions);
 
 var conversions = [
     ["Chongqing","32054159", ""],
