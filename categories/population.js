@@ -36,11 +36,10 @@ var conversions = [
 ["Nb de repas chez McDonald's /jour (Fce)","1800000", ""],
 ["Nb de McDonald's (monde)","34000", ""],
 ["Nb de Big mac vendus/SECONDE (monde)","29", ""],
-
     
 ]
 
-AppConversions.AddGroup(category.value, "Mesures insolites", "", conversions);
+AppConversions.AddGroup(category.value, "Villes françaises", "", conversions);
 
 
 var conversions = [
@@ -55,11 +54,10 @@ var conversions = [
 ["Nice","34347", ""],
 ["Montpellier","299096", ""],
 ["Bordeaux","259809", ""],
-
     
 ]
 
-AppConversions.AddGroup(category.value, "Villes françaises", "", conversions);
+AppConversions.AddGroup(category.value, "Villes étrangères", "", conversions);
 
 var conversions = [
     ["Chongqing","32054159", ""],
