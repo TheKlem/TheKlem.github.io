@@ -22,6 +22,7 @@ var conversions = [
 ["Religieux catholiques en France","30000", ""],
 ["Prêtres catholiques en France","13700", ""],
 ["Evêques en France","13700", ""],
+["Franc-Maçons en France","135000", ""],
 ["Couples échangistes en France","600000", ""],
 ["Chiens en France","6900000", ""],
 ["Chats en France","10000000", ""],
@@ -78,8 +79,6 @@ var conversions = [
 
 AppConversions.AddGroup(category.value, "Villes du monde", "", conversions);
 
-
-
 var conversions = [
     ["France","67813396", ""],
 ["Allemagne","83129285", ""],
@@ -125,8 +124,6 @@ var conversions = [
 
 AppConversions.AddGroup(category.value, "Lieux", "", conversions);
 
-
-
 var conversions = [
     ["La lune des pirates (Amiens)","250", ""],
 ["Opéra de Lyon","1100", ""],
@@ -149,78 +146,10 @@ var conversions = [
 ]
 
 AppConversions.AddGroup(category.value, "Salles de spectacle", "", conversions);
-
+    
 var conversions = [
+
     ["CGT","605562", ""],
-["CFDT","612205", ""],
-["FO","380000", ""],
-["UNSA","200000", ""],
-["SUD","101000", ""],
-["CFE-CGC","160000", ""],
-["FSU","160000", ""],
-["CFTC","140000", ""],
-["MEDEF","190000", ""],
-["PCF","43000", ""],
-["EELV","11106", ""],
-["LFI, selon les statuts","3", ""],
-["LFI, selon les organisateurs","300000", ""],
-["PS","200000", ""],
-["Renaissance","27000", ""],
-["Les Républicains","48500", ""],
-["FN","40000", ""],
-["Eléves du 1er degré, France","6538000", ""],
-["Elèves du 2e degré","6175900", ""],
-["Elèves dans l'enseignement supérieur, France","2968900", ""],
-["Université d'Aix-Marseille","65760", ""],
-["Université d'Amiens","26849", ""],
-["Université de Bordeaux + Bordeaux II","62200", ""],
-["Université de Brest","21766", ""],
-["Université de Caen","28743", ""],
-["Université de Corse","4124", ""],
-["Université de Dijon","27800", ""],
-["Université de Grenoble-Alpes","44256", ""],
-["Université de Guyane","3051", ""],
-["Université de La Réunion","12783", ""],
-["Université de Mans","10262", ""],
-["Université de Lille","68556", ""],
-["Université de Limohes","17213", ""],
-["Université de Lyon I, II et II","83429", ""],
-["Sorbonne","46256", ""],
-["Université de Paris Cité","56099", ""],
-["Université de Panthéon Assas Nanterre","18807", ""],
-["Université de Paris Nanterre","32093", ""],
-["Université de Paris Saclay","36357", ""],
-["Université de Paris Vincennes","22348", ""],
-["Université de Paris XII Creteil","32452", ""],
-["Université de Poitiers","26680", ""],
-["Université de Reims","23552", ""],
-["Université de Rennes + Rennes II","49945", ""],
-["Université de Rouen","30598", ""],
-["Université de Saint-Etienne","17084", ""],
-["Université de Strasbourg","50156", ""],
-["Université de Toulon","10652", ""],
-["Université de Toulous II, III et Polytchnique Toulouse","63499", ""],
-["Université de Tours","26413", ""],
-["Institiut Polytechnique Paris","5599", ""],
-["ENS","2330", ""],
-["Mines Paris","1075", ""],
-["Centrale-Supelec","4300", ""],
-["HEC","4500", ""],
-["Science-Po Paris(tous campus)","14000", ""],
-["Science-Po Paris cmpus de Paris","1546", ""],
-["Science-Po Lille","2000", ""],
-["Science-Po Lyon","1440", ""],
-["Science-Po Aix-Marseille","1800", ""],
-["Science-Po Rennes","1100", ""],
-["Science-Po Saint-Germain-en-lay","1000", ""],
-["Science-Po Strasbourg","1500", ""],
-["Science-Po Tou louse","1700", ""],
-["Ecoles vétérinaires (les 4)","480", ""],
-    
-    
-    
-    
-["CGT","605562", ""],
 ["CFDT","612205", ""],
 ["FO","380000", ""],
 ["UNSA","200000", ""],
@@ -241,7 +170,6 @@ var conversions = [
 ]
 
 AppConversions.AddGroup(category.value, "Syndicats et Partis politiques", "", conversions);
-
 
 var conversions = [
     ["Eléves du 1er degré, France","6538000", ""],

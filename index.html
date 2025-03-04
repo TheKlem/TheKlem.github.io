@@ -10,7 +10,8 @@
 <meta name="twitter:site" content="@DrScratch">
 <meta name="twitter:creator" content="Clément EGGER">
 <meta name="twitter:title" content="Dumb Converter for smart journalists, by @DrScratch">
-<meta name="twitter:description" content="Grâce à ce site tu peux enfin convertir n'importe-quoi en véritable #nimportequoi.<p>Bien entendu, ce site s'adresse avant tout aux journalistes en mal d'inspiration.">
+<meta name="twitter:description" content="Site permettant de faire des conversions dans 
+des unités inusuelles, drôles, voire absurdes.">
 <meta name="twitter:image" content="https://theklem.github.io/img/basset.jpg">
 
   <!-- Matomo RGPD Commpliant analytics-->
@@ -33,7 +34,8 @@
 
 <body>
 <h1 align="center">CONVERTISSEUR STUPIDE</h1>
-<div id="message" align="center">Convertir n'importe-quoi en véritable #nimportequoi. Ce site s'adresse avant tout aux <strong>journalistes</strong> en mal d'inspiration. <p>Une erreur étant toujours possible si vous repérez une erreur de conversion contactez-moi sur Twitter : <a href="https://twitter.com/DrScratch">DrScratch</a>.</div>
+<div id="message" align="center">Convertir n'importe-quoi en véritable #nimportequoi. Ce site s'adresse avant tout aux <strong>journalistes</strong> en mal d'inspiration. 
+        <p>Si vous repérez une erreur de conversion contactez-moi sur Bluesky : <a href="https://bsky.app/profile/drscratch.bsky.social">DrScratch</a>.</div>
   <div id="form-container">
         <form id="conversion-form">
                 <select id="conversion-type" name="conversionType" size="1">   
@@ -242,8 +244,8 @@
                         this.ResultContainerElement.innerHTML = `<p><strong>${this.Value}</strong> ${this.InputUnitLabel} est égal à ${this.Result} ${this.OutputUnitLabel}</br>`
                         //this.ResultContainerElement.innerHTML += `Il faut  multiplier [${this.Value} ${this.InputUnitLabel}] par <strong>${this.InverseResult}</strong> pour faire <strong>1</strong> [${this.OutputUnitLabel}]</br>`
                         this.ResultContainerElement.innerHTML += `Ou encore <strong>1</strong> [${this.OutputUnitLabel}] égal <strong>${this.InverseResult}</strong> fois [${this.Value} ${this.InputUnitLabel}] </p>`  
-                        this.ResultContainerElement.innerHTML += `<p><a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="30" height="29" align="middle"> Partager ce résultat sur twitter</a></p>`;        
-                                                        
+                        this.ResultContainerElement.innerHTML += `<p>Partager ce résultat sur</p><p><a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="50" align="middle"></a>Twitter or <a target="_blank" href="https://bsky.app/intent/compose?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Bluesky.jpeg" width="50" align="middle"></a>Bluesky </p>`;        
+                        
                 },
                 hideResult: function(){
                        
