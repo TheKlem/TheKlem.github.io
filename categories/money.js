@@ -109,6 +109,32 @@ var conversions = [
 AppConversions.AddGroup(category.value, "Luxe", "", conversions);
 
 var conversions = [
+    ["Un avion Rafale","100000000", ""],
+    ["Un canon Caesar","4000000", ""],
+    ["Un porte-avion Charles de Gaulle","10000000000", ""],
+    ["Un VAB Ultima","1500000", ""],
+    ["Un missile air-air Meteor","2000000", ""],
+    ["Un missile air-air AIM-120 AMRAAM","2500000", ""],
+    ["Un missile Tomahawk","800000", ""],
+    ["Un hélicoptère Tigre HAD (Airbus)","37000000", ""],
+    ["Un hélicoptère AH-64 Apache (Boeing)","52000000", ""],
+    ["Un hélicoptère de transoport V-22 Osprey (Boeing-Bell)","73000000", ""],
+    ["Un char Leclerc","6700000", ""],
+    ["Un char Leopard 2","30000000", ""],
+    ["Un char M1 Abrams","10000000", ""],
+    ["Un SNA classe Suffren","1500000000", ""],
+    ["Un SNA classe Virginia","2500000000", ""],
+    ["Un Missile Sol-Air courte portée Mistral 2","170000", ""],
+    ["Un Missile Sol-Air courte portée FIM 92 Stinger","40000", ""],
+    ["Un Missile Mer-Sol MIM-104 Patriot","3300000", ""],
+    ["Une batterie Patriot","1000000000", ""],
+    ["Un Missile Mer-Sol balistique M51","120000000", ""],
+    
+]
+
+AppConversions.AddGroup(category.value, "Equipements militaires", "", conversions);
+
+var conversions = [
     ["Coquillettes Panzani, 1kg","2.9", ""],
     ["Camembert -sans intérêt- Président","2.09", ""],
     ["Camembert -de qualité- Isigny","4.20", ""],
