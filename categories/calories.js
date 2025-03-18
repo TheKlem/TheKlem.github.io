@@ -17,7 +17,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Unités essentielles", "", conversions);
+AppConversions.AddGroup(category.value, "Unités essentielles", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
     ["	heure de Marche lente 1 heure (3km/h)	","	176	", ""],
@@ -54,7 +54,7 @@ var conversions = [
 ["	heure de Jardinage","	281	", ""],
 ]
 
-AppConversions.AddGroup(category.value, "Activité physique (personne de 70kg)", "", conversions);
+AppConversions.AddGroup(category.value, "Activité physique (personne de 70kg)", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
     ["	Bière “33” Export bouteille = 25 cl	","	97	", ""],
@@ -99,7 +99,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Alcools & Spiritueux" , "",conversions);
+AppConversions.AddGroup(category.value, "Alcools & Spiritueux" , "font-weight: bold; color: red;",conversions);
 
 var conversions = [
     ["	Agneau (cervelle)	 100g	","	112	", ""],
@@ -190,7 +190,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Viandes", "", conversions);
+AppConversions.AddGroup(category.value, "Viandes", "font-weight: bold; color: red;", conversions);
 
 
 var conversions = [
@@ -213,7 +213,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Charcuterie", "", conversions);
+AppConversions.AddGroup(category.value, "Charcuterie", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
     ["	Aiglefin	","	71	", ""],
@@ -323,7 +323,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Poissons et crustacés" , "",conversions);
+AppConversions.AddGroup(category.value, "Poissons et crustacés" , "font-weight: bold; color: red;",conversions);
 
 
 var conversions = [
@@ -363,7 +363,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Légumes et féculents" , "",conversions);
+AppConversions.AddGroup(category.value, "Légumes et féculents" , "font-weight: bold; color: red;",conversions);
 
 var conversions = [
     ["	Noix de cajou	","	612	", ""],
@@ -375,7 +375,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Noix et fruits secs" , "",conversions);
+AppConversions.AddGroup(category.value, "Noix et fruits secs" , "font-weight: bold; color: red;",conversions);
 
 var conversions = [
     ["	Brioche	","	386	", ""],
@@ -390,7 +390,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Boulangerie" , "",conversions);
+AppConversions.AddGroup(category.value, "Boulangerie" , "font-weight: bold; color: red;",conversions);
 
 var conversions = [
     ["	Beurre	","	750	", ""],
@@ -409,7 +409,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "graisses" , "",conversions);
+AppConversions.AddGroup(category.value, "graisses" , "font-weight: bold; color: red;",conversions);
 
 var conversions = [
     ["	Crème fraîche	","	290	", ""],
@@ -491,7 +491,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Produits laitiers" , "",conversions);
+AppConversions.AddGroup(category.value, "Produits laitiers" , "font-weight: bold; color: red;",conversions);
 
 var conversions = [
     ["	Abricot	","	43	", ""],
@@ -507,7 +507,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Fruits" , "",conversions);
+AppConversions.AddGroup(category.value, "Fruits" , "font-weight: bold; color: red;",conversions);
 
 var conversions = [
     ["	Bretzel (à l’unité 15 g)	","	80	", ""],
@@ -521,5 +521,5 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Biscuits Apéritifs" , "",conversions);
+AppConversions.AddGroup(category.value, "Biscuits Apéritifs" , "font-weight: bold; color: red;",conversions);
 
