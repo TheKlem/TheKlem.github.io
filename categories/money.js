@@ -48,7 +48,6 @@ var conversions = [
     ["Budget MIT (12K etudiants)","3000000000", ""],
     ["Budget Université Oxford (24K etudiants)","3400000000", ""],
 ]
-]
 
 AppConversions.AddGroup(category.value, "Divers", "", conversions);
 
