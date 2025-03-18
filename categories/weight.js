@@ -90,6 +90,8 @@ var conversions = [
 ["Chihuahua","1500", ""],
 ["Basset Hound femelle","27000", ""],
 ["Basset Hound mâle","34000", ""],
+["Bouvier Bernois femelle","50000", ""],
+["Bouvier Bernois mâle","60000", ""],
 ["Dogue du Tibet","80000", ""],
 ["Grand Requin Blanc","890000", ""],
 ["Elephant d'Afrique mâle","6000000", ""],
