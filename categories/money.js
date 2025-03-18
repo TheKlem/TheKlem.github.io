@@ -66,7 +66,7 @@ var conversions = [
     ["Salaire annuel brut moyen USA","70123", ""],
 ]
 
-AppConversions.AddGroup(category.value, "Salaires, revenus : des FLUX (coucou Oxfam)", "", conversions);
+AppConversions.AddGroup(category.value, "Salaires, revenus : des FLUX (coucou Oxfam)", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
     ["Retraite mensuelle moyenne en France","1420", ""],
@@ -92,7 +92,7 @@ var conversions = [
     
 ]
 
-AppConversions.AddGroup(category.value, "Fortunes : des STOCKS (rebonjour Oxfam)", "", conversions);
+AppConversions.AddGroup(category.value, "Fortunes : des STOCKS (rebonjour Oxfam)", "font-weight: bold; color: red;", conversions);
 
 
 var conversions = [
@@ -109,7 +109,7 @@ var conversions = [
     
 ]
 
-AppConversions.AddGroup(category.value, "Luxe", "", conversions);
+AppConversions.AddGroup(category.value, "Luxe", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
     ["avion Mirage 2000 5 (Dassault)","26000000", ""],
