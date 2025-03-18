@@ -29,19 +29,25 @@ var conversions = [
     ["Bus Irizar + bus diesel d'occassion en secours","713000", ""],
     ["WC parisien (1.5m2) en juillet 2023","16404", ""],
     ["WC marseillais (1.5m2) en juillet 2023","8620", ""],
-    ["Stade de France","502000000", ""],
-    ["Groupama Stadium (Lyon)","405000000", ""],
     ["Emeutes de 2005","250000000", ""],
     ["Emeutes de 2023","700000000", ""],
-    ["Plan Borloo (2005-2009)","16257000000", ""],
     ["m2 de HLM (prix de revient moyen en 2020)","2325", ""],
     ["Plan Marshal (valeur de l'époque)","16500000000", ""],
     ["Plan Marshal (valeur actualisée)","130000000000", ""],
     ["Collecte annuelle Assurance-Vie en France","140000000000", ""],
     ["Dépenses militaires US / an","778000000000", ""],
-    ["Prestations sociales France / an","470000000000", ""],
-    
-    
+    ["Dépenses annuelles OPéra de Paris","250000000", ""],
+    ["Budget du Théatre de la Ville (Paris)","13000000", ""],
+    ["Subvention publique au budget du Théatre de la Ville (Paris)","10700000", ""],
+    ["JO Paris 2024","4000000000", ""],
+    ["Budget Ecole Polytechnique (2,3K etudiants)","175000000", ""],
+    ["Budget EPFL, Suisse (14K etudiants)","1250000000", ""],
+    ["Budget Université Paris 8 (22K etudiants)","121100000", ""],
+    ["Budget Université Lyon 3 (27K etudiants)","162000000", ""],
+    ["Budget Université Stanford (7K etudiants)","4100000000", ""],
+    ["Budget MIT (12K etudiants)","3000000000", ""],
+    ["Budget Université Oxford (24K etudiants)","3400000000", ""],
+]
 ]
 
 AppConversions.AddGroup(category.value, "Divers", "", conversions);
@@ -83,7 +89,6 @@ var conversions = [
     ["Famille Bettencourt (fortune de)","80500000000", ""],
     ["Famille Mulliez (fortune de)","20000000000", ""],
     ["Tiger Woods (fortune de)","1100000000", ""],
-    
     
     
 ]
@@ -143,6 +148,16 @@ var conversions = [
 ]
 
 AppConversions.AddGroup(category.value, "Equipements militaires", "", conversions);
+
+var conversions = [
+    ["kilomètre de ligne de métro souterrain","90000000", ""],
+    ["Stade de France","502000000", ""],
+    ["Groupama Stadium (Lyon)","405000000", ""],
+
+]
+
+AppConversions.AddGroup(category.value, "Equipements civils, infrastructures", "", conversions);
+
 
 var conversions = [
     ["Coquillettes Panzani, 1kg","2.9", ""],
@@ -209,8 +224,13 @@ var conversions = [
     ["Plan Borloo (2005-2009)","16257000000", ""],
     ["Plan Marshal (valeur de l'époque)","16500000000", ""],
     ["Plan Marshal (valeur actualisée)","130000000000", ""],
+    ["Prestations sociales France / an","470000000000", ""],
+    ["Plan Borloo (2005-2009)","16257000000", ""],
+    ["Budget de l'Assemblée nationale 2024","620050000", ""],
+    ["Budget du Sénat 2024","362150000", ""],
+    ["Budget de l'Elysée 2024","125500000", ""],
     
 ]
 
-AppConversions.AddGroup(category.value, "Finances publiques, collectivtés, infrastructures", "", conversions);
+AppConversions.AddGroup(category.value, "Finances publiques, collectivtés", "", conversions);
 
