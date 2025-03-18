@@ -107,7 +107,6 @@ var conversions = [
     ["Kg de Caviar Sevruga","2480", ""],
     ["Bouteille d'eau la plus chère du monde","52000", ""],
     
-    
 ]
 
 AppConversions.AddGroup(category.value, "Luxe", "", conversions);
@@ -159,6 +158,9 @@ AppConversions.AddGroup(category.value, "Equipements civils, infrastructures", "
 
 
 var conversions = [
+    ["Oeuf à l'unité en France (mars 2024)","0.45", ""],
+    ["Oeuf à l'unité aux USA (mars 2023)","0.23", ""],
+    ["Oeuf à l'unité aux USA (mars 2024)","0.61", ""],
     ["Coquillettes Panzani, 1kg","2.9", ""],
     ["Camembert -sans intérêt- Président","2.09", ""],
     ["Camembert -de qualité- Isigny","4.20", ""],
