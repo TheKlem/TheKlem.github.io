@@ -201,7 +201,7 @@ var conversions = [
     
 ]
 
-AppConversions.AddGroup(category.value, "Entreprises", "", conversions);
+AppConversions.AddGroup(category.value, "Entreprises", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
     ["Dette française","2300000000000", ""],
@@ -233,5 +233,5 @@ var conversions = [
     
 ]
 
-AppConversions.AddGroup(category.value, "Finances publiques, collectivtés", "", conversions);
+AppConversions.AddGroup(category.value, "Finances publiques, collectivtés", "font-weight: bold; color: red;", conversions);
 
