@@ -145,7 +145,7 @@ var conversions = [
     
 ]
 
-AppConversions.AddGroup(category.value, "Equipements militaires", "", conversions);
+AppConversions.AddGroup(category.value, "Equipements militaires", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
     ["kilomètre de ligne de métro souterrain","90000000", ""],
@@ -154,7 +154,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Equipements civils, infrastructures", "", conversions);
+AppConversions.AddGroup(category.value, "Equipements civils, infrastructures", "font-weight: bold; color: red;", conversions);
 
 
 var conversions = [
@@ -186,7 +186,7 @@ var conversions = [
     
 ]
 
-AppConversions.AddGroup(category.value, "Nourriture", "", conversions);
+AppConversions.AddGroup(category.value, "Nourriture", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
     ["CA de Qwant","10000000", ""],
