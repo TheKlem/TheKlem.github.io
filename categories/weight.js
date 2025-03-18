@@ -21,7 +21,7 @@ var conversions = [
 ["Once néerlandaise (ons)","100", ""],
 ]
 
-AppConversions.AddGroup(category.value, "Unités standard", "", conversions);
+AppConversions.AddGroup(category.value, "Unités standard", "font-weight: bold; color: red;", conversions);
 
 
 var conversions = [
@@ -48,7 +48,7 @@ var conversions = [
 ["Un boisseau US de maïs","25400", ""],
 ]
 
-AppConversions.AddGroup(category.value, "Agriculture", "", conversions);
+AppConversions.AddGroup(category.value, "Agriculture", "font-weight: bold; color: red;", conversions);
 
 
 var conversions = [
@@ -74,7 +74,7 @@ var conversions = [
 ["Baton de berger, Justin Bridou","100", ""],
 ]
 
-AppConversions.AddGroup(category.value, "Divers", "", conversions)
+AppConversions.AddGroup(category.value, "Divers", "font-weight: bold; color: red;", conversions)
 
 
 var conversions = [
@@ -102,11 +102,11 @@ var conversions = [
 ]
 
 
-AppConversions.AddGroup(category.value, "Animaux" , "",conversions)
+AppConversions.AddGroup(category.value, "Animaux" , "font-weight: bold; color: red;",conversions)
 
 
 var conversions = [
-    ["Kate Moss à 20 ans","45000", ""],
+["Kate Moss à 20 ans","45000", ""],
 ["Emily Ratajkowsi","52000", ""],
 ["Charlie Chaplin","62000", ""],
 ["Tom Cruise","68000", ""],
@@ -122,7 +122,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Personnes" , "",conversions)
+AppConversions.AddGroup(category.value, "Personnes" , "font-weight: bold; color: red;",conversions)
 
 var conversions = [
     ["2 CV","520000", ""],
@@ -149,7 +149,7 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Véhicules" , "",conversions)
+AppConversions.AddGroup(category.value, "Véhicules" , "font-weight: bold; color: red;",conversions)
 
 var conversions = [
     ["Tour Montparnasee","150000000000", ""],
@@ -159,4 +159,4 @@ var conversions = [
 
 ]
 
-AppConversions.AddGroup(category.value, "Monuments" , "",conversions)
+AppConversions.AddGroup(category.value, "Monuments" , "font-weight: bold; color: red;",conversions)
