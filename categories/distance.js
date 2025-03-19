@@ -11,7 +11,7 @@ var conversions = [
     ["Mètre(s)","1", ""],
     ["Kilometre(s)","1000", ""],
     ["Miles(s) ","1609", ""],
-    ["Mile(s) nautique(s)","1852", ""]
+    ["Mile(s) nautique(s)","1852", ""],
     ["Pied grec","0.2972", ""],
     
 ]
