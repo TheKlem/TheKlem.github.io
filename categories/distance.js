@@ -8,11 +8,11 @@ AppConversions.AddCategory(category.value, category.title, category.style);
 
 var conversions = [
     ["Centimètres","0.01", ""],
-["Mètre(s)","1", ""],
-["Kilometre(s)","1000", ""],
-["Miles(s) ","1609", ""],
-["Mile(s) nautique(s)","1852", ""]
-["Pied grec","0.2972", ""],
+    ["Mètre(s)","1", ""],
+    ["Kilometre(s)","1000", ""],
+    ["Miles(s) ","1609", ""],
+    ["Mile(s) nautique(s)","1852", ""]
+    ["Pied grec","0.2972", ""],
     
 ]
 
@@ -36,22 +36,21 @@ var conversions = [
 AppConversions.AddGroup(category.value, "Unités anciennes", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
- 
-["Rocco Sifredi ****","0.24", ""],
-["Mimie Mathy","1.32", ""],
-["Nicolas Sarkozy","1.66", ""],
-["Tony Parker","1.88", ""],
-["Charles de Gaulle","1.96", ""],
-["Rudy Gobert","2.15", ""],
-["Tom Cruise","1.7", ""],
-["Beyoncé","1.69", ""],
-["Emmanuel Macron","1.7", ""],
-["Novak Djokovic","1.88", ""],
-["Carlos Alcaraz","1.85", ""],
-["Rafael Nadal","1.85", ""],
-["Roger Federer","1.85", ""],
-["Yannick Noah","1.93", ""],
-["Joakim Noah","2.11", ""],
+    ["Rocco Sifredi ****","0.24", ""],
+    ["Mimie Mathy","1.32", ""],
+    ["Nicolas Sarkozy","1.66", ""],
+    ["Tony Parker","1.88", ""],
+    ["Charles de Gaulle","1.96", ""],
+    ["Rudy Gobert","2.15", ""],
+    ["Tom Cruise","1.7", ""],
+    ["Beyoncé","1.69", ""],
+    ["Emmanuel Macron","1.7", ""],
+    ["Novak Djokovic","1.88", ""],
+    ["Carlos Alcaraz","1.85", ""],
+    ["Rafael Nadal","1.85", ""],
+    ["Roger Federer","1.85", ""],
+    ["Yannick Noah","1.93", ""],
+    ["Joakim Noah","2.11", ""],
 
 ]
 
@@ -97,6 +96,7 @@ var conversions = [
 ["Terre -&gt; Lune","384400000", ""],
 ["Terre -&gt; Mars","62100000000", ""],
 ["Terre -&gt; Soleil","149000000000", ""],
+
 ]
 
 AppConversions.AddGroup(category.value, "Divers", "font-weight: bold; color: red;", conversions);
