@@ -96,7 +96,7 @@ var conversions = [
 ["Tour de la Terre","40075000", ""],
 ["Terre -&gt; Lune","384400000", ""],
 ["Terre -&gt; Mars","62100000000", ""],
-["Terre -&gt; Soleil","149000000000", ""]
+["Terre -&gt; Soleil","149000000000", ""],
 ]
 
 AppConversions.AddGroup(category.value, "Divers", "font-weight: bold; color: red;", conversions);
