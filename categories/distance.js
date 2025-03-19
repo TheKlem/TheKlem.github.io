@@ -12,6 +12,8 @@ var conversions = [
     ["Kilometre(s)","1000", ""],
     ["Miles(s) ","1609", ""],
     ["Mile(s) nautique(s)","1852", ""],
+    ["Banane","0.16", "font-weight: bold; color: limegreen;"],
+
     
 ]
 
@@ -57,18 +59,8 @@ var conversions = [
 AppConversions.AddGroup(category.value, "Personnes", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
-    ["Balle de ping-pong","0.04", ""],
-["Balle de golf","0.044", ""],
-["Balle de tennis","0.0668", ""],
-["Banane","0.16", "font-weight: bold; color: limegreen;"],
-["Noix de coco","0.25", ""],
-["Concombre","0.30", ""],
-["Coton Tige","0.075", ""],
-["Schtroumpf","0.05", ""],
+
 ["Manneken-Pis","0.55", ""],
-["Intestin grêle","5.50", ""],
-["Etage (immeuble hausmanien)","3.20", ""],
-["Terrain de foot","105", ""],
 ["Arc de Triomphe","105", ""],
 ["Notre-Dame de Paris (ss voutes)","35", ""],
 ["Notre-Dame d'Amiens (ss voutes)","42.30", ""],
@@ -76,8 +68,23 @@ var conversions = [
 ["Tour Eiffel","300", ""],
 ["Empire State Building","381", ""],
 ["Burj Khalifa(Dubaï)","828", ""],
-["Du capitole -&gt; Roche tarpeienne","250", ""],
 ["Pont de Normandie (max)","2141", ""],
+
+]
+
+AppConversions.AddGroup(category.value, "Monuments", "font-weight: bold; color: red;", conversions);
+
+var conversions = [
+    ["Balle de ping-pong","0.04", ""],
+["Balle de golf","0.044", ""],
+["Balle de tennis","0.0668", ""],["Noix de coco","0.25", ""],
+["Concombre","0.30", ""],
+["Coton Tige","0.075", ""],
+["Schtroumpf","0.05", ""],
+["Intestin grêle","5.50", ""],
+["Etage (immeuble hausmanien)","3.20", ""],
+["Terrain de foot","105", ""],
+["Du capitole -&gt; Roche tarpeienne","250", ""],
 ["Nation -&gt; Opera","5440", ""],
 ["Bastille -&gt; Nation","2180", ""],
 ["Champs Elysées","1910", ""],
