@@ -129,38 +129,8 @@ form button {
     margin: 0 auto 10px;
 }
 
-/* Responsive - Smartphones */
-@media only screen and (max-width: 600px) {
-    body:before {
-        content: "Version mobile du site 1.2";
-        display: block;
-        text-align: center;
-        font-style: italic;
-        color: #7dc8ff;
-        margin-top: 10px;
-    }
-
-    .conversion-container {
-        flex-direction: column;
-    }
-
-    .input-container,
-    .output-container {
-        flex: 1 1 100%;
-    }
-
-    form button {
-        width: 100%;
-        text-align: center;
-    }
-
-    .containerCredits {
-        flex-direction: column;
-    }
-}
-
 /* Responsive - Tablettes */
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
+@media only screen and (min-width: 756px) and (max-width: 1024px) {
     
     body {
         font-size: 16px;
@@ -198,7 +168,7 @@ form button {
     #credits,
     #news {
         width: 95%;
-        padding: 0 20px;
+        padding: 10px 20px;
     }
 
     .containerCredits {
@@ -209,5 +179,35 @@ form button {
 
     .columnCredits {
         flex: 1 1 45%;
+    }
+}
+
+/* Responsive - Smartphones */
+@media only screen and (max-width: 756px) {
+    body:before {
+        content: "Version mobile du site 1.2";
+        display: block;
+        text-align: center;
+        font-style: italic;
+        color: #7dc8ff;
+        margin-top: 10px;
+    }
+
+    .conversion-container {
+        flex-direction: column;
+    }
+
+    .input-container,
+    .output-container {
+        flex: 1 1 100%;
+    }
+
+    form button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .containerCredits {
+        flex-direction: column;
     }
 }
