@@ -34,8 +34,7 @@ des unités inusuelles, drôles, voire absurdes.">
 
 <body>
 <h1 align="center">CONVERTISSEUR STUPIDE</h1>
-<div id="message" align="center">Convertir n'importe-quoi en véritable #nimportequoi. Ce site s'adresse avant tout aux <strong>journalistes</strong> en mal d'inspiration. 
-        <p>Si vous repérez une erreur de conversion contactez-moi sur Bluesky : <a href="https://bsky.app/profile/drscratch.bsky.social" target="_new">DrScratch</a>.</div>
+<div id="message" align="center">Convertir n'importe-quoi en véritable #nimportequoi. Ce site s'adresse avant tout aux <strong>journalistes</strong> en mal d'inspiration. </div>
   <div id="form-container">
         <form id="conversion-form">
                 <select id="conversion-type" name="conversionType" size="1">   
@@ -53,18 +52,19 @@ des unités inusuelles, drôles, voire absurdes.">
                                 <span>EN</span> 
                                 <select id="destination-unit" name="destinationUnit">
                                         <option value="">Sélectionnez une unité</option>
-                                </select><br><br>
+                                </select>
                         </div>
                         
                 </div>
         </form>
   </div>
 
-<div id="result-container" style="display:none">
-</div>
+<div id="result-container" style="display:none"></div>
 
-<div id="credits" class="credits"> Tant qu'à faire, un peu d'auto-promo, découvrez mes projets sérieux :
+<div id="credits" class="credits">Si vous repérez une erreur de conversion contactez-moi sur Bluesky : <a href="https://bsky.app/profile/drscratch.bsky.social" target="_new">DrScratch</a>.<br/>
+        Tant qu'à faire, un peu d'auto-promo, découvrez mes projets sérieux :
         <div class="containerCredits">
+                
                 <div class="columnCredits"><a href="https://ziplo.fr" target="_new"><img class="logo" src="logo-ziplo.png"></a><br/>Un vrai service joli (pas comme ici), bien fait et très utile. <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> est le seul service de transfert de fichiers 100% souverain (ni AWS, ni Google, ni Azure). Ziplo est aussi et surtout un service de création de preuves numériques (aka preuve d'antériorité) pour défendre, entre autres, ses droits d'auteur. Comme la fameuse enveloppe de l'INPI mais en mieux. </div>
                 <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                 <div class="columnCredits"><a href="https://www.kayz.fr" target="_new"><img class="logo" src="logo-kayz.png"></a><br/>Je participe également au projet <a href="https://www.kayz.fr" target="_new">Kayz</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts. Kayz vous permet de laisser en toute sécurité toutes les informations, codes d'accès, documents, instructions qui doivent être transmis aux personnes de votre choix s'il vous arrive quelque chose</div>
@@ -244,7 +244,7 @@ des unités inusuelles, drôles, voire absurdes.">
                         this.ResultContainerElement.innerHTML = `<p><strong>${this.Value}</strong> ${this.InputUnitLabel} est égal à ${this.Result} ${this.OutputUnitLabel}</br>`
                         //this.ResultContainerElement.innerHTML += `Il faut  multiplier [${this.Value} ${this.InputUnitLabel}] par <strong>${this.InverseResult}</strong> pour faire <strong>1</strong> [${this.OutputUnitLabel}]</br>`
                         this.ResultContainerElement.innerHTML += `Il faut <strong>${this.InverseResult}</strong> fois [${this.Value} ${this.InputUnitLabel}] pour faire <strong>1</strong> [${this.OutputUnitLabel}] </p>`  
-                        this.ResultContainerElement.innerHTML += `<p>Partager ce résultat sur</p><p><a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="50" align="middle"></a>Twitter or <a target="_blank" href="https://bsky.app/intent/compose?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Bluesky.jpeg" width="50" align="middle"></a>Bluesky </p>`;        
+                        this.ResultContainerElement.innerHTML += `<p>Partager ce résultat sur <a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="50" align="middle"></a> Twitter ou <a target="_blank" href="https://bsky.app/intent/compose?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Bluesky.jpeg" width="50" align="middle"></a> Bluesky </p>`;        
                         
                 },
                 hideResult: function(){
