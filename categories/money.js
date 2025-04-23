@@ -119,7 +119,7 @@ var conversions = [
     ["avion F-35 A (Lockheed)","75000000", ""],
     ["avion F-35 B (Lockheed)","95000000", ""],
     ["avion F-35 C (Lockheed)","106000000", ""],
-    ["canon Cesar","8000000", ""],
+    ["canon Caesar","8000000", ""],
     ["porte-avion Charles de Gaulle","10000000000", ""],
     ["VAB Ultima","1500000", ""],
     ["missile air-air Meteor","2000000", ""],
@@ -206,13 +206,13 @@ var conversions = [
 AppConversions.AddGroup(category.value, "Entreprises", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
-    ["Dette française","2300000000000", ""],
+    ["Dette française 2025","3300000000000", ""],
     ["Recette TVA 2022 (France)","170400000000", ""],
     ["Recette Impôt sur le Revenu 2022 (France)","106500000000", ""],
     ["Recette Impôt sur les Sociétés 2022 (France)","85300000000", ""],
     ["Recette Taxe produits énergetiques (France)","20000000000", ""],
     ["Contribution FR au budget Europe","24900000000", ""],
-    ["PIB français","2958000000000", ""],
+    ["PIB français","2921000000000", ""],
     ["PIB allemand","4260000000000", ""],
     ["Budget de la Justice, France","1250000000", ""],
     ["Budget Education nationale, France","81710000000", ""],
@@ -232,7 +232,9 @@ var conversions = [
     ["Budget de l'Assemblée nationale 2024","620050000", ""],
     ["Budget du Sénat 2024","362150000", ""],
     ["Budget de l'Elysée 2024","125500000", ""],
-    
+    ["Crèche, coût de revient par jour et par enfant","83", ""],
+    ["Retraites, montant total 2021","337000000000", ""],
+    ["Elus, montant annuel des indemnités","2100000000", ""],
 ]
 
 AppConversions.AddGroup(category.value, "Finances publiques, collectivtés", "font-weight: bold; color: red;", conversions);
