@@ -64,30 +64,31 @@ var conversions = [
     ["Salaire annuel brut moyen Allemagne","56000", ""],
     ["Salaire annuel brut moyen Suisse","64800", ""],
     ["Salaire annuel brut moyen USA","70123", ""],
+    ["Retraite mensuelle moyenne en France","1420", ""],
+    ["Retraite mensuelle de Jean-Luc Mélenchon (source AN)","8500", ""],
+    ["Salaire annuel de Mbappé 2023","100000000", ""],
+    ["Salaire annuel de Ronaldo 2023","46000000", ""],
+    ["Salaire annuel de Messi 2023","65000000", ""],
+        ["Salaire annuel de LeBron James 2023","44500000", ""],
 ]
 
 AppConversions.AddGroup(category.value, "Salaires, revenus : des FLUX (coucou Oxfam)", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
-    ["Retraite mensuelle moyenne en France","1420", ""],
-    ["Retraite mensuelle de Jean-Luc Mélenchon (source AN)","8500", ""],
-    ["Salaire mensuel brut de Mbappé 2023-2026","6000000", ""],
-    ["Salaire mensuel brut de Neymar","3675000", ""],
-    ["Salaire mensuel de Messi","3375000", ""],
+
     ["Patrimoine net médian en France (2021)","124800", ""],
     ["Patrimoine net moyen des habitants de Paris (2021)","321500", ""],
     ["Patrimoine net moyen des 10% les plus riches en France (2021)","716300", ""],
-    ["Prime de Mbappé pour rester au PSG","300000000", ""],
-    ["Patrimoine de Jean-Luc Mélenchon","1465000", ""],
-    ["Bernard Arnault (fortune de)","213000000000", ""],
-    ["Elon Musk (fortune de)","180000000000", ""],
-    ["Jeff Bezos (fortune de)","123300000000", ""],
-    ["Bill Gates (fortune de)","104300000000", ""],
-    ["Famille Hermès (fortune de)","137800000000", ""],
-    ["Famille Wertheimer (fortune de)","100000000000", ""],
-    ["Famille Bettencourt (fortune de)","80500000000", ""],
-    ["Famille Mulliez (fortune de)","20000000000", ""],
-    ["Tiger Woods (fortune de)","1100000000", ""],
+    ["Jean-Luc Mélenchon","1465000", ""],
+    ["Bernard Arnault","213000000000", ""],
+    ["Elon Musk","180000000000", ""],
+    ["Jeff Bezos","123300000000", ""],
+    ["Bill Gates","104300000000", ""],
+    ["Famille Hermès","137800000000", ""],
+    ["Famille Wertheimer","100000000000", ""],
+    ["Famille Bettencourt","80500000000", ""],
+    ["Famille Mulliez","20000000000", ""],
+    ["Tiger Woods","1100000000", ""],
     
     
 ]
@@ -199,7 +200,6 @@ var conversions = [
     ["CA Mondial LVMH","79184000000", ""],
     ["Résultat net LVMH","14084000000", ""],
     ["Fiscalité LVMH en France (IS, TVA, charges sociales)","4500000000", ""],
-    
     
 ]
 
