@@ -76,9 +76,10 @@ AppConversions.AddGroup(category.value, "Monuments", "font-weight: bold; color: 
 
 var conversions = [
     ["Feuille de papier","0.0001", ""],
-    ["Balle de ping-pong","0.04", ""],
+["Balle de ping-pong","0.04", ""],
 ["Balle de golf","0.044", ""],
-["Balle de tennis","0.0668", ""],["Noix de coco","0.25", ""],
+["Balle de tennis","0.0668", ""],
+["Noix de coco","0.25", ""],
 ["Concombre","0.30", ""],
 ["Coton Tige","0.075", ""],
 ["Schtroumpf","0.05", ""],
