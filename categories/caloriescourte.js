@@ -93,7 +93,6 @@ var conversions = [
 ["	Canard	 100g	","	250	", ""],
 ["	Charcuterie	 100g	","	450	", ""],
 ["	Dinde, viande rôtie	 100g	","	160	", ""],
-["	Foie gras	 100g	","	450	", ""],
 ["	Hamburger	 100g	","	560	", ""],
 ["	Hot-dog 100g ","	400	", ""],
 ["	Jambon cru	 100g	","	330	", ""],
@@ -158,7 +157,6 @@ var conversions = [
 ["	Champignon, Chou-fleur, aubergine, courgette, haricots verts 100g","	25	", ""],
 ["	Laitue, cocombre, radis 100g","	15	", ""],
 ["	Pâtes et riz 100g","	150	", ""],
-["	Pain blanc 100g","	270	", ""],
 ["	Pomme de terre cuite 100g","	90	", ""],
 
 ]

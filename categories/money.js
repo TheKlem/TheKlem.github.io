@@ -36,8 +36,8 @@ var conversions = [
     ["Emeutes de 2005","250000000", ""],
     ["Emeutes de 2023","700000000", ""],
     ["m2 de HLM (prix de revient moyen en 2020)","2325", ""],
-    ["Plan Marshal (valeur de l'époque)","16500000000", ""],
-    ["Plan Marshal (valeur actualisée)","130000000000", ""],
+    /* Les deux lignes "Plan Marshal" vivaient ici ET dans "Finances publiques".
+     * Conservees uniquement dans ce dernier groupe, plus adapte. */
     ["Collecte annuelle Assurance-Vie en France","140000000000", ""],
     ["Dépenses militaires US / an","778000000000", ""],
     ["Dépenses annuelles OPéra de Paris","250000000", ""],
@@ -56,9 +56,6 @@ var conversions = [
 AppConversions.AddGroup(category.value, "Divers", "", conversions);
 
 var conversions = [
-    ["SMIC mensuel net en France","1353.07", ""],
-    ["SMIC mensuel brut en France","1709.28", ""],
-    ["Salaire mensuel net moyen en France","2587", ""],
     ["SMIC mensuel net en France","1353.07", ""],
     ["SMIC mensuel brut en France","1709.28", ""],
     ["Salaire mensuel net moyen en France","2587", ""],
@@ -239,7 +236,6 @@ var conversions = [
     ["Plan Marshal (valeur de l'époque)","16500000000", ""],
     ["Plan Marshal (valeur actualisée)","130000000000", ""],
     ["Prestations sociales France / an","470000000000", ""],
-    ["Plan Borloo (2005-2009)","16257000000", ""],
     ["Budget de l'Assemblée nationale 2024","620050000", ""],
     ["Budget du Sénat 2024","362150000", ""],
     ["Budget de l'Elysée 2024","125500000", ""],
