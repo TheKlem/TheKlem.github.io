@@ -6,10 +6,14 @@ var category = {
 
 AppConversions.AddCategory(category.value, category.title, category.style);
 
+/* ATTENTION au sens des pivots : la valeur doit dire COMBIEN D'EUROS vaut une
+ * unite de cette devise, et non l'inverse. Les deux taux etaient inverses
+ * (0.879 et 1.088 sont des livres et des dollars PAR euro), ce qui donnait
+ * 1 euro = 0,919 dollar au lieu de 1,153. Taux du 31 juillet 2026. */
 var conversions = [
     ["euro","1", ""],
-["Livre Sterling","0.879", ""],
-["Dollar US","1.088", ""],
+["Livre Sterling (juillet 2026)","1.169", ""],
+["Dollar US (juillet 2026)","0.867", ""],
 ["Banane à l'unité","0.25", "font-weight: bold; color: limegreen;"],
 
    
@@ -79,16 +83,23 @@ var conversions = [
     ["Patrimoine net médian en France (2021)","124800", ""],
     ["Patrimoine net moyen des habitants de Paris (2021)","321500", ""],
     ["Patrimoine net moyen des 10% les plus riches en France (2021)","716300", ""],
-    ["Jean-Luc Mélenchon","1465000", ""],
-    ["Bernard Arnault","213000000000", ""],
-    ["Elon Musk","180000000000", ""],
-    ["Jeff Bezos","123300000000", ""],
-    ["Bill Gates","104300000000", ""],
-    ["Famille Hermès","137800000000", ""],
-    ["Famille Wertheimer","100000000000", ""],
-    ["Famille Bettencourt","80500000000", ""],
+    /* Fortunes francaises : classement Challenges du 8 juillet 2026, deja
+     * libelle en euros et par famille.
+     * Fortunes americaines : Forbes aout 2026, converties a 1 $ = 0,867 EUR.
+     * Melenchon : declaration de candidature a la presidentielle 2022, valeur
+     * inchangee, il n'exerce plus de mandat donc pas de declaration plus recente.
+     * Mulliez : valeur non verifiee, absente du classement Challenges consulte
+     * (d'ou l'absence d'annee dans son libelle). */
+    ["Jean-Luc Mélenchon (2022)","1465000", ""],
+    ["Bernard Arnault et sa famille (2026)","121200000000", ""],
+    ["Elon Musk (2026)","598000000000", ""],
+    ["Jeff Bezos (2026)","241000000000", ""],
+    ["Bill Gates (2026)","94000000000", ""],
+    ["Famille Hermès (2026)","114000000000", ""],
+    ["Famille Wertheimer (2026)","95000000000", ""],
+    ["Famille Bettencourt (2026)","69700000000", ""],
     ["Famille Mulliez","20000000000", ""],
-    ["Tiger Woods","1100000000", ""],
+    ["Tiger Woods (2026)","1300000000", ""],
     
     
 ]
