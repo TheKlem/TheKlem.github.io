@@ -1,6 +1,6 @@
 var category = {
     value:"WEIGHT", 
-    title:"Masse: le poids des moldus",
+    title:"Masses: le poids des moldus",
     style:""
 };
 
