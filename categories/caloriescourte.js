@@ -1,6 +1,6 @@
 var category = {
     value:"CALORIES", 
-    title:"Calories (l'énergie du corps): liste courte.", 
+    title:"Calories: L'énergie du corps",
     style:""
 };
 

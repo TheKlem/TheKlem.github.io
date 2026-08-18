@@ -71,6 +71,19 @@
     /* Modèle                                                              */
     /* ------------------------------------------------------------------ */
 
+    /* Les intitulés de catégorie sont de la forme "Titre: précisions drôles".
+     * On coupe au premier deux-points : la partie gauche devient le libellé du
+     * badge, la droite son infobulle. Attention, population.js écrit
+     * "Population : ..." avec une espace avant — d'où le trim(). */
+    function splitTitle(title) {
+        var i = String(title).indexOf(':');
+        if (i === -1) { return { court: String(title).trim(), detail: '' }; }
+        return {
+            court: String(title).slice(0, i).trim(),
+            detail: String(title).slice(i + 1).trim()
+        };
+    }
+
     function NewConversion(title, value, style) {
         return { label: decodeEntities(title).trim(), value: value, style: style || '' };
     }
@@ -331,13 +344,14 @@
         Value: 1,
 
         init: function () {
-            this.categorySelect = document.getElementById('conversion-type');
+            this.categoryBadges = document.getElementById('category-badges');
+            this.categorySelect = document.getElementById('category-select');
             this.details = document.getElementById('conversion-details');
             this.valueInput = document.getElementById('initial-value');
             this.resultBox = document.getElementById('result-container');
             this.swapButton = document.getElementById('swap-units');
 
-            if (!this.categorySelect) { return console.log('No Select Category Html Element'); }
+            if (!this.categoryBadges) { return console.log('Conteneur #category-badges introuvable'); }
 
             var self = this;
             this.fromCombo = new Combo(document.getElementById('combo-from'), function () { self.update(); });
@@ -359,31 +373,69 @@
             }
         },
 
+        /* Une pastille par catégorie. La couleur vient d'une classe badge-cN
+         * attribuée par index : la palette vit dans le CSS, et une nouvelle
+         * catégorie reprend automatiquement une teinte du cycle. */
+        NB_TEINTES: 10,
+
         loadCategories: function () {
             var self = this;
-            this.categorySelect.textContent = '';
-            var first = document.createElement('option');
-            first.value = '';
-            first.selected = true;
-            first.disabled = true;
-            first.textContent = 'Convertir quoi ?';
-            this.categorySelect.appendChild(first);
+            this.categoryBadges.textContent = '';
 
-            this.Categories.forEach(function (cat) {
-                var opt = document.createElement('option');
-                opt.value = cat.value;
-                opt.textContent = cat.title;
-                if (cat.style) { opt.setAttribute('style', cat.style); }
-                self.categorySelect.appendChild(opt);
+            if (this.categorySelect) {
+                this.categorySelect.textContent = '';
+                var vide = document.createElement('option');
+                vide.value = '';
+                vide.selected = true;
+                vide.disabled = true;
+                vide.textContent = 'Convertir quoi ?';
+                this.categorySelect.appendChild(vide);
+            }
+
+            this.Categories.forEach(function (cat, i) {
+                var parts = splitTitle(cat.title);
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'badge badge-c' + (i % self.NB_TEINTES);
+                btn.dataset.category = cat.value;
+                btn.setAttribute('aria-pressed', 'false');
+                btn.textContent = parts.court;
+
+                if (parts.detail) {
+                    /* data-tip alimente l'infobulle CSS ; aria-label porte la
+                     * même information pour les lecteurs d'écran, puisqu'une
+                     * infobulle en ::after ne leur est pas annoncée. */
+                    btn.dataset.tip = parts.detail;
+                    btn.setAttribute('aria-label', parts.court + ' — ' + parts.detail);
+                }
+
+                self.categoryBadges.appendChild(btn);
+
+                /* Le menu mobile garde l'intitulé complet : sans survol, il n'y
+                 * a pas d'infobulle pour porter la précision. */
+                if (self.categorySelect) {
+                    var opt = document.createElement('option');
+                    opt.value = cat.value;
+                    opt.textContent = cat.title;
+                    self.categorySelect.appendChild(opt);
+                }
             });
         },
 
         bindEvents: function () {
             var self = this;
 
-            this.categorySelect.addEventListener('change', function (e) {
-                self.selectCategory(e.target.value, true);
+            this.categoryBadges.addEventListener('click', function (e) {
+                var btn = e.target.closest('.badge');
+                if (!btn) { return; }
+                self.selectCategory(btn.dataset.category, true);
             });
+
+            if (this.categorySelect) {
+                this.categorySelect.addEventListener('change', function (e) {
+                    self.selectCategory(e.target.value, true);
+                });
+            }
 
             this.valueInput.addEventListener('input', function () {
                 self.Value = parseValue(self.valueInput.value);
@@ -412,7 +464,7 @@
                 return;
             }
             this.Category = category;
-            this.categorySelect.value = category;
+            this.markActiveBadge(category);
 
             var groups = this.Conversions[category];
             this.fromCombo.load(groups);
@@ -453,6 +505,18 @@
                 if (funny) { this.toCombo.selectByLabel(funny.label, true); }
             }
             this.update();
+        },
+
+        /* Synchronise les deux contrôles : celui qui est masqué doit rester
+         * juste, sinon un changement de largeur d'écran révèle un état faux. */
+        markActiveBadge: function (category) {
+            var badges = this.categoryBadges.querySelectorAll('.badge');
+            badges.forEach(function (b) {
+                var actif = b.dataset.category === category;
+                b.classList.toggle('is-selected', actif);
+                b.setAttribute('aria-pressed', actif ? 'true' : 'false');
+            });
+            if (this.categorySelect) { this.categorySelect.value = category; }
         },
 
         compute: function () {

@@ -63,8 +63,13 @@
   <div id="form-container">
         <form id="conversion-form" autocomplete="off">
                 <div class="field">
-                        <label for="conversion-type">Convertir quoi&nbsp;?</label>
-                        <select id="conversion-type" name="conversionType" size="1"></select>
+                        <span class="field-label" id="category-label">Convertir quoi&nbsp;?</span>
+                        <!-- Deux contrôles pour un même choix : badges en desktop,
+                             menu déroulant en mobile où ils prendraient 4 lignes.
+                             Un seul est visible à la fois (CSS), les deux restent
+                             synchronisés par app.js. -->
+                        <div id="category-badges" class="badges" role="group" aria-labelledby="category-label"></div>
+                        <select id="category-select" class="category-select" aria-labelledby="category-label"></select>
                 </div>
 
                 <div id="conversion-details" class="conversion-container" hidden>
@@ -129,6 +134,7 @@
 <script src="./categories/money.js"></script>
 <script src="./categories/population.js"></script>
 <script src="./categories/dosimetry.js"></script>
+<script src="./categories/energy.js"></script>
 <script src="./categories/caloriescourte.js"></script>
 <!-- <script src="./categories/calories.js"></script> -->
 

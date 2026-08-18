@@ -1,7 +1,7 @@
 
 var category = {
                 value:"VOLUME", 
-                title:"Contenances et volumes: pour soirées arrosées", 
+                title:"Volumes: Pour les soirées arrosées, entre autres choses",
                 style:""
 };
 

@@ -172,7 +172,10 @@ h1 {
 
 form {
     position: relative;
-    z-index: 2;
+    /* Doit rester au-dessus de la carte résultat : le formulaire crée un
+       contexte d'empilement, donc le z-index élevé de .combo-list ne vaut
+       qu'à l'intérieur. Sans ça, la liste d'unités passe sous le résultat. */
+    z-index: 3;
     background-color: var(--panel);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -193,7 +196,8 @@ form {
     min-width: 0;
 }
 
-.field > label {
+.field > label,
+.field > .field-label {
     color: var(--panel-text);
     font-weight: 600;
     font-size: 13px;
@@ -201,8 +205,116 @@ form {
     text-transform: uppercase;
 }
 
+/* --------------------------------------------------------------------------
+   4b. Badges de catégorie
+   Remplacent le menu déroulant : une pastille colorée par catégorie, le
+   titre court en libellé et les précisions en infobulle.
+   La couleur dérive d'une seule variable de teinte --h, ce qui garde la
+   palette lisible et permet d'ajouter une catégorie sans y réfléchir.
+   -------------------------------------------------------------------------- */
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s2);
+    margin-top: var(--s1);
+}
+
+/* En desktop les badges suffisent : le menu reste dans le DOM mais masqué,
+   ce qui permet de garder les deux contrôles synchronisés sans dépendre
+   d'un événement de redimensionnement. */
+.category-select {
+    display: none;
+}
+
+.badge {
+    position: relative;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 9px var(--s3);
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    background-color: hsl(var(--h) 78% 95%);
+    color: hsl(var(--h) 72% 27%);
+    border: 1px solid hsl(var(--h) 60% 84%);
+    transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.badge:hover {
+    background-color: hsl(var(--h) 78% 90%);
+    border-color: hsl(var(--h) 55% 68%);
+}
+
+/* 29 % et non 34 % : à luminosité HSL égale, le vert et le jaune sont
+   perçus bien plus clairs que le bleu, et le blanc dessus passait sous
+   4,5:1. On cale la valeur sur la teinte la plus défavorable. */
+.badge.is-selected {
+    background-color: hsl(var(--h) 62% 29%);
+    border-color: hsl(var(--h) 62% 29%);
+    color: #fff;
+}
+
+/* Teintes réparties sur la roue chromatique, attribuées dans l'ordre de
+   chargement des catégories. Il y en a 10 pour 9 catégories : le cycle doit
+   rester plus long que le nombre de catégories, sinon deux badges finissent
+   avec la même couleur (c'est arrivé en ajoutant l'énergie à 8 teintes). */
+.badge-c0 { --h: 190; }
+.badge-c1 { --h: 28; }
+.badge-c2 { --h: 236; }
+.badge-c3 { --h: 140; }
+.badge-c4 { --h: 45; }
+.badge-c5 { --h: 320; }
+.badge-c6 { --h: 272; }
+.badge-c7 { --h: 3; }
+.badge-c8 { --h: 100; }
+.badge-c9 { --h: 210; }
+
+/* Infobulle : uniquement là où le survol existe vraiment, pour ne pas
+   la déclencher au toucher sur mobile. */
+@media (hover: hover) {
+    .badge[data-tip]:hover::after,
+    .badge[data-tip]:focus-visible::after {
+        content: attr(data-tip);
+        position: absolute;
+        left: 50%;
+        bottom: calc(100% + 8px);
+        transform: translateX(-50%);
+        z-index: 30;
+        white-space: normal;
+        width: max-content;
+        max-width: min(280px, 70vw);
+        text-align: center;
+        padding: 6px 10px;
+        border-radius: var(--radius-sm);
+        background: #14161f;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: none;
+        letter-spacing: 0;
+        box-shadow: var(--shadow-md);
+        pointer-events: none;
+    }
+
+    .badge[data-tip]:hover::before,
+    .badge[data-tip]:focus-visible::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: calc(100% + 3px);
+        transform: translateX(-50%);
+        z-index: 30;
+        border: 5px solid transparent;
+        border-top-color: #14161f;
+        pointer-events: none;
+    }
+}
+
 .field-value {
-    max-width: 220px;
+    flex: 0 0 auto;
 }
 
 /* Champs de saisie et select : même gabarit partout. */
@@ -280,7 +392,7 @@ select:hover {
 }
 
 .combo-input {
-    padding-right: 38px;
+    padding-right: 40px;
     text-overflow: ellipsis;
 }
 
@@ -364,7 +476,7 @@ select:hover {
 
 #result-container {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -515,6 +627,40 @@ select:hover {
    9. Responsive
    -------------------------------------------------------------------------- */
 
+/* Desktop : Valeur, De, inversion et En tiennent sur une seule ligne. */
+@media only screen and (min-width: 757px) {
+    .conversion-container {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: var(--s3);
+    }
+
+    .units-row {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    /* 10 caractères affichés. Calibré en ch — la largeur du "0" de la police
+       courante — plutôt qu'en pixels, pour rester juste quelle que soit la
+       police système. Le sélecteur porte [type="text"] afin de l'emporter
+       sur la règle générique input[type="text"] { width: 100% }. */
+    .field-value input[type="text"] {
+        width: calc(10ch + var(--s3) * 2 + 2px);
+    }
+
+    /* Les libellés d'unités sont longs ("Dose équivalente Banane (DEB)") et
+       disposent de moins de place une fois tout sur une ligne : on descend
+       d'un cran typographique. Sans risque de zoom iOS, on est en desktop. */
+    .combo-input,
+    .combo-option {
+        font-size: 15px;
+    }
+
+    .combo-group {
+        font-size: 10px;
+    }
+}
+
 @media only screen and (max-width: 756px) {
     .hero {
         padding: var(--s6) var(--s4) calc(var(--s6) + var(--s6));
@@ -530,6 +676,16 @@ select:hover {
 
     #message {
         margin: 0 auto;
+    }
+
+    /* Sur mobile, les 8 badges occupent 4 lignes : on repasse au menu
+       déroulant, qui tient sur une seule. */
+    .badges {
+        display: none;
+    }
+
+    .category-select {
+        display: block;
     }
 
     form {
@@ -620,6 +776,35 @@ select:hover {
 
     .combo-option.is-active {
         color: #0f1117;
+    }
+
+    /* Badges : teintes claires sur fond sombre, mêmes valeurs de --h. */
+    .badge {
+        background-color: hsl(var(--h) 32% 17%);
+        color: hsl(var(--h) 75% 76%);
+        border-color: hsl(var(--h) 28% 30%);
+    }
+
+    .badge:hover {
+        background-color: hsl(var(--h) 34% 23%);
+        border-color: hsl(var(--h) 40% 45%);
+    }
+
+    .badge.is-selected {
+        background-color: hsl(var(--h) 62% 66%);
+        border-color: hsl(var(--h) 62% 66%);
+        color: #0f1117;
+    }
+
+    .badge[data-tip]:hover::after,
+    .badge[data-tip]:focus-visible::after {
+        background: #e9ebf5;
+        color: #0f1117;
+    }
+
+    .badge[data-tip]:hover::before,
+    .badge[data-tip]:focus-visible::before {
+        border-top-color: #e9ebf5;
     }
 
     .combo-option.is-active[style*="limegreen"] {
