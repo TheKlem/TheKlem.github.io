@@ -241,7 +241,13 @@ var conversions = [
     ["Plan Borloo (2005-2009)","16257000000", ""],
     ["Plan Marshal (valeur de l'époque)","16500000000", ""],
     ["Plan Marshal (valeur actualisée)","130000000000", ""],
-    ["Prestations sociales France / an","470000000000", ""],
+    /* Ensemble des prestations sociales : vieillesse-survie, sante, famille,
+     * emploi, logement, pauvrete. Source DREES, comptes de la protection
+     * sociale 2024 : 932,5 Md EUR, soit 31,9 % du PIB 2024.
+     * L'ancienne valeur, 470 Md EUR, sous-estimait le total d'un facteur deux :
+     * elle aurait fait des seules retraites 78 % des prestations, alors que la
+     * DREES les situe a 41,6 %. */
+    ["Prestations sociales France (2024)","932500000000", ""],
     ["Budget de l'Assemblée nationale 2024","620050000", ""],
     ["Budget du Sénat 2024","362150000", ""],
     ["Budget de l'Elysée 2024","125500000", ""],
