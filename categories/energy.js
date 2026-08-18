@@ -141,9 +141,18 @@ AppConversions.AddGroup(category.value, "Transports", "", conversions);
  *   1 an : 17 000 000 W x 31 536 000 s, soit environ 149 GWh */
 var conversions = [
     ["Éclair (ordre de grandeur)","500000000", ""],
-    ["Un réacteur nucléaire pendant 1 heure","3240000000000", ""],
+    /* Les deux unites "reacteur" ne suivent PAS la meme convention, et leurs
+     * libelles le disent :
+     *   - 1 heure a pleine puissance : 900 MW x 3 600 s, une puissance nominale
+     *   - un an en production reelle : 21,55 TWh du Tricastin divises par ses
+     *     4 reacteurs, soit 5,39 TWh
+     * Le rapport entre les deux vaut 5 986 et non 8 760, ce qui est normal :
+     * un reacteur ne tourne pas a pleine puissance toute l'annee (facteur de
+     * charge d'environ 68 %). Sans ces mentions le resultat semblerait faux. */
+    ["Un réacteur nucléaire pendant 1 h (pleine puissance)","3240000000000", ""],
     ["Data center OVH Roubaix 8 pendant 1 heure","61200000000", ""],
     ["Data center OVH Roubaix 8 pendant un an","536112000000000", ""],
+    ["Un réacteur nucléaire pendant un an (production réelle)","19395000000000000", ""],
     ["Tous les data centers français pendant un an","36000000000000000", ""],
     ["Conso élec. annuelle de la France (2025)","1623600000000000000", ""],
 ]
