@@ -214,13 +214,19 @@ var conversions = [
 AppConversions.AddGroup(category.value, "Entreprises", "font-weight: bold; color: red;", conversions);
 
 var conversions = [
-    ["Dette française 2025","3300000000000", ""],
+    /* Comptes 2025 des administrations publiques, INSEE (publies en 2026).
+     * Les trois chiffres se recoupent : 152,5 / 2 992 = 5,1 % et
+     * 3 460,5 / 2 992 = 115,7 %, soit les ratios publies par l'INSEE.
+     * Attention a la distinction : la dette est un STOCK, le deficit un FLUX
+     * annuel. Il faut 22,7 annees de deficit pour reconstituer la dette. */
+    ["Dette publique française (fin 2025)","3460500000000", ""],
+    ["Déficit public français (2025)","152500000000", ""],
     ["Recette TVA 2022 (France)","170400000000", ""],
     ["Recette Impôt sur le Revenu 2022 (France)","106500000000", ""],
     ["Recette Impôt sur les Sociétés 2022 (France)","85300000000", ""],
     ["Recette Taxe produits énergetiques (France)","20000000000", ""],
     ["Contribution FR au budget Europe","24900000000", ""],
-    ["PIB français","2921000000000", ""],
+    ["PIB français (2025)","2992000000000", ""],
     ["PIB allemand","4260000000000", ""],
     ["Budget de la Justice, France","1250000000", ""],
     ["Budget Education nationale, France","81710000000", ""],
@@ -240,7 +246,10 @@ var conversions = [
     ["Budget du Sénat 2024","362150000", ""],
     ["Budget de l'Elysée 2024","125500000", ""],
     ["Crèche, coût de revient par jour et par enfant","83", ""],
-    ["Retraites, montant total 2021","337000000000", ""],
+    /* Masse totale des pensions de retraite, tous regimes confondus.
+     * Source DREES, panorama 2025 : 369,9 Md EUR en 2023, soit 13,1 % du PIB
+     * de cette annee-la (et non du PIB 2025 figurant plus haut). */
+    ["Retraites, montant total (2023)","369900000000", ""],
     ["Elus, montant annuel des indemnités","2100000000", ""],
 ]
 
