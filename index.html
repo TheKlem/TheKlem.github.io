@@ -1,18 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="TheKlem">
 
-<title>Convertisseur stupide et amusant pour les journalistes</title>
-<link href="styles.css" rel="stylesheet" media="all" type="text/css"> 
+<title>Convertisseur stupide — convertir en unités absurdes</title>
+<meta name="description" content="Convertir n'importe quelle mesure en unités absurdes : Tours Eiffel, bananes, terrains de foot. Une comparaison concrète se visualise mieux qu'un nombre.">
+<link href="styles.css" rel="stylesheet" media="all" type="text/css">
+
+<!-- Favicon SVG : les navigateurs modernes le préfèrent, pas besoin de .ico -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<!-- Open Graph : aperçu correct sur Bluesky, LinkedIn, WhatsApp, Slack, Discord.
+     Sans ces balises, seul Twitter/X affichait une vignette. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Convertisseur stupide">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://theklem.github.io/">
+<meta property="og:title" content="Convertisseur stupide — convertir en unités absurdes">
+<meta property="og:description" content="Convertissez n'importe quelle mesure en unités absurdes : Tours Eiffel, bananes, terrains de foot. Parce qu'une comparaison concrète se visualise mieux qu'un nombre.">
+<meta property="og:image" content="https://theklem.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Convertisseur stupide : 12 milles nautiques = 74,08 Tours Eiffel">
+
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@DrScratch">
-<meta name="twitter:creator" content="Clément EGGER">
-<meta name="twitter:title" content="Dumb Converter for smart journalists, by @DrScratch">
-<meta name="twitter:description" content="Site permettant de faire des conversions dans 
-des unités inusuelles, drôles, voire absurdes.">
-<meta name="twitter:image" content="https://theklem.github.io/img/scratch.jpg">
+<meta name="twitter:creator" content="@DrScratch">
+<meta name="twitter:title" content="Convertisseur stupide — convertir en unités absurdes">
+<meta name="twitter:description" content="Convertissez n'importe quelle mesure en unités absurdes : Tours Eiffel, bananes, terrains de foot. Parce qu'une comparaison concrète se visualise mieux qu'un nombre.">
+<meta name="twitter:image" content="https://theklem.github.io/og-image.png">
 
   <!-- Matomo RGPD Commpliant analytics-->
 <script>
@@ -33,257 +51,76 @@ des unités inusuelles, drôles, voire absurdes.">
 </head>
 
 <body>
-<h1 align="center">CONVERTISSEUR STUPIDE</h1>
-<div id="message" align="center">Convertir n'importe-quoi en véritable #nimportequoi. Ce site s'adresse avant tout aux <strong>journalistes</strong> en mal d'inspiration. </div>
+<header class="hero">
+        <svg class="hero-banana" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                <path d="M17 13 C17 34 27 48 50 50 C48 45 44 43 39 40 C31 35 27 26 25 13 Z"/>
+        </svg>
+        <div class="hero-inner">
+                <h1>CONVERTISSEUR STUPIDE</h1>
+                <p id="message">Convertir n'importe-quoi en véritable #nimportequoi. Ce site s'adresse avant tout aux <strong>journalistes</strong> en mal d'inspiration.</p>
+        </div>
+</header>
   <div id="form-container">
-        <form id="conversion-form">
-                <select id="conversion-type" name="conversionType" size="1">   
-                </select>
-                        
-                <div id="conversion-details" class="conversion-container" style="display:none;">
-                        <div class="input-container">
-                                <input type="text" id="initial-value" name="initialValue" size="7" value="1"/>
-                                <select id="start-unit" name="startUnit">
-                                        <option value="">Sélectionnez une unité</option>
-                                </select>
+        <form id="conversion-form" autocomplete="off">
+                <div class="field">
+                        <label for="conversion-type">Convertir quoi&nbsp;?</label>
+                        <select id="conversion-type" name="conversionType" size="1"></select>
+                </div>
+
+                <div id="conversion-details" class="conversion-container" hidden>
+                        <div class="field field-value">
+                                <label for="initial-value">Valeur</label>
+                                <input type="text" inputmode="decimal" id="initial-value" name="initialValue" value="1"/>
                         </div>
-                
-                        <div class="output-container">
-                                <span>EN</span> 
-                                <select id="destination-unit" name="destinationUnit">
-                                        <option value="">Sélectionnez une unité</option>
-                                </select>
+
+                        <div class="units-row">
+                                <div class="field">
+                                        <label for="from-unit">De</label>
+                                        <div class="combo" id="combo-from">
+                                                <input class="combo-input" id="from-unit" type="text"
+                                                       role="combobox" aria-expanded="false" aria-autocomplete="list"
+                                                       aria-controls="from-unit-list"
+                                                       placeholder="Chercher une unité…"/>
+                                                <button type="button" class="combo-toggle" tabindex="-1" aria-label="Afficher toutes les unités">▾</button>
+                                                <ul class="combo-list" id="from-unit-list" role="listbox" aria-label="Unité de départ" hidden></ul>
+                                        </div>
+                                </div>
+
+                                <button type="button" id="swap-units" aria-label="Inverser les deux unités" title="Inverser les deux unités">⇅</button>
+
+                                <div class="field">
+                                        <label for="to-unit">En</label>
+                                        <div class="combo" id="combo-to">
+                                                <input class="combo-input" id="to-unit" type="text"
+                                                       role="combobox" aria-expanded="false" aria-autocomplete="list"
+                                                       aria-controls="to-unit-list"
+                                                       placeholder="Chercher une unité…"/>
+                                                <button type="button" class="combo-toggle" tabindex="-1" aria-label="Afficher toutes les unités">▾</button>
+                                                <ul class="combo-list" id="to-unit-list" role="listbox" aria-label="Unité d'arrivée" hidden></ul>
+                                        </div>
+                                </div>
                         </div>
-                        
                 </div>
         </form>
   </div>
 
-<div id="result-container" style="display:none"></div>
+<div id="result-container" aria-live="polite" hidden></div>
 
-<div id="credits" class="credits">Si vous repérez une erreur de conversion contactez-moi sur Bluesky : <a href="https://bsky.app/profile/drscratch.bsky.social" target="_new">DrScratch</a>.<br/>
-        Tant qu'à faire, un peu d'auto-promo, découvrez mes projets sérieux :
-        <div class="containerCredits">
-                
-                <div class="columnCredits"><a href="https://ziplo.fr" target="_new"><img class="logo" src="logo-ziplo.png"></a><br/>Un vrai service joli (pas comme ici), bien fait et très utile. <a href="https://ziplo.fr" target="_new">Ziplo.fr</a> est le seul service de transfert de fichiers 100% souverain (ni AWS, ni Google, ni Azure). Ziplo est aussi et surtout un service de création de preuves numériques (aka preuve d'antériorité) pour défendre, entre autres, ses droits d'auteur. Comme la fameuse enveloppe de l'INPI mais en mieux. </div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                <div class="columnCredits"><a href="https://www.kayz.fr" target="_new"><img class="logo" src="logo-kayz.png"></a><br/>Je participe également au projet <a href="https://www.kayz.fr" target="_new">Kayz</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts. Kayz vous permet de laisser en toute sécurité toutes les informations, codes d'accès, documents, instructions qui doivent être transmis aux personnes de votre choix s'il vous arrive quelque chose</div>
-        </div>
-</div>
+<footer id="credits" class="credits">
+        <p class="credits-contact">Si vous repérez une erreur contactez-moi sur <a href="https://x.com/DrScratch" target="_blank" rel="noopener">X/Twitter</a> ou <a href="https://bsky.app/profile/drscratch.bsky.social" target="_blank" rel="noopener">Bluesky</a></p>
 
-
- <!-- valeurs, traitements et résultats --> 
-<script type="text/javascript">
-
-        const integerFormatter = new Intl.NumberFormat('fr-FR', {
-        maximumFractionDigits: 0
-        });
-        const smallNumberFormatter = new Intl.NumberFormat('fr-FR', {
-        maximumFractionDigits: 8,
-        minimumFractionDigits: 8,
-        });
-        const smallNumberInvertedFormatter = new Intl.NumberFormat('fr-FR', {
-        maximumFractionDigits: 12,
-        minimumFractionDigits: 12,
-        });
-        const numberDisplayFormatter = new Intl.NumberFormat('fr-FR', {
-        maximumFractionDigits: 3,
-        minimumFractionDigits: 3
-        });
-        const numberInvertedDisplayFormatter = new Intl.NumberFormat('fr-FR', {
-        maximumFractionDigits: 2,
-        minimumFractionDigits: 2
-        });
-
-        function NewGroup(title,style){
-                return {label:title, 
-                        style:style, 
-                        conversions:[],
-                        pushConversions: function(arrConv){
-                                arrConv.forEach(con => {
-                                        this.conversions.push(NewConversion(con[0], con[1], con[2] ? con[2]:''));
-                                })
-                        }
-                }
-        }
-        function NewConversion(title, value, style){
-                return {label:title, value:value, style:style}
-        }
-
-        const AppConversions = {
-                Categories :  [],
-
-                Conversions : {},
-
-                CategorySelectElement: document.getElementById('conversion-type'),
-                FormElement : document.getElementById('conversion-details'),
-                InputSelectElement : document.getElementById('start-unit'),
-                OutputSelectElement: document.getElementById('destination-unit'),
-                ValueElement: document.getElementById('initial-value'),
-                ResultContainerElement: document.getElementById('result-container'),
+        <details class="promo" id="promo" open>
+                <summary>Tant qu'à faire, un peu d'auto-promo : mes projets sérieux</summary>
+                <div class="containerCredits">
+                        <div class="columnCredits"><a href="https://ziplo.fr" target="_blank" rel="noopener"><img class="logo" src="logo-ziplo.png" alt="Ziplo"></a>Un vrai service joli (pas comme ici), bien fait et très utile. <a href="https://ziplo.fr" target="_blank" rel="noopener">Ziplo.fr</a> est le seul service de transfert de fichiers 100% souverain (ni AWS, ni Google, ni Azure). Ziplo est aussi et surtout un service de création de preuves numériques (aka preuve d'antériorité) pour défendre, entre autres, ses droits d'auteur. Comme la fameuse enveloppe de l'INPI mais en mieux.</div>
+                        <div class="columnCredits"><a href="https://www.kayz.fr" target="_blank" rel="noopener"><img class="logo" src="logo-kayz.png" alt="Kayz"></a>Je participe également au projet <a href="https://www.kayz.fr" target="_blank" rel="noopener">Kayz</a> un service pas forcément drôle mais auquel tout le monde devrait s'abonner, parce que c'est encore plus sûr que les impôts. Kayz vous permet de laisser en toute sécurité toutes les informations, codes d'accès, documents, instructions qui doivent être transmis aux personnes de votre choix s'il vous arrive quelque chose</div>
+                </div>
+        </details>
+</footer>
 
 
-                Value : parseFloat(1),
-                InputUnitValue: parseFloat(0),
-                InputUnitLabel: "",
-                OutputUnitValue: parseFloat(0),
-                OutputUnitLabel: "",
-                Result : parseFloat(0),
-                InverseResult: parseFloat(0),
-
-
-                AddCategory: function(value, title, style) {
-                        this.Categories.push({value:value, title:title, style:style});
-                        
-                },
-                AddGroup: function(category, group_label, group_style, conversions){
-
-                        var group  = NewGroup(group_label, group_style);
-                        group.pushConversions([...conversions])
-                        
-                        const categoryExists = this.Categories.some(cat => cat.value == category);
-                        if(!categoryExists) {return console.log("La catégorie du groupe de conversion n'existe pas. Catégorie : ", category)}
-                        if(this.Conversions[category]){this.Conversions[category].push(group)}
-                        else {this.Conversions[category]=[group]}
-                        
-                },
-
-                init(){
-                        this.displayForm(false);
-                        this.loadSelectCategories();
-                        this.LoadEventsChange();
-                        
-                },
-
-                loadSelectCategories: function(){
-                       if(!this.CategorySelectElement){return console.log("No Select Category Html Element");} 
-                       var first_line = '<option value="" selected disabled> Convertir quoi</option>';
-                       this.CategorySelectElement.innerHTML = first_line
-                       this.Categories.forEach(element => {
-                                this.CategorySelectElement.innerHTML += `<option style="${element.style ? element.style : '' }" value="${element.value}">${element.title}</option>`
-                       });
-
-
-                },
-
-                displayForm : function(display){
-                      
-                        if(display){
-                                this.FormElement.style.display = "flex";
-                                
-                        }else{
-                                this.FormElement.style.display = "none";
-                                
-                        }
-                        
-                },
-
-                loadTypesFromCategory: function(category){
-                        this.InputSelectElement.innerHTML = "";
-                        this.OutputSelectElement.innerHTML = "";
-                        if(category == ""){
-                                this.displayForm(false)
-                                return;
-                        }
-
-                        const categoryExists = this.Categories.some(cat => cat.value == category);
-                        if(!categoryExists) {return console.log("La catégorie demandée pour les types n'existe pas. Catégorie : ", category)}
-                        this.OutputSelectElement.innerHTML += "<option selected disabled>Sélectionnez une unité</option>";
-                        
-                        this.Conversions[category].forEach(group => {
-                                this.InputSelectElement.innerHTML += `<optgroup label="${group.label}" style="${group.style ? group.style : ''}">`         
-                                this.OutputSelectElement.innerHTML += `<optgroup label="${group.label}" style="${group.style ? group.style : ''}">`
-
-                                group["conversions"].forEach( conversion => {
-                                        var s = `<option value="${conversion.value}" style="${conversion.style ? conversion.style : ''}">${conversion.label}</option>`;
-                                        this.InputSelectElement.innerHTML +=  s;
-                                        this.OutputSelectElement.innerHTML += s;
-                                });
-
-                                this.InputSelectElement.innerHTML += `</optgroup>`; 
-                                this.OutputSelectElement.innerHTML += `</optgroup>`;
-                        });
-                        
-                        this.displayForm(true)
-                        this.InputSelectElement.selectedIndex = 3;
-                        this.InputSelectElement.dispatchEvent(new Event('change'));
-                },
-
-                LoadEventsChange: function(){
-                        this.CategorySelectElement.addEventListener('change', function(event){
-                                CategorySelectElement = event.target;
-                                var category = CategorySelectElement[CategorySelectElement.selectedIndex].value;
-                                AppConversions.loadTypesFromCategory(category);
-                       });
-
-                       this.InputSelectElement.addEventListener('change', function(event){
-                                
-                                AppConversions.InputUnitValue = parseFloat(AppConversions.InputSelectElement[AppConversions.InputSelectElement.selectedIndex].value);
-                                AppConversions.InputUnitLabel = AppConversions.InputSelectElement[AppConversions.InputSelectElement.selectedIndex].innerText;
-                                
-                                AppConversions.calcul();
-                       });
-                       this.OutputSelectElement.addEventListener('change', function(event){
-                                
-                                AppConversions.OutputUnitValue = parseFloat(AppConversions.OutputSelectElement[AppConversions.OutputSelectElement.selectedIndex].value);
-                                AppConversions.OutputUnitLabel = AppConversions.OutputSelectElement[AppConversions.OutputSelectElement.selectedIndex].innerText;
-                                
-                                AppConversions.calcul();
-                       });
-                       this.ValueElement.addEventListener('input', function(event){
-                                
-                                AppConversions.Value = parseFloat(AppConversions.ValueElement.value);
-                                AppConversions.calcul();
-                       })
-                       
-                },
-
-                showResult: function(){
-                       
-                        this.ResultContainerElement.style.display = "block";
-                        this.ResultContainerElement.innerHTML = `<p><strong>${this.Value}</strong> ${this.InputUnitLabel} est égal à ${this.Result} ${this.OutputUnitLabel}</br>`
-                        //this.ResultContainerElement.innerHTML += `Il faut  multiplier [${this.Value} ${this.InputUnitLabel}] par <strong>${this.InverseResult}</strong> pour faire <strong>1</strong> [${this.OutputUnitLabel}]</br>`
-                        this.ResultContainerElement.innerHTML += `Il faut <strong>${this.InverseResult}</strong> fois [${this.Value} ${this.InputUnitLabel}] pour faire <strong>1</strong> [${this.OutputUnitLabel}] </p>`  
-                        this.ResultContainerElement.innerHTML += `<p>Partager ce résultat sur <a target="_blank" href="https://twitter.com/intent/tweet?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Twitter-Logo-100.png" width="50" align="middle"></a> Twitter ou <a target="_blank" href="https://bsky.app/intent/compose?text=Le+Sachiez-tu+%3F%3F%3F+%0D%0A%0D%0A${this.Value}+${this.InputUnitLabel}++est+%C3%A9gal+%C3%A0+${this.Result}+${this.OutputUnitLabel}.%0D%0A%0D%0AJ%27ai+fait+une+conversion+stupide+via+https%3A%2F%2Ftheklem.github.io%2F"><img src="Bluesky.jpeg" width="50" align="middle"></a> Bluesky </p>`;        
-                        
-                },
-                hideResult: function(){
-                       
-                        this.ResultContainerElement.style.display = "none";
-                },
-
-                calcul: function(){
-                       
-                        if(this.CategorySelectElement.selectedIndex == 0 ||  isNaN(this.Value) || this.InputUnitValue == 0 || this.OutputUnitValue == 0){
-                               
-                                this.hideResult();
-                                return;
-                        }
-                        
-                        const conversionResult = ((this.Value * this.InputUnitValue) / this.OutputUnitValue);
-                        const invertConversionResult = 1 / conversionResult;
-                        if (Number.isInteger(conversionResult)) {
-                                this.Result = integerFormatter.format(conversionResult);
-                        } else if (conversionResult.toFixed(1).substring(0, 3) === "0.0") {
-                                this.Result = smallNumberFormatter.format(conversionResult);
-                        } else {
-                                this.Result = numberDisplayFormatter.format(conversionResult);
-                        }
-                        if (Number.isInteger(invertConversionResult)) {
-                                this.InverseResult = integerFormatter.format(invertConversionResult);
-                        } else if (invertConversionResult.toFixed(1).substring(0, 3) === "0.0") {
-                                this.InverseResult = smallNumberInvertedFormatter.format(invertConversionResult);
-                        } else {
-                                this.InverseResult = numberInvertedDisplayFormatter.format(invertConversionResult);
-                        }
-
-                        this.showResult();
-
-
-                }
-        }
-
-</script>
+<!-- moteur de conversion -->
+<script src="./app.js"></script>
 
 <script src="./categories/volume.js"></script>
 <script src="./categories/weight.js"></script>

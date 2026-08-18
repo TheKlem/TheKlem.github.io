@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Convertisseur stupide">
+  <rect width="64" height="64" rx="14" fill="#232BC4"/>
+  <!-- Banane : le running gag du site, lisible même en 16x16 -->
+  <path d="M17 13 C17 34 27 48 50 50 C48 45 44 43 39 40 C31 35 27 26 25 13 Z"
+        fill="#FFD43B" stroke="#8a6d00" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>
